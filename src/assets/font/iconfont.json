@@ -6,6 +6,62 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "5732294",
+      "name": "我的-full",
+      "font_class": "my-full",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "5732296",
+      "name": "我的",
+      "font_class": "my",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "11139656",
+      "name": "平底锅",
+      "font_class": "pingdiguo",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "11140575",
+      "name": "平底锅",
+      "font_class": "pingdiguot",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "11372639",
+      "name": "爱心",
+      "font_class": "aixin",
+      "unicode": "e8ab",
+      "unicode_decimal": 59563
+    },
+    {
+      "icon_id": "11372703",
+      "name": "首页",
+      "font_class": "shouye1",
+      "unicode": "e8b9",
+      "unicode_decimal": 59577
+    },
+    {
+      "icon_id": "11372756",
+      "name": "爱心",
+      "font_class": "aixin1",
+      "unicode": "e8c3",
+      "unicode_decimal": 59587
+    },
+    {
+      "icon_id": "11372774",
+      "name": "首页",
+      "font_class": "shouye2",
+      "unicode": "e8c6",
+      "unicode_decimal": 59590
+    },
+    {
       "icon_id": "11519413",
       "name": "首页",
       "font_class": "shouye",
@@ -550,6 +606,20 @@
       "font_class": "gouxuan",
       "unicode": "e785",
       "unicode_decimal": 59269
+    },
+    {
+      "icon_id": "11835745",
+      "name": "notifications_on",
+      "font_class": "notifications_on",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "11835747",
+      "name": "notifications_outlined",
+      "font_class": "notifications_outlined",
+      "unicode": "e651",
+      "unicode_decimal": 58961
     }
   ]
 }

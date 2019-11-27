@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-11-26 21:09:28
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-26 21:50:12
+ * @LastEditTime: 2019-11-27 19:54:08
  * @Description: 
  -->
 <template>
@@ -28,10 +28,10 @@ export default {
     };
   },
   created() {
-    console.log(this.uid);
+    // console.log(this.uid);
     Axios.get("/user", { params: { uid: this.uid } }).then(Response => {
       this.data = Response.data[0];
-      console.log(this.data[0]);
+      // console.log(this.data[0]);
     });
   }
 };
@@ -43,6 +43,7 @@ export default {
   // padding-top: .2rem;
   height: 0.25rem;
   width: 95%;
+  margin-top: 0;
   // background: black;
   .authorHeader,
   img {

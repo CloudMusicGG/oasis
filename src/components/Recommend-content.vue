@@ -2,38 +2,54 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-26 21:55:11
+ * @LastEditTime: 2019-11-27 22:15:10
  * @Description: 
  -->
 <template>
   <div class="ContentBox">
     <div
       class="longBox"
-      v-infinite-scroll=""
+      v-infinite-scroll
       infinite-scroll-disabled="busy"
       infinite-scroll-distance="10"
     >
       <div class="itemBox" v-for="item in dataOne" :key="item.index">
-        <div class="imgBox">
-          <img :src="item.pic" alt="">
-        </div>
-        <p class="itemTitle">{{item.title}}</p>
+        <router-link :to="'/Article/'+item.pid">
+          <div class="imgBox">
+            <img :src="item.pic" alt />
+          </div>
+          <p class="itemTitle">{{item.title}}</p>
+        </router-link>
+        <span class="likeNum">{{item.like}}</span>
+        <span
+          class="icon iconfont"
+          :class='{"icon-xihuan":!isShowLike(item.pid),"icon-aixin1":isShowLike(item.pid)}'
+          @click="likeIt(item.pid)"
+        ></span>
         <RecommendInfo :uid="item.uid"></RecommendInfo>
       </div>
     </div>
-    
+
     <!-- 这是第二列content -->
     <div
       class="longBox longBox_right"
-      v-infinite-scroll=""
+      v-infinite-scroll
       infinite-scroll-disabled="busy"
       infinite-scroll-distance="10"
     >
       <div class="itemBox" v-for="item in dataTwo" :key="item.index">
-        <div class="imgBox">
-          <img :src="item.pic" alt="">
-        </div>
-        <p class="itemTitle">{{item.title}}</p>
+        <router-link :to="'/Article/'+item.pid">
+          <div class="imgBox">
+            <img :src="item.pic" alt />
+          </div>
+          <p class="itemTitle">{{item.title}}</p>
+        </router-link>
+        <span class="likeNum">{{item.like}}</span>
+        <span
+          class="icon iconfont"
+          :class='{"icon-xihuan":!isShowLike(item.pid),"icon-aixin1":isShowLike(item.pid)}'
+          @click="likeIt(item.pid)"
+        ></span>
         <RecommendInfo :uid="item.uid"></RecommendInfo>
       </div>
     </div>
@@ -51,9 +67,10 @@ export default {
     return {
       count: 0,
       data: [],
-      dataOne:[],
-      dataTwo:[],
-      busy: false
+      dataOne: [],
+      dataTwo: [],
+      busy: false,
+      nowPid: []
     };
   },
   created() {
@@ -79,36 +96,55 @@ export default {
     //     this.busy = false;
     //   }, 1000);
     // }
-    
-    classify(data){
-      for(let i in data){
-        if(i%2==0){
+    likeIt(pid) {
+      let index = this.nowPid.indexOf(pid);
+      if (index < 0) {
+        this.nowPid.push(pid);
+      } else {
+        console.log(index);
+        this.nowPid.splice(index,1);
+      }
+      console.log(this.nowPid);
+    },
+    classify(data) {
+      for (let i in data) {
+        if (i % 2 == 0) {
           this.dataOne.push(data[i]);
-        }else{
+        } else {
           this.dataTwo.push(data[i]);
         }
       }
-    } 
+    },
+    isShowLike(pid) {
+      if (this.nowPid.indexOf(pid) >= 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
-  components:{
+  components: {
     RecommendInfo
-  }
+  },
+  computed: {}
 };
 </script>
 
 <style lang="scss" scoped>
+@import url(../assets/font/iconfont.css);
 .ContentBox {
   overflow: hidden;
 }
 .itemBox {
+  position: relative;
   width: 100%;
   .imgBox {
-    width: 95%;
+    width: 98%;
     // height: 2rem;
-    background: pink;
     text-align: center;
     border-radius: 10px;
-    margin: 0.1rem 0.05rem;
+    margin: 0.1rem auto;
+    margin-bottom: 0;
   }
 }
 
@@ -122,15 +158,43 @@ export default {
 .longBox_right {
   float: right;
 }
-img{
-  width:100%;
+img {
+  width: 100%;
   border-radius: 10px;
   display: block;
 }
-.itemTitle{
+.itemTitle {
   text-align: left;
-  line-height: .05rem;
+  max-height: 0.5rem;
+  line-height: 0.25rem;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  -webkit-line-clamp: 2;
+  text-overflow: -o-ellipsis-lastline;
+  /* text-overflow: ellipsis; */
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
   padding-left: 8px;
   font-weight: bolder;
+  font-size: 0.13rem;
+  letter-spacing: 1px;
+}
+.icon-xihuan,
+.icon-aixin1,
+.likeNum {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  color: gray;
+}
+.icon-aixin1 {
+  color: red;
+}
+.likeNum {
+  right: 30px;
+  bottom: 2px;
+  font-size: 0.12rem;
+  color: gray;
 }
 </style>
