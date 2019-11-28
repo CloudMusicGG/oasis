@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-27 22:15:10
+ * @LastEditTime: 2019-11-28 20:57:46
  * @Description: 
  -->
 <template>
@@ -14,17 +14,17 @@
       infinite-scroll-distance="10"
     >
       <div class="itemBox" v-for="item in dataOne" :key="item.index">
-        <router-link :to="'/Article/'+item.pid">
+        <router-link :to="'/Article/'+item.id">
           <div class="imgBox">
             <img :src="item.pic" alt />
           </div>
           <p class="itemTitle">{{item.title}}</p>
         </router-link>
-        <span class="likeNum">{{item.like}}</span>
+        <span class="likeNum">{{likeNum(item.id)}}</span>
         <span
           class="icon iconfont"
-          :class='{"icon-xihuan":!isShowLike(item.pid),"icon-aixin1":isShowLike(item.pid)}'
-          @click="likeIt(item.pid)"
+          :class='{"icon-xihuan":!isShowLike(item.id),"icon-aixin1":isShowLike(item.id)}'
+          @click="likeIt(item.id)"
         ></span>
         <RecommendInfo :uid="item.uid"></RecommendInfo>
       </div>
@@ -38,17 +38,17 @@
       infinite-scroll-distance="10"
     >
       <div class="itemBox" v-for="item in dataTwo" :key="item.index">
-        <router-link :to="'/Article/'+item.pid">
+        <router-link :to="'/Article/'+item.id">
           <div class="imgBox">
             <img :src="item.pic" alt />
           </div>
           <p class="itemTitle">{{item.title}}</p>
         </router-link>
-        <span class="likeNum">{{item.like}}</span>
+        <span class="likeNum">{{likeNum(item.id)}}</span>
         <span
           class="icon iconfont"
-          :class='{"icon-xihuan":!isShowLike(item.pid),"icon-aixin1":isShowLike(item.pid)}'
-          @click="likeIt(item.pid)"
+          :class='{"icon-xihuan":!isShowLike(item.id),"icon-aixin1":isShowLike(item.id)}'
+          @click="likeIt(item.id)"
         ></span>
         <RecommendInfo :uid="item.uid"></RecommendInfo>
       </div>
@@ -70,7 +70,8 @@ export default {
       dataOne: [],
       dataTwo: [],
       busy: false,
-      nowPid: []
+      nowPid: [],
+      likePidAndNum:[]
     };
   },
   created() {
@@ -78,8 +79,6 @@ export default {
       Response => {
         this.data = Response.data;
         this.classify(this.data);
-        // console.log(this.type);
-        // console.log(Response.data);
       }
     );
   },
@@ -96,16 +95,35 @@ export default {
     //     this.busy = false;
     //   }, 1000);
     // }
-    likeIt(pid) {
-      let index = this.nowPid.indexOf(pid);
-      if (index < 0) {
-        this.nowPid.push(pid);
-      } else {
-        console.log(index);
-        this.nowPid.splice(index,1);
+
+    /**
+     * @description: 这是把页面上点赞数和pid对应提取，出来放在一个数组里的函数
+     * @param {type} 
+     * @return: 
+     */
+    likeNum(id){
+      for(let i = 0 ; i < (this.likePidAndNum).length ; i++){
+        if(this.likePidAndNum[i].id==id){
+          return this.likePidAndNum[i].like;
+        }
       }
-      console.log(this.nowPid);
+      return 0;
     },
+    /**
+     * @description: 这是点击喜欢会变成红心，并且数字加一，再次点击恢复初始状态的函数
+     * @param {type} 
+     * @return: 
+     */
+    likeIt(id) {
+      let index = this.$store.state.nowPid.indexOf(id);
+      this.$store.commit("changePidAndLike",{id:id,index:index});
+    },
+    /**
+     * @description: 由于我把本页面布局分成了左右两部分，
+     *                这是把从后台获取的数据分成两组的函数
+     * @param {type} 
+     * @return: 
+     */
     classify(data) {
       for (let i in data) {
         if (i % 2 == 0) {
@@ -115,8 +133,13 @@ export default {
         }
       }
     },
-    isShowLike(pid) {
-      if (this.nowPid.indexOf(pid) >= 0) {
+    /**
+     * @description: 这是根据已经点过赞的数组中是否存在当前动态pid，来判断是否显示红心的函数
+     * @param {type} 
+     * @return: 
+     */
+    isShowLike(id) {
+      if (this.nowPid.indexOf(id) >= 0) {
         return true;
       } else {
         return false;
@@ -126,7 +149,11 @@ export default {
   components: {
     RecommendInfo
   },
-  computed: {}
+  computed: {},
+  updated(){
+    this.nowPid = this.$store.state.nowPid;
+    this.likePidAndNum = this.$store.state.likePidAndNum;
+  }
 };
 </script>
 
