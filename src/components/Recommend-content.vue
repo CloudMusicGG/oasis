@@ -2,57 +2,63 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-28 20:57:46
+ * @LastEditTime: 2019-11-29 17:44:27
  * @Description: 
  -->
 <template>
   <div class="ContentBox">
-    <div
-      class="longBox"
-      v-infinite-scroll
-      infinite-scroll-disabled="busy"
-      infinite-scroll-distance="10"
-    >
-      <div class="itemBox" v-for="item in dataOne" :key="item.index">
-        <router-link :to="'/Article/'+item.id">
-          <div class="imgBox">
-            <img :src="item.pic" alt />
+    <mt-loadmore :bottom-method="loadBottom" :top-method="loadTop" :bottom-all-loaded="isLoadAll" ref="loadmore">
+    <!-- 这是第一列 -->
+        <div
+          class="longBox"
+          v-infinite-scroll
+          infinite-scroll-disabled="busy"
+          infinite-scroll-distance="10"
+          ref="element1"
+        >
+          <div class="itemBox" v-for="item in dataOne" :key="item.index">
+            <router-link :to="'/Article/'+item.id">
+              <div class="imgBox">
+                <img :src="item.pic" alt />
+              </div>
+              <p class="itemTitle">{{item.title}}</p>
+            </router-link>
+            <span class="likeNum">{{likeNum(item.id)}}</span>
+            <span
+              class="icon iconfont"
+              :class='{"icon-xihuan":!isShowLike(item.id),"icon-aixin1":isShowLike(item.id)}'
+              @click="likeIt(item.id)"
+            ></span>
+            <RecommendInfo :uid="item.uid"></RecommendInfo>
           </div>
-          <p class="itemTitle">{{item.title}}</p>
-        </router-link>
-        <span class="likeNum">{{likeNum(item.id)}}</span>
-        <span
-          class="icon iconfont"
-          :class='{"icon-xihuan":!isShowLike(item.id),"icon-aixin1":isShowLike(item.id)}'
-          @click="likeIt(item.id)"
-        ></span>
-        <RecommendInfo :uid="item.uid"></RecommendInfo>
-      </div>
-    </div>
+        </div>
 
     <!-- 这是第二列content -->
-    <div
-      class="longBox longBox_right"
-      v-infinite-scroll
-      infinite-scroll-disabled="busy"
-      infinite-scroll-distance="10"
-    >
-      <div class="itemBox" v-for="item in dataTwo" :key="item.index">
-        <router-link :to="'/Article/'+item.id">
-          <div class="imgBox">
-            <img :src="item.pic" alt />
-          </div>
-          <p class="itemTitle">{{item.title}}</p>
-        </router-link>
-        <span class="likeNum">{{likeNum(item.id)}}</span>
-        <span
-          class="icon iconfont"
-          :class='{"icon-xihuan":!isShowLike(item.id),"icon-aixin1":isShowLike(item.id)}'
-          @click="likeIt(item.id)"
-        ></span>
-        <RecommendInfo :uid="item.uid"></RecommendInfo>
+      <div
+        class="longBox longBox_right"
+        v-infinite-scroll
+        infinite-scroll-disabled="busy"
+        infinite-scroll-distance="10"
+        ref="element2"
+      >
+        <div class="itemBox" v-for="item in dataTwo" :key="item.index">
+          <router-link :to="'/Article/'+item.id">
+            <div class="imgBox">
+              <img :src="item.pic" alt />
+            </div>
+            <p class="itemTitle">{{item.title}}</p>
+          </router-link>
+          <span class="likeNum">{{likeNum(item.id)}}</span>
+          <span
+            class="icon iconfont"
+            :class='{"icon-xihuan":!isShowLike(item.id),"icon-aixin1":isShowLike(item.id)}'
+            @click="likeIt(item.id)"
+          ></span>
+          <RecommendInfo :uid="item.uid"></RecommendInfo>
+        </div>
       </div>
-    </div>
+
+    </mt-loadmore>
   </div>
 </template>
 
@@ -60,6 +66,10 @@
 import { InfiniteScroll } from "element-ui";
 import Axios from "axios";
 import RecommendInfo from "@/components/Recommend-info";
+import Vue from "vue";
+import { Loadmore } from "mint-ui";
+
+Vue.component("mt-Loadmore", Loadmore);
 export default {
   name: "RecommendContent",
   props: ["type"],
@@ -67,17 +77,21 @@ export default {
     return {
       count: 0,
       data: [],
+      alldata:[],
       dataOne: [],
       dataTwo: [],
       busy: false,
       nowPid: [],
-      likePidAndNum:[]
+      likePidAndNum:[],
+      list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      isLoadAll:false
     };
   },
   created() {
     Axios.get("/postInfo", { params: { type_like: this.type } }).then(
       Response => {
-        this.data = Response.data;
+        this.alldata = Response.data;
+        this.data = (this.alldata).slice(0,5);
         this.classify(this.data);
       }
     );
@@ -96,6 +110,37 @@ export default {
     //   }, 1000);
     // }
 
+
+    /**
+     * @description: 这是下拉刷新的函数
+     * @param {type} 
+     * @return: 
+     */  
+    loadTop() {
+      this.data = (this.alldata).slice(4,10);
+      this.$refs.loadmore.onTopLoaded();
+      this.classify(this.data);
+    },    
+
+
+    /**
+     * @description: 这是上拉加载的函数
+     * @param {type} 
+     * @return: 
+     */
+    loadBottom() {
+      // if(this.data==this.alldata){
+      //   this.isLoadAll = true;
+      // }
+      // if (!this.isLoadAll) {
+      this.data = (this.alldata).slice(4,10);
+      this.$refs.loadmore.onBottomLoaded();
+      this.classify(this.data);
+      // this.$refs.loadmore.onTopLoaded();
+      // }else{
+      //   console.log("已加载全部");
+      // }
+    },
     /**
      * @description: 这是把页面上点赞数和pid对应提取，出来放在一个数组里的函数
      * @param {type} 
@@ -133,6 +178,17 @@ export default {
         }
       }
     },
+    classifyBetter(data){
+      for (let i in data) {
+        let height1= this.$refs.element1.offsetHeight;
+        let height2= this.$refs.element2.offsetHeight;
+        if (height1<height2) {
+          this.dataOne.push(data[i]);
+        } else {
+          this.dataTwo.push(data[i]);
+        }
+      }
+    },
     /**
      * @description: 这是根据已经点过赞的数组中是否存在当前动态pid，来判断是否显示红心的函数
      * @param {type} 
@@ -160,7 +216,8 @@ export default {
 <style lang="scss" scoped>
 @import url(../assets/font/iconfont.css);
 .ContentBox {
-  overflow: hidden;
+  // overflow: hidden;
+  overflow-y: scroll;
 }
 .itemBox {
   position: relative;

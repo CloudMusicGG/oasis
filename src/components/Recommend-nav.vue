@@ -2,19 +2,20 @@
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-26 20:48:44
+ * @LastEditTime: 2019-11-29 15:51:41
  * @Description: 这是推荐页面的tab导航栏
  -->
 <template>
   <el-tabs v-model="activeName" @tab-click="handleClick" class="nav">
     <el-tab-pane
+      class="nav_top"
       v-for="(tab,index) in tabs"
       :label="tab.label"
       :name="tab.name"
       :tabindex="{index}"
       :key="index"
     >
-      <RecommendContent :type="tab.label"></RecommendContent>
+      <RecommendContent :type="tab.label" id="scrollContent"></RecommendContent>
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -89,15 +90,12 @@ export default {
 };
 </script>
 <style lang="scss">
-.nav {
-  font-size: 0.15rem;
-}
 .el-tab-pane {
   padding-left: 0.05rem;
   padding-right: 0.05rem;
   width: 100%;
   box-sizing: border-box;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 .el-tabs__nav-scroll {
   padding-left: 0.2rem;
@@ -127,6 +125,8 @@ export default {
 .el-tabs__nav-wrap.is-scrollable {
   padding-left: 15px;
   padding-right: 0px;
+  position: fixed;
+  top: 0;
 }
 .el-tabs__nav-wrap {
   width: 100%;
@@ -135,13 +135,18 @@ export default {
   height: 5px;
   border-radius: 5px;
 }
-.el-tabs__item.is-active,
+.el-tab-pane .el-tabs__item.is-active,
 .el-tabs__item:hover {
   color: black;
   font-weight: bolder;
 }
 .el-tabs__header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  padding-left: 10px;
+  z-index: 10;
   &:after {
     content: "";
     width: 0.3rem;
@@ -160,9 +165,14 @@ export default {
 }
 .is-top:last-child {
   margin-right: 20px;
+  margin-bottom: 1px;
 }
 .el-tabs__nav-scroll {
   overflow-x: auto;
   padding: 0;
+}
+#scrollContent {
+  height: 100%;
+  overflow-y: scroll;
 }
 </style>
