@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-11-26 14:32:26
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-28 17:28:26
+ * @LastEditTime: 2019-11-29 20:21:08
  * @Description: 这是推荐页面
  -->
 <template>
@@ -32,6 +32,8 @@ export default {
       Axios.get("/postInfo").then(
       Response => {
         this.data = Response.data;
+        //去到了所有的文章信息
+        // 单独把id和like筛选出来，写成对象的格式，然后放在vuex的likePidAndNum数组里
         for(let i = 0 ; i < (this.data).length ; i++){
           this.likePidAndNum.push({id:this.data[i].id,like:this.data[i].like});
           let likePidAndNum = this.likePidAndNum;
