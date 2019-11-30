@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-11-26 14:32:26
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-30 15:24:47
+ * @LastEditTime: 2019-11-30 16:56:28
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-29 20:21:08
  * @Description: 这是推荐页面
@@ -58,4 +58,5 @@ export default {
 //   font-size: .18rem;
 //   color:black;
 // }
+
 </style>

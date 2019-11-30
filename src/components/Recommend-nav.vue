@@ -2,13 +2,13 @@
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-30 16:40:56
+ * @LastEditTime: 2019-11-30 16:59:50
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-29 15:51:41
  * @Description: 这是推荐页面的tab导航栏
  -->
 <template>
-  <el-tabs v-model="activeName" @tab-click="handleClick" class="nav">
+  <el-tabs v-model="activeName" @tab-click="handleClick" class="navlixi" >
     <el-tab-pane
       class="nav_top"
       v-for="(tab,index) in tabs"
@@ -91,7 +91,13 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
+#scrollContent {
+  height: 100%;
+  overflow-y: scroll;
+}
+.navlixi{
+
 .el-tab-pane {
   padding-left: 0.05rem;
   padding-right: 0.05rem;
@@ -173,8 +179,6 @@ export default {
   overflow-x: auto;
   padding: 0;
 }
-#scrollContent {
-  height: 100%;
-  overflow-y: scroll;
+  
 }
 </style>
