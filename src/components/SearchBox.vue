@@ -1,8 +1,8 @@
 <!--
  * @Author: Eternal
  * @Date: 2019-11-26 14:32:25
- * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 00:39:25
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-11-30 15:19:20
  * @Description: 
  -->
 <template>
@@ -14,7 +14,7 @@
                </label>
                <input type="text" placeholder="搜素用户和动态" v-model="text" @keyup.enter="sercher">
            </div>
-           <router-link to="/Recommend">取消</router-link>
+           <router-link to="/">取消</router-link>
        </div> 
   </div>
   

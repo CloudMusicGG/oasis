@@ -1,8 +1,8 @@
 <!--
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
- * @LastEditors: Eternal
- * @LastEditTime: 2019-11-29 20:37:34
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-11-30 15:36:52
  * @Description: 这是推荐页面的tab导航栏
  -->
 <template>
@@ -66,7 +66,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .navigation {
   width: 4rem;
   background: pink;

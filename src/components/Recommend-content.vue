@@ -1,8 +1,8 @@
 <!--
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
- * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 14:24:08
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-11-30 15:43:00
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-29 20:22:45
  * @Description: 
@@ -90,7 +90,6 @@ export default {
     };
   },
   created() {
-    console.log(this.b)
     Axios.get("/postInfo", { params: { type_like: this.type } }).then(
       Response => {
         this.alldata = Response.data;

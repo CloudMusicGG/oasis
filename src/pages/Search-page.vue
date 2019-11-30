@@ -1,8 +1,8 @@
 <!--
  * @Author: Eternal
  * @Date: 2019-11-26 14:41:24
- * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 00:56:50
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-11-30 15:24:15
  * @Description: 搜素页 SearchBox:搜素框组件；Navigation:导航栏组件；     Recommend：最近搜素组件；Relevant：瀑布流组件；CheckIn：最新入住组件；   user:相关用户组件
  -->
 <template>
