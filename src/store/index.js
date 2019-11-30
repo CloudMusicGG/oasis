@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-26 10:57:24
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-29 20:24:14
+ * @LastEditTime: 2019-11-30 16:22:49
  * @Description: 
  */
 
@@ -15,11 +15,23 @@ Vue.use(VueX)
 export default new VueX.Store({
     state: {//存储数据
         nowPid: [],//该用户已经点赞的文章的id数组
-        likePidAndNum: []//文章的id和点赞数，组成的对象数组，在pages的Recommend中获取的
+        likePidAndNum: [],//文章的id和点赞数，组成的对象数组，在pages的Recommend中获取的
+        Tel:"123",
+        isLogin:false,
+        userInfo:{
+          },
+        nowPid: [],
+        likePidAndNum: []
     },
     mutations: {//跟踪状态
         changelikePidAndNum(state, likePidAndNum) {
             state.likePidAndNum = likePidAndNum;
+        },
+        changeLogin(state,param){
+            state.isLogin = param;
+        },
+        changUserInfo(state,data){
+            state.userInfo = data;
         },
         changePidAndLike(state, { id, index }) {
             // 如果下标不存在
