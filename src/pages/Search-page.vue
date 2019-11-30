@@ -1,17 +1,19 @@
 <!--
  * @Author: Eternal
  * @Date: 2019-11-26 14:41:24
+ * @LastEditors: Eternal
+ * @LastEditTime: 2019-11-30 20:47:07
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 17:11:22
  * @Description: 搜素页 SearchBox:搜素框组件；Navigation:导航栏组件；     Recommend：最近搜素组件；Relevant：瀑布流组件；CheckIn：最新入住组件；   user:相关用户组件
  -->
 <template>
     <div>
-        <SearchBox class="SearchBox" @update="pre"></SearchBox>
-        <Navigation v-show="display" class="Navigation"></Navigation>
-        <Recommend v-show="hide" :mm="b"></Recommend>
-        <user v-show="user"></user>
-        <Relevant v-show="Relevant"></Relevant>
+        <SearchBox class="SearchBox" @update="pre" :get="get"></SearchBox>
+        <Navigation v-show="display" class="Navigation" @RelatedUsers="pass"></Navigation>
+        <Recommend v-show="hide"></Recommend>
+        <user v-show="user" :v="b"></user>
+        <Relevant v-show="Relevant" :v="n"></Relevant>
         <CheckIn v-show="checkin"></CheckIn>
     </div>
 </template>
@@ -27,7 +29,9 @@ export default {
     name:"Search",
     data() {
         return {
-            b:'1',
+            b:'',
+            n:'',
+            get:'',
             display:false,
             hide: true,
             Relevant:false,
@@ -36,13 +40,18 @@ export default {
         }
     },
     methods:{
-        pre(t) {
+        pre(t,m) {
            this.b = t
+           this.n = m
            this.display=true
            this.hide=false
            this.Relevant=true
            this.checkin=false
            this.user=true
+        },
+        pass(get) {
+            this.get = get
+            // console.log(this.get)
         }
     },
     components:{
@@ -56,7 +65,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .Navigation {
         margin-bottom:1rem;
     }

@@ -1,6 +1,8 @@
 <!--
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
+ * @LastEditors: Eternal
+ * @LastEditTime: 2019-11-30 16:19:48
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 17:08:38
  * @LastEditors: roselee
@@ -91,7 +93,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" >
+<style lang="scss" scoped >
 #scrollContent {
   height: 100%;
   overflow-y: scroll;

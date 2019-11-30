@@ -2,31 +2,31 @@
  * @Author: Eternal
  * @Date: 2019-11-26 17:01:29
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 00:22:59
- * @Description: 最新入住组件
+ * @LastEditTime: 2019-11-30 18:26:50
+ * @Description: 相关用户组件
  -->
 <template>
   <div class="CheckIn">
      <div class="CheckIn_w">
          <p>{{title}}</p>
         <ul class="information">
-            <li class="details" v-for="(CheckIn,index) in CheckIns" :key="index" >
+            <li class="details" v-for="(vs,index) in v" :key="index" >
                 <div class="details_left">
                    <span class="details_left_span">
-                       <img :src="CheckIn.HeadPortrait" alt="">
+                       <img :src="vs.HeadPortrait" alt="">
                     </span>
                    <div class="name">
                        <p>
-                           <span class="name_span">{{CheckIn.name}}</span>
+                           <span class="name_span">{{vs.name}}</span>
                             <img src="../assets/img/h2.jpg" alt="">
                         </p>
                        <p class="region">
-                           <img :src="CheckIn.sex" alt="">
-                            <span class="City">{{CheckIn.City}}</span>
+                           <img :src="vs.sex" alt="">
+                            <span class="City">{{vs.City}}</span>
                        </p>
                    </div>
                 </div>
-                <div class="follow" @click="favor(CheckIn.name)" :class='{"unsuber":!isLike(CheckIn.name),"suber":isLike(CheckIn.name)}'>
+                <div class="follow" @click="favor(vs.name)" :class='{"unsuber":!isLike(vs.name),"suber":isLike(vs.name)}'>
                     <!-- {{follow}} -->
                 </div>
             </li>
@@ -39,6 +39,7 @@
 import Axios from "axios";
 export default {
     name:'user',
+    props:['v'],
     data() {
         return {
             title: '"相关用户"',
@@ -46,15 +47,18 @@ export default {
             subscribed:[]
         }
     },
+    // updated(){
+    //     console.log("updated",this.v)
+    // },
     methods:{
         favor(name) {
+            // console.log()
             let index = (this.subscribed).indexOf(name);
             if(index>=0){
                 this.subscribed.splice(index,1);
             }else{
                 this.subscribed.push(name);
             }
-            // console.log(this.subscribed);
         },
         isLike(name){
             if((this.subscribed).indexOf(name)<0){
@@ -63,15 +67,7 @@ export default {
                 return true;
             }
         }
-    },
-    
-    created(){
-        Axios.get("/CheckIn")
-        .then(res=>{
-            this.CheckIns = res.data.splice(0,3);
-        })
     }
-    
 }
 </script>
   
