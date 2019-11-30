@@ -1,3 +1,10 @@
+<!--
+ * @Author: Eternal
+ * @Date: 2019-11-26 11:44:11
+ * @LastEditors: Eternal
+ * @LastEditTime: 2019-11-27 20:24:47
+ * @Description: 
+ -->
 <template>
   <div id="app">
     <router-view/>
@@ -23,6 +30,10 @@ html {
 body {
   font-size: 14px;
   height: 100%;
+}
+.red {
+  color: red;
+  font-size: 18px;
 }
 ul,
 li {

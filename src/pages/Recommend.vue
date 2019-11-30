@@ -1,6 +1,8 @@
 <!--
  * @Author: roselee
  * @Date: 2019-11-26 14:32:26
+ * @LastEditors: Eternal
+ * @LastEditTime: 2019-11-29 20:08:26
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-29 20:21:08
  * @Description: 这是推荐页面
@@ -48,6 +50,7 @@ export default {
 .rec {
   width: 100%;
   height: 0.4rem;
+  background: red;
 }
 .el-tabs__item:hover,
 .el-tabs__item .is-active {

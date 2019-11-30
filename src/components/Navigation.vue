@@ -2,73 +2,48 @@
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 14:24:23
- * @LastEditors: roselee
- * @LastEditTime: 2019-11-29 15:51:41
+ * @LastEditTime: 2019-11-29 20:37:34
  * @Description: 这是推荐页面的tab导航栏
  -->
 <template>
-  <el-tabs v-model="activeName" @tab-click="handleClick" class="nav">
-    <el-tab-pane
-      class="nav_top"
-      v-for="(tab,index) in tabs"
-      :label="tab.label"
-      :name="tab.name"
-      :tabindex="{index}"
-      :key="index"
-    >
-      <RecommendContent :type="tab.label" id="scrollContent"></RecommendContent>
-    </el-tab-pane>
-  </el-tabs>
+    <div class="navigation">
+        <el-tabs v-model="activeName" @tab-click="handleClick" class="nav">
+            <el-tab-pane
+            v-for="(tab,index) in tabs"
+            :label="tab.label"
+            :name="tab.name"
+            :tabindex="{index}"
+            :key="index"
+            >
+            <!-- <Recommend :type="tab.label" class="Recommend"></Recommend> -->
+            </el-tab-pane>
+        </el-tabs>
+    </div>
 </template>
 <script>
 import { Tabs } from "element-ui";
-import RecommendContent from "@/components/Recommend-content";
+// import Recommend from "@/components/Recommend-content";
 export default {
-  name: "RecommendNav",
+  name: "Navigation",
   data() {
     return {
       activeName: "0",
       tabs: [
         {
-          label: "推荐",
+          label: "全部",
           name: "0"
         },
         {
-          label: "明星",
+          label: "用户",
           name: "1"
         },
         {
-          label: "时尚",
+          label: "动态",
           name: "2"
         },
         {
-          label: "颜值",
+          label: "主题",
           name: "3"
-        },
-        {
-          label: "旅行",
-          name: "4"
-        },
-        {
-          label: "美妆",
-          name: "5"
-        },
-        {
-          label: "美食",
-          name: "6"
-        },
-        {
-          label: "摄影",
-          name: "7"
-        },
-        {
-          label: "二次元",
-          name: "8"
-        },
-        {
-          label: "运动",
-          name: "9"
         }
       ]
     };
@@ -87,17 +62,32 @@ export default {
     }
   },
   components: {
-    RecommendContent
+    // Recommend
   }
 };
 </script>
 <style lang="scss">
+.navigation {
+  width: 4rem;
+  background: pink;
+}
+.nav {
+  font-size: 0.15rem;
+  position: fixed;
+  top: .46rem;
+  padding-left: .23rem;
+  width: 100%;
+  height: .4rem;
+  background: #fff;
+  border-bottom: 1px solid rgb(233, 232, 232);
+  z-index: 999;
+}
 .el-tab-pane {
   padding-left: 0.05rem;
   padding-right: 0.05rem;
   width: 100%;
   box-sizing: border-box;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 .el-tabs__nav-scroll {
   padding-left: 0.2rem;
@@ -127,8 +117,6 @@ export default {
 .el-tabs__nav-wrap.is-scrollable {
   padding-left: 15px;
   padding-right: 0px;
-  position: fixed;
-  top: 0;
 }
 .el-tabs__nav-wrap {
   width: 100%;
@@ -137,18 +125,13 @@ export default {
   height: 5px;
   border-radius: 5px;
 }
-.el-tab-pane .el-tabs__item.is-active,
+.el-tabs__item.is-active,
 .el-tabs__item:hover {
   color: black;
   font-weight: bolder;
 }
 .el-tabs__header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: white;
-  padding-left: 10px;
-  z-index: 10;
+  position: relative;
   &:after {
     content: "";
     width: 0.3rem;
@@ -167,14 +150,9 @@ export default {
 }
 .is-top:last-child {
   margin-right: 20px;
-  margin-bottom: 1px;
 }
 .el-tabs__nav-scroll {
   overflow-x: auto;
   padding: 0;
-}
-#scrollContent {
-  height: 100%;
-  overflow-y: scroll;
 }
 </style>

@@ -1,13 +1,15 @@
 <!--
  * @Author: roselee
  * @Date: 2019-11-26 16:39:44
+ * @LastEditors: Eternal
+ * @LastEditTime: 2019-11-27 21:26:28
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-29 15:35:43
  * @Description: 这是推荐页面的搜索框
  -->
 <template>
   <div class="searchBox">
-    <input type="text" class="iconfont placeholderText" :placeholder="placeholderText" />
+    <input type="text" class="iconfont placeholderText" :placeholder="placeholderText" @click="search()"/>
     <span class="icon iconfont icon-saoyisao"></span>
   </div>
 </template>
@@ -19,7 +21,12 @@ export default {
     return {
       placeholderText:'\ue739 搜索用户和动态'
     };
-  }
+  },
+   methods:{
+        search(){
+            this.$router.push({path:'/Search-page'})  
+        }
+    }
 };
 </script>
 
