@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-26 10:57:24
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-28 21:00:50
+ * @LastEditTime: 2019-11-30 16:22:49
  * @Description: 
  */
 
@@ -14,6 +14,12 @@ Vue.use(VueX)
 
 export default new VueX.Store({
     state: {//存储数据
+        nowPid: [],//该用户已经点赞的文章的id数组
+        likePidAndNum: [],//文章的id和点赞数，组成的对象数组，在pages的Recommend中获取的
+        Tel:"123",
+        isLogin:false,
+        userInfo:{
+          },
         nowPid: [],
         likePidAndNum: []
     },
@@ -21,17 +27,25 @@ export default new VueX.Store({
         changelikePidAndNum(state, likePidAndNum) {
             state.likePidAndNum = likePidAndNum;
         },
+        changeLogin(state,param){
+            state.isLogin = param;
+        },
+        changUserInfo(state,data){
+            state.userInfo = data;
+        },
         changePidAndLike(state, { id, index }) {
+            // 如果下标不存在
             if (index < 0) {
+                // 把这个文章的id添加到nowPid数组中
                 (state.nowPid).push(id);
-                // 此处需要向后端发一下数据增加点赞数
                 for (let i = 0; i < (state.likePidAndNum).length; i++) {
                     if (id == state.likePidAndNum[i].id) {
                         state.likePidAndNum[i].like++;
                         
                         let likenum = state.likePidAndNum[i].like;
                         let data = "like="+likenum;
-
+                        
+                        // 此处向后端发一下数据增加点赞数
                         Axios.patch(
                             "/postInfo/" + id,
                             data,

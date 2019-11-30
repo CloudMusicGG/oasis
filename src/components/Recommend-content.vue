@@ -2,9 +2,11 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 18:46:58
+ * @LastEditTime: 2019-11-30 19:44:58
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-29 17:44:27
+ * @LastEditTime: 2019-11-30 15:43:00
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-11-29 20:22:45
  * @Description: 
  -->
 <template>
@@ -163,7 +165,7 @@ export default {
      * @return: 
      */
     likeIt(id) {
-      let index = this.$store.state.nowPid.indexOf(id);
+      let index = this.$store.state.nowPid.indexOf(id);//判断当前点赞的文章，在vuex的nowPid数组（用户已点赞数组）中是否存在
       this.$store.commit("changePidAndLike",{id:id,index:index});
     },
     /**

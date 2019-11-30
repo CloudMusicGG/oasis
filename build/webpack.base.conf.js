@@ -3,7 +3,7 @@
  * @Date: 2019-11-26 10:25:50
  * @LastEditors: rosalee
  * @LastEditTime: 2019-11-26 10:40:52
- * @Description: 
+ * @Description:
  */
 'use strict'
 const path = require('path')
@@ -72,7 +72,10 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },
-      { test: /\.scss$/, loaders: ["style", "css", "sass"] }
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
+        }
     ]
   },
   node: {

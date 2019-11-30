@@ -2,18 +2,21 @@
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 19:25:58
+ * @LastEditTime: 2019-11-30 20:37:45
  * @Description: 这是搜素页的tab导航栏
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-11-30 15:36:52
+ * @Description: 这是推荐页面的tab导航栏
  -->
 <template>
     <div class="navigation">
-        <el-tabs v-model="activeName" @tab-click="handleClick" class="nav">
+        <el-tabs v-model="activeName" @tab-click="handleClick" class="nav" >
             <el-tab-pane
             v-for="(tab,index) in tabs"
             :label="tab.label"
             :name="tab.name"
             :tabindex="{index}"
-            :key="index" ref= "num"
+            :key="index" 
             >
             <!-- <Recommend :type="tab.label" class="Recommend"></Recommend> -->
             </el-tab-pane>
@@ -27,7 +30,7 @@ export default {
   name: "Navigation",
   data() {
     return {
-      cc:'num',
+      // cc:'num',
       activeName: "0",
       tabs: [
         {
@@ -54,7 +57,8 @@ export default {
         
     },
     handleClick(tab, event) {
-      console.log("nn")
+      let get = tab.label
+      this.$emit("RelatedUsers", get)
       this.currType = event.target.tabindex;
       let eventdom = event.target;
       eventdom.scrollIntoView({

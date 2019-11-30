@@ -2,13 +2,15 @@
  * @Author: Eternal
  * @Date: 2019-11-26 14:41:24
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 18:46:20
+ * @LastEditTime: 2019-11-30 20:47:07
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-11-30 15:24:15
  * @Description: 搜素页 SearchBox:搜素框组件；Navigation:导航栏组件；     Recommend：最近搜素组件；Relevant：瀑布流组件；CheckIn：最新入住组件；   user:相关用户组件
  -->
 <template>
     <div>
-        <SearchBox class="SearchBox" @update="pre"></SearchBox>
-        <Navigation v-show="display" class="Navigation"></Navigation>
+        <SearchBox class="SearchBox" @update="pre" :get="get"></SearchBox>
+        <Navigation v-show="display" class="Navigation" @RelatedUsers="pass"></Navigation>
         <Recommend v-show="hide"></Recommend>
         <user v-show="user" :v="b"></user>
         <Relevant v-show="Relevant" :v="n"></Relevant>
@@ -29,6 +31,7 @@ export default {
         return {
             b:'',
             n:'',
+            get:'',
             display:false,
             hide: true,
             Relevant:false,
@@ -45,6 +48,10 @@ export default {
            this.Relevant=true
            this.checkin=false
            this.user=true
+        },
+        pass(get) {
+            this.get = get
+            // console.log(this.get)
         }
     },
     components:{
