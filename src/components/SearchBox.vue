@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 14:32:25
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-26 19:27:38
+ * @LastEditTime: 2019-11-30 00:39:25
  * @Description: 
  -->
 <template>
@@ -12,11 +12,12 @@
                <label for="">
                      <i class="icon iconfont">&#xe739;</i>
                </label>
-               <input type="text" placeholder="搜素用户和动态">
+               <input type="text" placeholder="搜素用户和动态" v-model="text" @keyup.enter="sercher">
            </div>
-           <span>取消</span>
-       </div>
+           <router-link to="/Recommend">取消</router-link>
+       </div> 
   </div>
+  
 </template>
 
 <script>
@@ -24,7 +25,13 @@ export default {
     name:"SearchBox",
     data () {
         return {
-
+            text:''
+        }
+    },
+    methods:{
+        sercher(){
+            let t = this.text
+            this.$emit("update", t)
         }
     }
 }
@@ -35,6 +42,10 @@ export default {
 .searchbox{
     width: 100%;
     height: .48rem;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    z-index: 999;
 }
 .searchbox_w {
     width: 3.28rem;
@@ -43,7 +54,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: -1px 0px 2px rgb(230, 230, 230);
+    // box-shadow: -1px 0px 2px rgb(230, 230, 230);
 }
 .searchbox_box {
     width: 2.7rem;

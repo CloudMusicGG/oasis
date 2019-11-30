@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 17:01:29
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-26 18:24:19
+ * @LastEditTime: 2019-11-29 17:28:37
  * @Description: 最新入住组件
  -->
 <template>
@@ -10,130 +10,24 @@
      <div class="CheckIn_w">
          <p>"最新入住"</p>
         <ul class="information">
-            <li class="details">
+            <li class="details" v-for="(CheckIn,index) in CheckIns" :key="index" >
                 <div class="details_left">
                    <span class="details_left_span">
-                       <img src="../assets/img/h1.jpg" alt="">
+                       <img :src="CheckIn.HeadPortrait" alt="">
                     </span>
                    <div class="name">
                        <p>
-                           <span class="name_span">李宇春</span>
-                           <img src="../assets/img/h2.jpg" alt="">
+                           <span class="name_span">{{CheckIn.name}}</span>
+                            <img src="../assets/img/h2.jpg" alt="">
                         </p>
                        <p class="region">
-                           <img src="../assets/img/h3.jpg" alt="">
-                            <span class="City">北京</span>
-                        </p>
+                           <img :src="CheckIn.sex" alt="">
+                            <span class="City">{{CheckIn.City}}</span>
+                       </p>
                    </div>
                 </div>
-                <div class="follow">
-                      <i class="icon iconfont follow_ico">&#xe783;</i>
-                      关注
-                </div>
-            </li>
-            <li class="details">
-                <div class="details_left">
-                   <span class="details_left_span">
-                       <img src="../assets/img/h1.jpg" alt="">
-                    </span>
-                   <div class="name">
-                       <p>
-                           <span class="name_span">李宇春</span>
-                           <img src="../assets/img/h2.jpg" alt="">
-                        </p>
-                       <p class="region">
-                           <img src="../assets/img/h3.jpg" alt="">
-                            <span class="City">北京</span>
-                        </p>
-                   </div>
-                </div>
-                <div class="follow">
-                      <i class="icon iconfont follow_ico">&#xe783;</i>
-                      关注
-                </div>
-            </li>
-            <li class="details">
-                <div class="details_left">
-                   <span class="details_left_span">
-                       <img src="../assets/img/h1.jpg" alt="">
-                    </span>
-                   <div class="name">
-                       <p>
-                           <span class="name_span">李宇春</span>
-                           <img src="../assets/img/h2.jpg" alt="">
-                        </p>
-                       <p class="region">
-                           <img src="../assets/img/h3.jpg" alt="">
-                            <span class="City">北京</span>
-                        </p>
-                   </div>
-                </div>
-                <div class="follow">
-                      <i class="icon iconfont follow_ico">&#xe783;</i>
-                      关注
-                </div>
-            </li>
-            <li class="details">
-                <div class="details_left">
-                   <span class="details_left_span">
-                       <img src="../assets/img/h1.jpg" alt="">
-                    </span>
-                   <div class="name">
-                       <p>
-                           <span class="name_span">李宇春</span>
-                           <img src="../assets/img/h2.jpg" alt="">
-                        </p>
-                       <p class="region">
-                           <img src="../assets/img/h3.jpg" alt="">
-                            <span class="City">北京</span>
-                        </p>
-                   </div>
-                </div>
-                <div class="follow">
-                      <i class="icon iconfont follow_ico">&#xe783;</i>
-                      关注
-                </div>
-            </li>
-            <li class="details">
-                <div class="details_left">
-                   <span class="details_left_span">
-                       <img src="../assets/img/h1.jpg" alt="">
-                    </span>
-                   <div class="name">
-                       <p>
-                           <span class="name_span">李宇春</span>
-                           <img src="../assets/img/h2.jpg" alt="">
-                        </p>
-                       <p class="region">
-                           <img src="../assets/img/h3.jpg" alt="">
-                            <span class="City">北京</span>
-                        </p>
-                   </div>
-                </div>
-                <div class="follow">
-                      <i class="icon iconfont follow_ico">&#xe783;</i>
-                      关注
-                </div>
-            </li>
-            <li class="details">
-                <div class="details_left">
-                   <span class="details_left_span">
-                       <img src="../assets/img/h1.jpg" alt="">
-                    </span>
-                   <div class="name">
-                       <p>
-                           <span class="name_span">李宇春</span>
-                           <img src="../assets/img/h2.jpg" alt="">
-                        </p>
-                       <p class="region">
-                           <img src="../assets/img/h3.jpg" alt="">
-                            <span class="City">北京</span>
-                        </p>
-                   </div>
-                </div>
-                <div class="follow">
-                      <i class="icon iconfont follow_ico">&#xe783;</i>
-                      关注
+                <div class="follow" @click="favor(CheckIn.name)" :class='{"unsuber":!isLike(CheckIn.name),"suber":isLike(CheckIn.name)}'>
+                    <!-- {{follow}} -->
                 </div>
             </li>
         </ul>
@@ -142,13 +36,41 @@
 </template>
 
 <script>
+import Axios from "axios";
 export default {
     name:'CheckIn',
     data() {
         return {
-
+            CheckIns:[],
+            subscribed:[]
         }
+    },
+    methods:{
+        favor(name) {
+            let index = (this.subscribed).indexOf(name);
+            if(index>=0){
+                this.subscribed.splice(index,1);
+            }else{
+                this.subscribed.push(name);
+            }
+            // console.log(this.subscribed);
+        },
+        isLike(name){
+            if((this.subscribed).indexOf(name)<0){
+                return false;
+            }else{
+                return true;
+            }
+        }
+    },
+    
+    created(){
+        Axios.get("/CheckIn")
+        .then(res=>{
+            this.CheckIns = res.data;
+        })
     }
+    
 }
 </script>
   
@@ -213,15 +135,50 @@ export default {
     .follow {
         width: .725rem;
         height: .31rem;
-        background: #cfa972;
         border-radius: .16rem;
         font-size: 15px;
         display: flex;
+        color: #fff;
         align-items: center;
         justify-content:center;
-        color: #fff;
         .follow_ico {
             margin-right: .02rem;
+        }
+    }
+    .unsuber{
+        background:#cfa972;
+        // color:#fff;
+        border:1px solid #ccc;
+        position: relative;
+        &:after{
+            content:"\e783 关注";
+            position:absolute;
+            top:.07rem;
+            left:.06rem;
+            color:white;
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
+    .suber{
+        background:#f7f6f6;
+        border: 1px solid #ccc;
+        color:#ccc;
+        position: relative;
+        &:after{
+            content:"已关注";
+            position:absolute;
+            top:4px;
+            left:.14rem;
+            color:#ccc;
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
     }
 </style>

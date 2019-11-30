@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 11:44:11
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-26 15:41:39
+ * @LastEditTime: 2019-11-27 20:24:47
  * @Description: 
  -->
 <template>
@@ -43,5 +43,10 @@ a {
   text-decoration: none;
   color: #333;
   display: block;
+}
+.el-tabs__item .is-active {
+  font-weight: bolder;
+  font-size: .18rem;
+  color:black;
 }
 </style>
