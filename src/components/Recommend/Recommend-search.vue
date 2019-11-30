@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-11-26 16:39:44
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-30 15:23:40
+ * @LastEditTime: 2019-11-30 17:12:24
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-29 15:35:43
  * @Description: 这是推荐页面的搜索框
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url(../assets/font/iconfont.css);
+@import url(../../assets/font/iconfont.css);
 .searchBox {
   background: white;
   position: fixed;

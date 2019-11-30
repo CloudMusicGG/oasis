@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-30 15:43:00
+ * @LastEditTime: 2019-11-30 20:45:40
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-29 20:22:45
  * @Description: 
@@ -67,7 +67,7 @@
 <script>
 import { InfiniteScroll } from "element-ui";
 import Axios from "axios";
-import RecommendInfo from "@/components/Recommend-info";
+import RecommendInfo from "@/components/Recommend/Recommend-info";
 import Vue from "vue";
 import { Loadmore } from "mint-ui";
 
@@ -90,6 +90,12 @@ export default {
     };
   },
   created() {
+    Axios.get("/userInfo", ).then(
+      Response => {
+        this.nowPid = ((Response.data)[0].likePostIds).split(",");
+        this.$store.commit("changeNowPid",this.nowPid);
+      }
+    );
     Axios.get("/postInfo", { params: { type_like: this.type } }).then(
       Response => {
         this.alldata = Response.data;
@@ -216,7 +222,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url(../assets/font/iconfont.css);
+@import url(../../assets/font/iconfont.css);
 .ContentBox {
   // overflow: hidden;
   overflow-y: scroll;
