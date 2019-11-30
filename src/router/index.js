@@ -2,11 +2,11 @@
  * @Author: Eternal
  * @Date: 2019-11-26 11:44:11
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-29 15:13:42
+ * @LastEditTime: 2019-11-30 14:23:51
  * @Author: roselee
  * @Date: 2019-11-26 10:25:50
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-26 14:45:37
+ * @LastEditTime: 2019-11-27 20:34:07
  * @Description: 
  */
 import Vue from 'vue'
@@ -15,6 +15,8 @@ import Search from '@/pages/Search-page'
 import Hedopage from '@/pages/Hedo-page'
 import Recommend from '@/pages/Recommend'
 import RelatedUsers from '@/pages/RelatedUsers-page'
+import Recommend from '@/pages/Recommend'
+import Article from '@/pages/Article'
 
 Vue.use(Router)
 
@@ -43,6 +45,11 @@ export default new Router({
       path: '/RelatedUsers-page',
       name: 'RelatedUsers',
       component: RelatedUsers
+    },
+    {
+      path:'/Article/:pid',
+      name:'Article',
+      component:Article
     }
   ]
 })

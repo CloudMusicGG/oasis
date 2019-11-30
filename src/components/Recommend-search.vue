@@ -3,6 +3,8 @@
  * @Date: 2019-11-26 16:39:44
  * @LastEditors: Eternal
  * @LastEditTime: 2019-11-27 21:26:28
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-11-29 15:35:43
  * @Description: 这是推荐页面的搜索框
  -->
 <template>
@@ -31,7 +33,10 @@ export default {
 <style lang="scss" scoped>
 @import url(../assets/font/iconfont.css);
 .searchBox {
-  position: relative;
+  background: white;
+  position: fixed;
+  top: .45rem;
+  left:0;
   z-index: 2;
   width: 100%;
   padding: 10px 0.1rem;
