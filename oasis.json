@@ -436,5 +436,17 @@
       "sex": "static/img/h4.jpg",
       "City": "70后 台湾"
     }
-  ]
+  ],
+  "userInfo":{
+	  "username":"SaoDaWangGG",
+	  "id":"5063555554",
+	  "headUrl":"static/img/lili.jpg",
+	  "usersig":"Hahahaha!",
+	  "usersex":"男",
+	  "userBir":"1997-3-22",
+	  "usercity":"西伯利亚",
+	  "postNum":1,
+	  "fansNum":5000,
+	  "likeNum":36
+  }
 }

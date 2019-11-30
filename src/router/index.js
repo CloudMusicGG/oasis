@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 11:44:11
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-30 16:22:30
+ * @LastEditTime: 2019-11-30 16:24:50
  * @Author: roselee
  * @Date: 2019-11-26 10:25:50
  * @LastEditors: roselee
@@ -34,7 +34,7 @@ export default new Router({
       component: message
     },
       {
-        path: '/',
+        path: '/mine',
         name: 'mine',
         component: mine
       },
