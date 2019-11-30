@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-11-26 14:32:26
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-29 20:08:26
+ * @LastEditTime: 2019-11-30 16:03:52
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-28 17:28:26
  * @Description: 这是推荐页面
@@ -45,11 +45,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.rec {
-  width: 100%;
-  height: 0.4rem;
-  background: red;
-}
 .el-tabs__item:hover,
 .el-tabs__item .is-active {
   font-weight: bolder;

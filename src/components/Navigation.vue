@@ -2,8 +2,8 @@
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-29 20:37:34
- * @Description: 这是推荐页面的tab导航栏
+ * @LastEditTime: 2019-11-30 19:25:58
+ * @Description: 这是搜素页的tab导航栏
  -->
 <template>
     <div class="navigation">
@@ -13,7 +13,7 @@
             :label="tab.label"
             :name="tab.name"
             :tabindex="{index}"
-            :key="index"
+            :key="index" ref= "num"
             >
             <!-- <Recommend :type="tab.label" class="Recommend"></Recommend> -->
             </el-tab-pane>
@@ -27,6 +27,7 @@ export default {
   name: "Navigation",
   data() {
     return {
+      cc:'num',
       activeName: "0",
       tabs: [
         {
@@ -49,9 +50,11 @@ export default {
     };
   },
   methods: {
+      Obtain(){
+        
+    },
     handleClick(tab, event) {
-      // console.log(tab, event);
-      // console.log(event.target);
+      console.log("nn")
       this.currType = event.target.tabindex;
       let eventdom = event.target;
       eventdom.scrollIntoView({
@@ -66,10 +69,9 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .navigation {
   width: 4rem;
-  background: pink;
 }
 .nav {
   font-size: 0.15rem;

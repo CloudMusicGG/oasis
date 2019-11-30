@@ -2,8 +2,8 @@
  * @Author: Eternal
  * @Date: 2019-11-26 14:32:25
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 00:39:25
- * @Description: 
+ * @LastEditTime: 2019-11-30 19:07:27
+ * @Description: 搜素框组件
  -->
 <template>
   <div class="searchbox">
@@ -12,7 +12,7 @@
                <label for="">
                      <i class="icon iconfont">&#xe739;</i>
                </label>
-               <input type="text" placeholder="搜素用户和动态" v-model="text" @keyup.enter="sercher">
+               <input type="text" placeholder="搜素用户和动态" v-model="text" @keyup.enter="searcher">
            </div>
            <router-link to="/Recommend">取消</router-link>
        </div> 
@@ -21,17 +21,35 @@
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
+import Axios from "axios";
 export default {
     name:"SearchBox",
     data () {
         return {
-            text:''
+            text:'',
+            yonghu: "用户"
         }
     },
     methods:{
-        sercher(){
-            let t = this.text
-            this.$emit("update", t)
+        searcher(){
+            if(this.text == "") {
+                 Toast({
+                    message: '搜素内容不能为空',
+                     position: 'bottom',
+                    duration: 1000
+                });
+            }else {
+                let t = this.text
+                Axios.get("/RelatedUsers",{params: {id:t}})
+                .then(res=>{
+                    if(this.yonghu =="用户") {
+                        let Result = res.data.splice(0,3);
+                        this.$emit("update", Result, t)
+                    }
+                }) 
+            }
+           
         }
     }
 }
