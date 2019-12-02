@@ -2,13 +2,16 @@
  * @Author: Eternal
  * @Date: 2019-11-26 17:01:29
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 18:26:50
+ * @LastEditTime: 2019-12-02 17:26:06
  * @Description: 相关用户组件
  -->
 <template>
   <div class="CheckIn">
      <div class="CheckIn_w">
-         <p>{{title}}</p>
+         <div class="header">
+             <p>{{tile}}</p>
+             <p class="More">更多</p>
+         </div>
         <ul class="information">
             <li class="details" v-for="(vs,index) in v" :key="index" >
                 <div class="details_left">

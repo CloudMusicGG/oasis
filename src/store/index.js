@@ -1,8 +1,8 @@
 /*
  * @Author: rosalee
  * @Date: 2019-11-26 10:57:24
- * @LastEditors: roselee
- * @LastEditTime: 2019-11-30 16:22:49
+ * @LastEditors: Eternal
+ * @LastEditTime: 2019-12-02 11:45:34
  * @Description: 
  */
 
@@ -33,6 +33,34 @@ export default new VueX.Store({
         changUserInfo(state,data){
             state.userInfo = data;
         },
+        // searcher(){
+        //     if(this.text == "") {
+        //          Toast({
+        //             message: '搜素内容不能为空',
+        //              position: 'bottom',
+        //             duration: 1000
+        //         });
+        //     }else {
+        //          //主题
+        //          var t = this.text
+        //          Axios.get("/methe",{params: {id:t}})
+        //         .then(res=>{
+        //             // if(this.yonghu =="用户") {
+        //                 this.methe = res.data;
+        //             // }
+        //         }) 
+                
+        //         let fun = this.fun
+        //         Axios.get("/RelatedUsers",{params: {id:t}})
+        //         .then(res=>{
+        //             // if(this.yonghu =="用户") {
+        //                 let Result = res.data.splice(0,3);
+        //                 this.$emit("update", Result, t,fun,this.methe)
+        //             // }
+        //         })
+               
+        //     } 
+        // },
         changePidAndLike(state, { id, index }) {
             // 如果下标不存在
             if (index < 0) {
