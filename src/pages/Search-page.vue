@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 14:41:24
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 17:30:11
+ * @LastEditTime: 2019-12-02 20:03:12
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 17:11:22
  * @Description: 搜素页 SearchBox:搜素框组件；Navigation:导航栏组件；     Recommend：最近搜素组件；Relevant：瀑布流组件；CheckIn：最新入住组件；   user:相关用户组件
@@ -10,10 +10,10 @@
 <template>
     <div>
         <SearchBox class="SearchBox" @update="pre" :get="get" @PassValue="pv"></SearchBox>
-        <Navigation v-show="display" class="Navigation" @RelatedUsers="pass" :fun="fn"></Navigation>
+        <Navigation v-show="display" class="Navigation" @RelatedUsers="pass" :fun="fn" @Navigation="Naviga"></Navigation>
         <Recommend v-show="hide" :fu="fn"></Recommend>
-        <user v-show="user" :v="b"></user>
-        <Relevant v-show="Relevant" :v="n"></Relevant>
+        <user v-show="user" :v="b" :na="na"></user>
+        <Relevant v-show="Relevant" :v="n" :flag="flag"></Relevant>
         <CheckIn v-show="checkin"></CheckIn>
         <theme :v="methe" v-show="theme"></theme>
     </div>
@@ -37,6 +37,8 @@ export default {
             fun: '',
             methe:'',
             fn:'',
+            na:'',
+            flag:'',
             display:false,
             hide: true,
             Relevant:false,
@@ -46,10 +48,11 @@ export default {
         }
     },
     methods:{
-        pre(t,m,fun,methe) {
+        pre(t,m,fun,methe,flag) {
            this.b = t
            this.n = m
            this.fun = fun
+           this.flag = flag
         //    console.log(this.fun)
            this.methe = methe
            this.display=true
@@ -86,7 +89,11 @@ export default {
         //搜素组件传过来的函数
         pv(fn) {
             this.fn = fn
-            console.log(fn)
+            // console.log(fn)
+        },
+        Naviga(na) {
+            console.log(na)
+            this.na = na
         }
     },
     components:{

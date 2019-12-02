@@ -2,15 +2,15 @@
  * @Author: Eternal
  * @Date: 2019-11-26 17:01:29
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 17:26:06
+ * @LastEditTime: 2019-12-02 18:12:51
  * @Description: 相关用户组件
  -->
 <template>
   <div class="CheckIn">
      <div class="CheckIn_w">
          <div class="header">
-             <p>{{tile}}</p>
-             <p class="More">更多</p>
+             <p>{{title}}</p>
+             <p class="More" @click="Mores()">更多></p>
          </div>
         <ul class="information">
             <li class="details" v-for="(vs,index) in v" :key="index" >
@@ -42,7 +42,7 @@
 import Axios from "axios";
 export default {
     name:'user',
-    props:['v'],
+    props:['v','na'],
     data() {
         return {
             title: '"相关用户"',
@@ -54,6 +54,10 @@ export default {
     //     console.log("updated",this.v)
     // },
     methods:{
+         Mores(){
+            // this.na()
+            console.log('123')
+        },
         favor(name) {
             // console.log()
             let index = (this.subscribed).indexOf(name);
@@ -83,6 +87,13 @@ export default {
             width: 3.28rem;
             height: 100%;
             margin: auto;
+            .header {
+                display: flex;
+                justify-content: space-between;
+                .More {
+                    color: #e5d0b3;
+                }
+            }
             p {
                 font-size: .16rem;
                 color: #7b7a7a;

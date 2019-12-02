@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 14:32:25
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 17:19:05
+ * @LastEditTime: 2019-12-02 19:41:03
  * @Description: 搜素框组件
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 15:19:20
@@ -67,13 +67,13 @@ export default {
                         this.methe = res.data;
                     // }
                 }) 
-                
+                var flag = true
                 let fun = this.fun
                 Axios.get("/RelatedUsers",{params: {id:t}})
                 .then(res=>{
                     // if(this.yonghu =="用户") {
                         let Result = res.data.splice(0,3);
-                        this.$emit("update", Result, t,this.fun,this.methe)
+                        this.$emit("update", Result, t,this.fun,this.methe,flag)
                     // }
                 })
                

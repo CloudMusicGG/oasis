@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 19:44:58
+ * @LastEditTime: 2019-12-02 20:11:53
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 20:45:40
  * @LastEditors: roselee
@@ -11,7 +11,7 @@
  -->
 <template>
   <div class="ContentBox">
-    {{v}}
+    {{flag}}
     <mt-loadmore :bottom-method="loadBottom" :top-method="loadTop" :bottom-all-loaded="isLoadAll" ref="loadmore">
     <!-- 这是第一列 -->
         <div
@@ -77,7 +77,7 @@ import { Loadmore } from "mint-ui";
 Vue.component("mt-Loadmore", Loadmore);
 export default {
   name: "RecommendContent",
-  props: ["type","v"],
+  props: ["type","v",'flag'],
   data() {
     return {
       count: 0,
