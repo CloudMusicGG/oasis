@@ -608,18 +608,18 @@
       "unicode_decimal": 59269
     },
     {
-      "icon_id": "11835745",
-      "name": "notifications_on",
-      "font_class": "notifications_on",
-      "unicode": "e650",
-      "unicode_decimal": 58960
+      "icon_id": "11918153",
+      "name": "ios-notifications",
+      "font_class": "ios-notifications",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
     },
     {
-      "icon_id": "11835747",
-      "name": "notifications_outlined",
-      "font_class": "notifications_outlined",
-      "unicode": "e651",
-      "unicode_decimal": 58961
+      "icon_id": "11918158",
+      "name": "ios-notifications-outline",
+      "font_class": "ios-notifications-outline",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
     }
   ]
 }

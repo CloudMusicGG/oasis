@@ -1,18 +1,13 @@
-<!--
- * @Author: Eternal
- * @Date: 2019-11-26 11:44:11
- * @LastEditors: Eternal
- * @LastEditTime: 2019-11-27 20:24:47
- * @Description: 
- -->
 <template>
   <div id="app">
     <router-view/>
+    <IndexFooter class="Foot"></IndexFooter>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import IndexFooter from "@/components/IndexFooter.vue";
 export default {
   name: 'App',
   created(){
@@ -25,6 +20,9 @@ export default {
       .catch((err) =>{
         console.log(err);
       })
+  },
+  components:{
+    IndexFooter
   }
 }
 </script>
@@ -60,5 +58,13 @@ a {
   font-weight: bolder;
   font-size: .18rem;
   color:black;
+}
+
+.Foot{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #E2E2E2;
+  box-shadow: 0 -.05rem .2rem .05rem #33333312;
 }
 </style>
