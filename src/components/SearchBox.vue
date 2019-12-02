@@ -1,8 +1,8 @@
 <!--
  * @Author: Eternal
  * @Date: 2019-11-26 14:32:25
- * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 17:19:05
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-02 19:54:40
  * @Description: 搜素框组件
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 15:19:20
@@ -38,7 +38,7 @@ export default {
         }
     },
     created() {
-         this.$emit("PassValue",this.fun)
+         this.$emit("PassValue",this.fun);
         //  console.log(this.fun)
     },
     methods:{

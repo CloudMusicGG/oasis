@@ -1,8 +1,8 @@
 /*
  * @Author: rosalee
  * @Date: 2019-11-26 10:57:24
- * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 17:30:34
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-02 17:57:07
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 20:56:20
  * @Description: 
@@ -36,7 +36,7 @@ export default new VueX.Store({
             state.likePidAndNum = likePidAndNum;
         },
         changeNowPid(state, nowPid) {
-            console.log(state.nowPid);
+            // console.log(state.nowPid);
             state.nowPid = nowPid;
         },
         changeLogin(state, param) {
@@ -92,7 +92,7 @@ export default new VueX.Store({
                             data,
                             { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
                             .then(response => {
-                                console.log(response.data);
+                                // console.log(response.data);
                             });
                         // 此处向后端发请求
                         Axios.patch(
@@ -100,7 +100,7 @@ export default new VueX.Store({
                             userdata,
                             { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
                             .then(response => {
-                                console.log(response.data);
+                                // console.log(response.data);
                             });
                     }
                 }
@@ -121,7 +121,7 @@ export default new VueX.Store({
                             data,
                             { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
                             .then(response => {
-                                console.log(response.data);
+                                // console.log(response.data);
                             });
                         // 此处向后端发请求
                         Axios.patch(
@@ -129,7 +129,7 @@ export default new VueX.Store({
                             userdata,
                             { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
                             .then(response => {
-                                console.log(response.data);
+                                // console.log(response.data);
                             });
                     }
                 }

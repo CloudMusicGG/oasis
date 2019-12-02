@@ -1,15 +1,15 @@
 <!--
  * @Author: Eternal
  * @Date: 2019-11-26 17:01:29
- * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 17:26:06
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-02 17:35:12
  * @Description: 相关用户组件
  -->
 <template>
   <div class="CheckIn">
      <div class="CheckIn_w">
          <div class="header">
-             <p>{{tile}}</p>
+             <!-- <p>{{tile}}</p> -->
              <p class="More">更多</p>
          </div>
         <ul class="information">
