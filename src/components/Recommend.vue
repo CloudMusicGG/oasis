@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 16:08:40
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 15:48:52
+ * @LastEditTime: 2019-12-02 17:18:14
  * @Description: 最近搜素和搜素推荐组件
  -->
 <template>
@@ -34,15 +34,17 @@
 </template>
 
 <script>
+import { Tabs } from "element-ui";
 import Axios from "axios";
 export default {
+    props:['fu'],
     name:'Recommend',
     data(){
         return {
             lists:['插画','手绘','杨紫','摄影','早餐','美甲'],
             Recommends:[],
             isShow:true,
-            Records:[]
+            Records:[],
         }
     },
      created(){
@@ -51,7 +53,6 @@ export default {
         .then(res=>{
              this.Recommends = res.data;
             //  console.log(this.Recommends)
-           
         })
     },
     methods:{
@@ -60,11 +61,14 @@ export default {
            this. Records=[]
         },
        btn_user (e) {
+           console.log(this.fu);
+           var d = e.target.innerHTML
            let index = (this.Records).indexOf(e.target.innerHTML);
            if(index<0){
                this.isShow = true;
                (this.Records).push(e.target.innerHTML);  
            }
+           this.fu(d)
         },
         ff(){
             console.log(this.$refs);

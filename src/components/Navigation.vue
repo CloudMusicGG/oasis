@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 20:37:45
+ * @LastEditTime: 2019-12-02 17:14:15
  * @Description: 这是搜素页的tab导航栏
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 17:11:15
@@ -28,6 +28,7 @@ import { Tabs } from "element-ui";
 // import Recommend from "@/components/Recommend/Recommend-content";
 export default {
   name: "Navigation",
+  props:['fun'],
   data() {
     return {
       // cc:'num',
@@ -58,6 +59,8 @@ export default {
     },
     handleClick(tab, event) {
       let get = tab.label
+      this.fun()
+      // console.log(this.fun)
       this.$emit("RelatedUsers", get)
       this.currType = event.target.tabindex;
       let eventdom = event.target;
