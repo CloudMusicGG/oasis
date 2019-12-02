@@ -2,7 +2,9 @@
  * @Author: Eternal
  * @Date: 2019-11-26 16:08:40
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 17:42:51
+ * @LastEditTime: 2019-12-02 20:53:16
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-02 20:13:10
  * @Description: 最近搜素和搜素推荐组件
  -->
 <template>
@@ -63,6 +65,8 @@ export default {
        btn_user (e) {
         //    console.log(this.fu);
            var d = e.target.innerHTML
+           console.log(this.fu);
+           var d = e.target.innerHTML;
            let index = (this.Records).indexOf(e.target.innerHTML);
            if(index<0){
                this.isShow = true;

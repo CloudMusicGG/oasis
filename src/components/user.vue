@@ -2,7 +2,9 @@
  * @Author: Eternal
  * @Date: 2019-11-26 17:01:29
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 18:12:51
+ * @LastEditTime: 2019-12-02 20:56:02
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-02 17:35:12
  * @Description: 相关用户组件
  -->
 <template>
@@ -11,6 +13,8 @@
          <div class="header">
              <p>{{title}}</p>
              <p class="More" @click="Mores()">更多></p>
+             <!-- <p>{{tile}}</p> -->
+             <p class="More">更多</p>
          </div>
         <ul class="information">
             <li class="details" v-for="(vs,index) in v" :key="index" >

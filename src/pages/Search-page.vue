@@ -2,7 +2,9 @@
  * @Author: Eternal
  * @Date: 2019-11-26 14:41:24
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 20:03:12
+ * @LastEditTime: 2019-12-02 20:52:53
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-02 20:31:42
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 17:11:22
  * @Description: 搜素页 SearchBox:搜素框组件；Navigation:导航栏组件；     Recommend：最近搜素组件；Relevant：瀑布流组件；CheckIn：最新入住组件；   user:相关用户组件
@@ -14,6 +16,10 @@
         <Recommend v-show="hide" :fu="fn"></Recommend>
         <user v-show="user" :v="b" :na="na"></user>
         <Relevant v-show="Relevant" :v="n" :flag="flag"></Relevant>
+        <Navigation v-show="display" class="Navigation" @RelatedUsers="pass" :fun="fn"></Navigation>
+        <Recommend v-show="hide" :fu="fn" :changeSearch="changeSearch"></Recommend>
+        <user v-show="user" :v="b"></user>
+        <Relevant v-show="Relevant" :v="n"></Relevant>
         <CheckIn v-show="checkin"></CheckIn>
         <theme :v="methe" v-show="theme"></theme>
     </div>
@@ -44,7 +50,8 @@ export default {
             Relevant:false,
             checkin:true,
             user:false,
-            theme:false
+            theme:false,
+            changeSearch:true
         }
     },
     methods:{
@@ -107,6 +114,10 @@ export default {
     },
     created(){
       this.$store.commit('changeCheck', 1);
+    },
+    updated(){
+        // console.log("!");
+        this.changeSearch = true;
     }
 }
 </script>
