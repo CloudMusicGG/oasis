@@ -4,7 +4,7 @@
  * @LastEditors: Eternal
  * @LastEditTime: 2019-11-30 19:50:54
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-30 16:56:28
+ * @LastEditTime: 2019-11-30 17:09:13
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-29 20:21:08
  * @Description: 这是推荐页面
@@ -18,8 +18,8 @@
 
 <script>
 import Axios from 'axios';
-import RecommendNav from "@/components/Recommend-nav";
-import RecommendSearch from "@/components/Recommend-search";
+import RecommendNav from "@/components/Recommend/Recommend-nav";
+import RecommendSearch from "@/components/Recommend/Recommend-search";
 export default {
   name: "Recommend",
   data() {

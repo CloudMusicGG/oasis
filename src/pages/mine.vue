@@ -18,6 +18,9 @@ export default {
   components:{
     mineHead
     ,mineInfo
+  },
+  created(){
+    this.$store.commit('changeCheck', 3);
   }
 }
 </script>

@@ -5,7 +5,7 @@
  * @LastEditTime: 2019-12-02 17:14:15
  * @Description: 这是搜素页的tab导航栏
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-30 15:36:52
+ * @LastEditTime: 2019-11-30 17:11:15
  * @Description: 这是推荐页面的tab导航栏
  -->
 <template>
@@ -25,7 +25,7 @@
 </template>
 <script>
 import { Tabs } from "element-ui";
-// import Recommend from "@/components/Recommend-content";
+// import Recommend from "@/components/Recommend/Recommend-content";
 export default {
   name: "Navigation",
   props:['fun'],

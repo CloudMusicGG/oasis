@@ -2,10 +2,10 @@
  * @Author: Eternal
  * @Date: 2019-11-26 14:41:24
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 17:18:47
+ * @LastEditTime: 2019-12-02 17:30:11
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-30 15:24:15
- * @Description: 搜素页 SearchBox:搜素框组件；Navigation:导航栏组件；     Recommend：最近搜素组件；Relevant：瀑布流组件；CheckIn：最新入住组件；   user:相关用户组件；them：主题组件
+ * @LastEditTime: 2019-11-30 17:11:22
+ * @Description: 搜素页 SearchBox:搜素框组件；Navigation:导航栏组件；     Recommend：最近搜素组件；Relevant：瀑布流组件；CheckIn：最新入住组件；   user:相关用户组件
  -->
 <template>
     <div>
@@ -24,7 +24,7 @@ import SearchBox from '../components/SearchBox';
 import Recommend from '../components/Recommend';
 import CheckIn from '../components/CheckIn';
 import Navigation from '../components/Navigation';
-import Relevant from '../components/Recommend-content';
+import Relevant from '../components/Recommend/Recommend-content';
 import user from '../components/user';
 import theme from '../components/theme';
 export default {
@@ -97,6 +97,9 @@ export default {
          Relevant,
          user,
          theme
+    },
+    created(){
+      this.$store.commit('changeCheck', 1);
     }
 }
 </script>

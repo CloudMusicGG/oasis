@@ -1,7 +1,5 @@
 <template>
   <div class="head">
-    <div class="bgBox">
-    </div>
     <div class="headBox">
       <div class="top">
         <i class="iconfont">&#xe773;</i>
@@ -26,19 +24,9 @@ export default {
 .head{
   width: 100%;
   height: 1.3rem;
-  background: url(../../assets/img/mineBg.jpg) center;
+  background: url(../../assets/img/overlay.png),url(../../assets/img/mineBg.jpg);
   background-position: 50% 5%;
   position: relative;
-
-  .bgBox{
-    width:100%;
-    height: 100%;
-    background: url(../../assets/img/overlay.png);
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: .08;
-  }
 
   .headBox{
     width: 3.22rem;
