@@ -4,7 +4,7 @@
  * @LastEditors: Eternal
  * @LastEditTime: 2019-12-02 21:04:25
  * @LastEditors: roselee
- * @LastEditTime: 2019-12-02 20:44:27
+ * @LastEditTime: 2019-12-02 20:49:19
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 20:45:40
  * @LastEditors: roselee
@@ -137,9 +137,6 @@ export default {
       }
     );
   },
-  beforeMount(){
-
-  },
   updated() {
     // console.log(this.v);
     this.nowPid = this.$store.state.nowPid;
@@ -147,10 +144,8 @@ export default {
   },
   watch:{
     v:function(a,b){  
-      console.log(a);
       Axios.get("/postInfo", { params: { type_like: a } }).then(
         Response => {
-          console.log(Response.data);
           this.alldata = Response.data;
           this.data = this.alldata.slice(0, 5);
           this.classify(this.data);
