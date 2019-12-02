@@ -2,13 +2,16 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 14:24:08
+ * @LastEditTime: 2019-11-30 19:44:58
  * @LastEditors: roselee
- * @LastEditTime: 2019-11-29 17:44:27
+ * @LastEditTime: 2019-11-30 20:45:40
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-11-29 20:22:45
  * @Description: 
  -->
 <template>
   <div class="ContentBox">
+    {{v}}
     <mt-loadmore :bottom-method="loadBottom" :top-method="loadTop" :bottom-all-loaded="isLoadAll" ref="loadmore">
     <!-- 这是第一列 -->
         <div
@@ -67,14 +70,14 @@
 <script>
 import { InfiniteScroll } from "element-ui";
 import Axios from "axios";
-import RecommendInfo from "@/components/Recommend-info";
+import RecommendInfo from "@/components/Recommend/Recommend-info";
 import Vue from "vue";
 import { Loadmore } from "mint-ui";
 
 Vue.component("mt-Loadmore", Loadmore);
 export default {
   name: "RecommendContent",
-  props: ["type","b"],
+  props: ["type","v"],
   data() {
     return {
       count: 0,
@@ -90,7 +93,12 @@ export default {
     };
   },
   created() {
-    console.log(this.b)
+    Axios.get("/userInfo", ).then(
+      Response => {
+        this.nowPid = ((Response.data)[0].likePostIds).split(",");
+        this.$store.commit("changeNowPid",this.nowPid);
+      }
+    );
     Axios.get("/postInfo", { params: { type_like: this.type } }).then(
       Response => {
         this.alldata = Response.data;
@@ -163,7 +171,7 @@ export default {
      * @return: 
      */
     likeIt(id) {
-      let index = this.$store.state.nowPid.indexOf(id);
+      let index = this.$store.state.nowPid.indexOf(id);//判断当前点赞的文章，在vuex的nowPid数组（用户已点赞数组）中是否存在
       this.$store.commit("changePidAndLike",{id:id,index:index});
     },
     /**
@@ -217,7 +225,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url(../assets/font/iconfont.css);
+@import url(../../assets/font/iconfont.css);
 .ContentBox {
   // overflow: hidden;
   overflow-y: scroll;

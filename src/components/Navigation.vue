@@ -2,18 +2,21 @@
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-29 20:37:34
+ * @LastEditTime: 2019-11-30 20:37:45
+ * @Description: 这是搜素页的tab导航栏
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-11-30 17:11:15
  * @Description: 这是推荐页面的tab导航栏
  -->
 <template>
     <div class="navigation">
-        <el-tabs v-model="activeName" @tab-click="handleClick" class="nav">
+        <el-tabs v-model="activeName" @tab-click="handleClick" class="nav" >
             <el-tab-pane
             v-for="(tab,index) in tabs"
             :label="tab.label"
             :name="tab.name"
             :tabindex="{index}"
-            :key="index"
+            :key="index" 
             >
             <!-- <Recommend :type="tab.label" class="Recommend"></Recommend> -->
             </el-tab-pane>
@@ -22,11 +25,12 @@
 </template>
 <script>
 import { Tabs } from "element-ui";
-// import Recommend from "@/components/Recommend-content";
+// import Recommend from "@/components/Recommend/Recommend-content";
 export default {
   name: "Navigation",
   data() {
     return {
+      // cc:'num',
       activeName: "0",
       tabs: [
         {
@@ -49,9 +53,12 @@ export default {
     };
   },
   methods: {
+      Obtain(){
+        
+    },
     handleClick(tab, event) {
-      // console.log(tab, event);
-      // console.log(event.target);
+      let get = tab.label
+      this.$emit("RelatedUsers", get)
       this.currType = event.target.tabindex;
       let eventdom = event.target;
       eventdom.scrollIntoView({
@@ -69,7 +76,6 @@ export default {
 <style lang="scss" scoped>
 .navigation {
   width: 4rem;
-  background: pink;
 }
 .nav {
   font-size: 0.15rem;

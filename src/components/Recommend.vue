@@ -2,8 +2,8 @@
  * @Author: Eternal
  * @Date: 2019-11-26 16:08:40
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-29 21:55:36
- * @Description: 
+ * @LastEditTime: 2019-11-30 15:48:52
+ * @Description: 最近搜素和搜素推荐组件
  -->
 <template>
     <div class="recommend">
@@ -27,7 +27,6 @@
             <div class="center">
                 <ul class="center_ul">
                     <li class="a" @click="btn_user($event)" v-for="(list,index) in lists" :key="index">{{list}}</li>
-                  
                 </ul>
             </div>
         </div>
