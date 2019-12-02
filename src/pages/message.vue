@@ -18,6 +18,9 @@ export default {
   components:{
     msgHead
     ,msgNav
+  },
+  created(){
+    this.$store.commit('changeCheck', 2);
   }
 }
 </script>

@@ -21,7 +21,13 @@ export default new VueX.Store({
         userInfo: {
         },
         nowPid: [],
-        likePidAndNum: []
+        likePidAndNum: [],
+        FootShow:[
+             false,
+             false,
+             false,
+             false
+        ]
     },
     mutations: {//跟踪状态
         changelikePidAndNum(state, likePidAndNum) {
@@ -98,6 +104,15 @@ export default new VueX.Store({
                     }
                 }
             }
+        },
+        changeCheck(state,index){
+          state.FootShow = [
+            false,
+            false,
+            false,
+            false
+          ];
+          state.FootShow[index] = true;
         }
     },
     actions: {//有异步请求，异步请求完成后，提交mutations

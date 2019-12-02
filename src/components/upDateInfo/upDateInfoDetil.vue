@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="backGround">
-      <div class="backGround2"></div>
       <div class="headImgBox">
         <img :src="$store.state.userInfo.headUrl" alt="头像">
         <i class="iconfont">&#xe74d;</i>
@@ -64,13 +63,7 @@ export default {
   width: 100%;
   height: 1.5rem;
   position: relative;
-
-  .backGround2{
-    width: 100%;
-    height: 100%;
     background: url(../../assets/img/overlay.png);
-    opacity: .03;
-  }
 
   .headImgBox{
     width: .65rem;
