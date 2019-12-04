@@ -1,8 +1,8 @@
 /*
  * @Author: rosalee
  * @Date: 2019-11-26 10:25:50
- * @LastEditors: rosalee
- * @LastEditTime: 2019-11-26 10:58:24
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-12-03 21:46:13
  * @Description: 
  */
 // The Vue build version to load with the `import` command
@@ -16,6 +16,7 @@ import MintUI from 'mint-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'mint-ui/lib/style.css'
 import store from './store'
+import './assets/iconfont/iconfont.css';
 
 Vue.use(ElementUI);
 Vue.use(MintUI);

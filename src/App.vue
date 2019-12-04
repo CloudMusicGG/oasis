@@ -1,6 +1,13 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-11-26 11:44:48
+ * @LastEditTime: 2019-12-04 15:23:37
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \day23e:\三阶段\第三阶段\workspace\oasis\src\App.vue
+ -->
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view/>
   </div>
 </template>
@@ -12,12 +19,28 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+*{
+  margin: 0;
+  padding: 0;
+}
+html{
+  font-size: 26.67vw;
+}
+body{
+  font-size: 14px;
+  height: 100%;
+}
+ul,li{
+  list-style: none;
+}
+a{
+	text-decoration: none;
+}
+
+img{
+	border:none;
+}
+input{
+  outline: none;
 }
 </style>
