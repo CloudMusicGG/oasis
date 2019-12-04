@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  * @Author: roselee
  * @Date: 2019-12-02 17:21:46
  * @LastEditors: roselee
@@ -16,6 +17,19 @@ import Recommend from '@/pages/Recommend'
 import Article from '@/pages/Article'
 import loginPage from '@/components/loginPage/loginPage'
 import regAndLogin from '@/components/goLoginPage/regAndLogin'
+=======
+ * @Author: your name
+ * @Date: 2019-11-26 11:44:48
+ * @LastEditTime: 2019-12-01 15:47:11
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \day23e:\三阶段\第三阶段\workspace\oasis\src\router\index.js
+ */
+import Vue from 'vue'
+import Router from 'vue-router'
+import homepage from '@/pages/homepage'
+import commentpage from '@/pages/commentpage'
+>>>>>>> liberty
 
 Vue.use(Router)
 
@@ -24,6 +38,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
+<<<<<<< HEAD
       redirect:"/Recommend",
       meta: {
         requireLogin: true
@@ -91,6 +106,15 @@ const router = new Router({
       path: '/Article/:pid',
       name: 'Article',
       component: Article
+=======
+      name: 'homepage',
+      component: homepage
+    },
+    {
+      path: '/commentpage',
+      name: 'commentpage',
+      component: commentpage
+>>>>>>> liberty
     }
   ]
 })

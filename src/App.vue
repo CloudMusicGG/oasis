@@ -1,4 +1,5 @@
 <!--
+<<<<<<< HEAD
  * @Author: roselee
  * @Date: 2019-12-02 17:21:46
  * @LastEditors: roselee
@@ -10,6 +11,18 @@
     <router-view />
     <!-- <regAndLogin v-if="isLogin"></regAndLogin> -->
     <IndexFooter class="Foot"></IndexFooter>
+=======
+ * @Author: your name
+ * @Date: 2019-11-26 11:44:48
+ * @LastEditTime: 2019-12-04 15:23:37
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \day23e:\三阶段\第三阶段\workspace\oasis\src\App.vue
+ -->
+<template>
+  <div id="app">
+    <router-view/>
+>>>>>>> liberty
   </div>
 </template>
 
@@ -49,6 +62,7 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
 @import url(../src/assets/fontIcon/font_1529796_1qf16sktago/iconfont.css);
 * {
   margin: 0;
@@ -87,5 +101,30 @@ a {
   left: 0;
   border-top: 1px solid #e2e2e2;
   box-shadow: 0 -0.05rem 0.2rem 0.05rem #33333312;
+=======
+*{
+  margin: 0;
+  padding: 0;
+}
+html{
+  font-size: 26.67vw;
+}
+body{
+  font-size: 14px;
+  height: 100%;
+}
+ul,li{
+  list-style: none;
+}
+a{
+	text-decoration: none;
+}
+
+img{
+	border:none;
+}
+input{
+  outline: none;
+>>>>>>> liberty
 }
 </style>

@@ -1,8 +1,13 @@
 /*
  * @Author: rosalee
  * @Date: 2019-11-26 10:25:50
+<<<<<<< HEAD
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-04 11:54:36
+=======
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-12-03 21:46:13
+>>>>>>> liberty
  * @Description: 
  */
 // The Vue build version to load with the `import` command
@@ -16,6 +21,7 @@ import MintUI from 'mint-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'mint-ui/lib/style.css'
 import store from './store'
+import './assets/iconfont/iconfont.css';
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // require styles
