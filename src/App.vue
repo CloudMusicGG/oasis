@@ -1,40 +1,51 @@
-<<<<<<< HEAD
-=======
 <!--
- * @Author: Eternal
- * @Date: 2019-11-26 11:44:11
- * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 15:57:27
+ * @Author: roselee
+ * @Date: 2019-12-02 17:21:46
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-04 18:31:20
  * @Description: 
  -->
->>>>>>> ebaf0c08a323d5e7a8098650919c7bf23f4b8698
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
+    <!-- <regAndLogin v-if="isLogin"></regAndLogin> -->
     <IndexFooter class="Foot"></IndexFooter>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 import IndexFooter from "@/components/IndexFooter.vue";
+import regAndLogin from "@/components/goLoginPage/regAndLogin";
 export default {
-  name: 'App',
-  created(){
-    axios
-      .get('/userInfo')
-      .then((response) => {
-        let data = response.data;
-        this.$store.commit('changUserInfo', data);
-      })
-      .catch((err) =>{
-        console.log(err);
-      })
+  name: "App",
+  data() {
+    return {
+      isLogin: true
+    };
   },
-  components:{
-    IndexFooter
+  created() {
+    if (this.$store.state.isLogin==false) {
+      this.isLogin = true;
+      console.log(this.$store.state.isLogin);
+    } else {
+      this.isLogin = false;
+    }
+    axios
+      .get("/userInfo")
+      .then(response => {
+        let data = response.data;
+        this.$store.commit("changUserInfo", data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+  components: {
+    IndexFooter,
+    regAndLogin
   }
-}
+};
 </script>
 
 <style>
@@ -66,15 +77,15 @@ a {
 }
 .el-tabs__item .is-active {
   font-weight: bolder;
-  font-size: .18rem;
-  color:black;
+  font-size: 0.18rem;
+  color: black;
 }
 
-.Foot{
+.Foot {
   position: fixed;
   bottom: 0;
   left: 0;
-  border-top: 1px solid #E2E2E2;
-  box-shadow: 0 -.05rem .2rem .05rem #33333312;
+  border-top: 1px solid #e2e2e2;
+  box-shadow: 0 -0.05rem 0.2rem 0.05rem #33333312;
 }
 </style>

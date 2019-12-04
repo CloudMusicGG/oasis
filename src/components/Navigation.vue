@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-04 18:27:09
+ * @LastEditTime: 2019-12-04 20:21:17
  * @Description: 这是搜素页的tab导航栏
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 17:11:15
@@ -58,11 +58,13 @@ export default {
     this.$emit("Navigation",this.handleClick)
   },
   methods: {
+    zzz(){
+      this.activeName = "2";
+      this.handleClick();
+    },
     handleClick(tab, event) {
       let get = tab.label
-      console.log(get)
       this.fun()
-      // console.log(this.fun)
       this.$emit("RelatedUsers", get)
       this.currType = event.target.tabindex;
       let eventdom = event.target;

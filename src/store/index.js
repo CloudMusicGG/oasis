@@ -5,7 +5,7 @@
  * @LastEditTime: 2019-12-04 16:57:28
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 20:56:20
- * @Description: 
+ * @Description:
  */
 
 import Vue from 'vue'
@@ -22,7 +22,7 @@ export default new VueX.Store({
         Tel: "123",
         isLogin: false,
         userInfo: {
-        },
+        },//用户详细信息
         nowPid: [],
         likePidAndNum: [],
         FootShow:[
@@ -152,6 +152,21 @@ export default new VueX.Store({
             false
           ];
           state.FootShow[index] = true;
+        },
+        // 修改用户信息
+        updateUserInfo(state,value){
+          for(let key in value){
+            state.userInfo[key] = value[key];
+          }
+          
+          // 此处向后端发请求
+          // Axios.patch(
+          //     "/userInfo/" + state.userInfo[0].id,
+          //     userdata,
+          //     { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
+          //     .then(response => {
+          //         console.log(response.data);
+          //     });
         }
     },
     actions: {//有异步请求，异步请求完成后，提交mutations

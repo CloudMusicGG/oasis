@@ -2,7 +2,9 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-04 18:25:05
+ * @LastEditTime: 2019-12-04 18:45:15
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-04 18:37:57
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 20:49:19
  * @LastEditors: roselee
@@ -37,7 +39,8 @@
             ></span>
             <RecommendInfo :uid="item.uid"></RecommendInfo>
           </div>
-          </div>
+        </div>
+
       <!-- 这是第一列 -->
       <div
         class="longBox"

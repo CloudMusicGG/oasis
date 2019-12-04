@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 14:41:24
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-04 18:22:05
+ * @LastEditTime: 2019-12-04 19:26:05
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 20:31:42
  * @LastEditors: roselee
@@ -18,7 +18,7 @@
         <!-- <Relevant v-show="Relevant" :v="n"></Relevant> -->
         <Navigation v-show="display" class="Navigation" @RelatedUsers="pass" :fun="fn"></Navigation>
         <Recommend v-show="hide" :fu="fn" :changeSearch="changeSearch"></Recommend>
-        <user v-show="user" :v="b"></user>
+        <user v-show="user" :v="bLength"></user>
         <Relevant v-show="Relevant" :v="n"></Relevant>
         <CheckIn v-show="checkin"></CheckIn>
         <theme :v="methe" v-show="theme"></theme>
@@ -39,6 +39,7 @@ export default {
     data() {
         return {
             b:'',
+            bLength:'',
             n:'',
             get:'',
             fun: '',
@@ -67,6 +68,7 @@ export default {
                 this.Relevant=false
                 this.user=true
                 this.theme=false
+                this.bLength = this.b;
            }else if(this.get == "动态"){
             //    console.log(this.get)
                this.user = false
@@ -76,10 +78,12 @@ export default {
                 this.user=true
                 this.Relevant=true
                 this.theme=false
+                this.bLength = this.b.splice(0,3);
            }else if (this.get == '全部') {
                 this.user=true
                 this.Relevant=true
-                 this.theme=false
+                 this.theme=false;
+                 this.bLength = this.b.splice(0,3);
            }
            else if (this.get == "主题") {
                 this.theme=true
@@ -98,7 +102,7 @@ export default {
             // console.log(fn)
         },
         Naviga(na) {
-            console.log(na)
+            // console.log(na)
             this.na = na
         }
     },
