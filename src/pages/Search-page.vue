@@ -61,9 +61,6 @@ export default {
          Navigation,
          Relevant,
          user
-    },
-    created(){
-      this.$store.commit('changeCheck', 1);
     }
 }
 </script>

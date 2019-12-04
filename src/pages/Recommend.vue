@@ -33,6 +33,9 @@ export default {
     RecommendSearch
   },
   created(){
+      // 改变底部导航
+      this.$store.commit('changeCheck', 1);
+      
       Axios.get("/postInfo").then(
       Response => {
         this.data = Response.data;
@@ -46,6 +49,7 @@ export default {
       }
     );
   }
+
 };
 </script>
 <style lang="scss" scoped>

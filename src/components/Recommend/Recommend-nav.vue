@@ -93,7 +93,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped >
+<style lang="scss" >
 #scrollContent {
   height: 100%;
   overflow-y: scroll;
