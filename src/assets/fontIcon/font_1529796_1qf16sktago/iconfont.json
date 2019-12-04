@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "264112",
+      "name": "qq",
+      "font_class": "qq",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
       "icon_id": "5732294",
       "name": "我的-full",
       "font_class": "my-full",
@@ -18,6 +25,20 @@
       "font_class": "my",
       "unicode": "e660",
       "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "7436065",
+      "name": "weixin",
+      "font_class": "xiangmulan-weixinhao",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "8682220",
+      "name": "weibo",
+      "font_class": "lujing",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
     },
     {
       "icon_id": "11139656",

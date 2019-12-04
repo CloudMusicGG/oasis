@@ -1,6 +1,8 @@
 <!--
  * @Author: Eternal
  * @Date: 2019-11-26 14:41:24
+ * @LastEditors: Eternal
+ * @LastEditTime: 2019-12-02 20:52:53
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 20:31:42
  * @LastEditors: roselee
@@ -10,6 +12,10 @@
 <template>
     <div>
         <SearchBox class="SearchBox" @update="pre" :get="get" @PassValue="pv"></SearchBox>
+        <Navigation v-show="display" class="Navigation" @RelatedUsers="pass" :fun="fn" @Navigation="Naviga"></Navigation>
+        <Recommend v-show="hide" :fu="fn"></Recommend>
+        <user v-show="user" :v="b" :na="na"></user>
+        <Relevant v-show="Relevant" :v="n" :flag="flag"></Relevant>
         <Navigation v-show="display" class="Navigation" @RelatedUsers="pass" :fun="fn"></Navigation>
         <Recommend v-show="hide" :fu="fn" :changeSearch="changeSearch"></Recommend>
         <user v-show="user" :v="b"></user>
@@ -37,6 +43,8 @@ export default {
             fun: '',
             methe:'',
             fn:'',
+            na:'',
+            flag:'',
             display:false,
             hide: true,
             Relevant:false,
@@ -47,10 +55,11 @@ export default {
         }
     },
     methods:{
-        pre(t,m,fun,methe) {
+        pre(t,m,fun,methe,flag) {
            this.b = t
            this.n = m
            this.fun = fun
+           this.flag = flag
         //    console.log(this.fun)
            this.methe = methe
            this.display=true
@@ -88,6 +97,10 @@ export default {
         pv(fn) {
             this.fn = fn
             // console.log(fn)
+        },
+        Naviga(na) {
+            console.log(na)
+            this.na = na
         }
     },
     components:{

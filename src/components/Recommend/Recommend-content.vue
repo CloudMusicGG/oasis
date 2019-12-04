@@ -2,6 +2,8 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: roselee
+ * @LastEditTime: 2019-12-04 18:37:57
+ * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 20:49:19
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 20:45:40
@@ -11,13 +13,33 @@
  -->
 <template>
   <div class="ContentBox">
-    {{v}}
-    <mt-loadmore
-      :bottom-method="loadBottom"
-      :top-method="loadTop"
-      :bottom-all-loaded="isLoadAll"
-      ref="loadmore"
-    >
+    {{flag}}
+    <mt-loadmore :bottom-method="loadBottom" :top-method="loadTop" :bottom-all-loaded="isLoadAll" ref="loadmore">
+    <!-- 这是第一列 -->
+        <div
+          class="longBox"
+          v-infinite-scroll
+          infinite-scroll-disabled="busy"
+          infinite-scroll-distance="10"
+          ref="element1"
+        >
+          <div class="itemBox" v-for="item in dataOne" :key="item.index">
+            <router-link :to="'/Article/'+item.id">
+              <div class="imgBox">
+                <img :src="item.pic" alt />
+              </div>
+              <p class="itemTitle">{{item.title}}</p>
+            </router-link>
+            <span class="likeNum">{{likeNum(item.id)}}</span>
+            <span
+              class="icon iconfont"
+              :class='{"icon-xihuan":!isShowLike(item.id),"icon-aixin1":isShowLike(item.id)}'
+              @click="likeIt(item.id)"
+            ></span>
+            <RecommendInfo :uid="item.uid"></RecommendInfo>
+          </div>
+        </div>
+
       <!-- 这是第一列 -->
       <div
         class="longBox"
@@ -81,6 +103,7 @@ import { Loadmore } from "mint-ui";
 Vue.component("mt-Loadmore", Loadmore);
 export default {
   name: "RecommendContent",
+  props: ["type","v",'flag'],
   props: ["type", "v","changeSearch"],
   data() {
     return {

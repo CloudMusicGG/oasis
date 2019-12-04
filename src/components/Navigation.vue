@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 17:14:15
+ * @LastEditTime: 2019-12-02 18:02:13
  * @Description: 这是搜素页的tab导航栏
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 17:11:15
@@ -50,15 +50,17 @@ export default {
           label: "主题",
           name: "3"
         }
-      ]
+      ],
+      handleClick: this.handleClick
     };
   },
+  created(){
+    this.$emit("Navigation",this.handleClick)
+  },
   methods: {
-      Obtain(){
-        
-    },
     handleClick(tab, event) {
       let get = tab.label
+      console.log(get)
       this.fun()
       // console.log(this.fun)
       this.$emit("RelatedUsers", get)
