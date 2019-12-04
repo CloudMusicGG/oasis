@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 18:02:13
+ * @LastEditTime: 2019-12-04 18:27:09
  * @Description: 这是搜素页的tab导航栏
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 17:11:15
@@ -51,7 +51,7 @@ export default {
           name: "3"
         }
       ],
-      handleClick: this.handleClick
+      // handleClick: this.handleClick
     };
   },
   created(){

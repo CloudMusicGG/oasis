@@ -1,3 +1,10 @@
+/*
+ * @Author: Eternal
+ * @Date: 2019-11-26 11:44:11
+ * @LastEditors: Eternal
+ * @LastEditTime: 2019-12-04 18:00:04
+ * @Description: 
+ */
 import Vue from 'vue'
 import Router from 'vue-router'
 import message from '@/pages/message'
@@ -36,7 +43,14 @@ export default new Router({
     {
       path: '/Search-page',
       name: 'Search',
-      component: Search
+      component: Search,
+      props:true
+    },
+    {
+      path: '/Search-page/:a',
+      name: 'SearchData',
+      component: Search,
+      props:true
     },
     {
       path: '/Hedo-page',

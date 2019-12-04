@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 21:04:25
+ * @LastEditTime: 2019-12-04 18:25:05
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 20:49:19
  * @LastEditors: roselee
@@ -13,7 +13,6 @@
  -->
 <template>
   <div class="ContentBox">
-    {{flag}}
     <mt-loadmore :bottom-method="loadBottom" :top-method="loadTop" :bottom-all-loaded="isLoadAll" ref="loadmore">
     <!-- 这是第一列 -->
         <div
@@ -38,8 +37,7 @@
             ></span>
             <RecommendInfo :uid="item.uid"></RecommendInfo>
           </div>
-    {{v}}
-
+          </div>
       <!-- 这是第一列 -->
       <div
         class="longBox"
@@ -103,7 +101,7 @@ import { Loadmore } from "mint-ui";
 Vue.component("mt-Loadmore", Loadmore);
 export default {
   name: "RecommendContent",
-  props: ["type","v",'flag'],
+  // props: ["type","v",],
   props: ["type", "v","changeSearch"],
   data() {
     return {
@@ -126,7 +124,7 @@ export default {
       this.searchParam = this.v;
     }
     Axios.get("/userInfo").then(Response => {
-      this.nowPid = Response.data[0].likePostIds.split(",");
+      this.nowPid = Response.data.likePostIds.split(",");
       this.$store.commit("changeNowPid", this.nowPid);
     });
     Axios.get("/postInfo", { params: { type_like: this.searchParam } }).then(
