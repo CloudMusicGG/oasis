@@ -2,7 +2,9 @@
  * @Author: Eternal
  * @Date: 2019-11-26 14:32:25
  * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 20:56:33
+ * @LastEditTime: 2019-12-02 20:53:07
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-02 19:54:40
  * @Description: 搜素框组件
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 15:19:20
@@ -13,11 +15,11 @@
        <div class="searchbox_w">
            <div class="searchbox_box">
                <label for="">
-                     <i class="icon iconfont">&#xe739;</i>
+                    <i class="icon iconfont">&#xe739;</i>
                </label>
                <input type="text" placeholder="搜素用户和动态" v-model="text" @keyup.enter="searcher">
            </div>
-           <router-link to="/">{{get}}</router-link>
+           <span @click="back">取消</span>
        </div> 
   </div>
   
@@ -31,29 +33,53 @@ export default {
     props:['get'],
     data () {
         return {
-            text:''
+            text:"",
+            fun:this.searcher,
+            methe:[],
+            opop:""
         }
     },
+    created() {
+         this.$emit("PassValue",this.fun);
+        //  console.log(this.fun)
+    },
     methods:{
-        searcher(){
-            if(this.text == "") {
+        back(){
+            this.$router.go(-1);
+        },
+        searcher(opop){
+            // var mp = this.d
+            let typeOpop =  typeof opop;
+            if(typeOpop == "string"){
+                this.text = opop;
+            }
+            var t = this.text;
+            if(t == "") {
                  Toast({
                     message: '搜素内容不能为空',
-                     position: 'bottom',
+                    position: 'bottom',
                     duration: 1000
                 });
             }else {
-                let t = this.text
+                 //主题
+                //  var t = this.d
+                 Axios.get("/methe",{params: {id:t}})
+                .then(res=>{
+                    // if(this.yonghu =="用户") {
+                        this.methe = res.data;
+                    // }
+                }) 
+                var flag = true
+                let fun = this.fun
                 Axios.get("/RelatedUsers",{params: {id:t}})
                 .then(res=>{
-                    if(this.yonghu =="用户") {
+                    // if(this.yonghu =="用户") {
                         let Result = res.data.splice(0,3);
-                        this.$emit("update", Result, t)
-                        // console.log()
-                    }
-                }) 
-            }
-           
+                        this.$emit("update", Result, t,this.fun,this.methe,flag)
+                    // }
+                })
+               
+            } 
         }
     }
 }
