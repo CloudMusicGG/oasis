@@ -1,8 +1,8 @@
 /*
  * @Author: rosalee
  * @Date: 2019-11-26 10:25:50
- * @LastEditors: rosalee
- * @LastEditTime: 2019-11-26 10:58:24
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-04 11:54:36
  * @Description: 
  */
 // The Vue build version to load with the `import` command
@@ -16,6 +16,12 @@ import MintUI from 'mint-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'mint-ui/lib/style.css'
 import store from './store'
+
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+// require styles
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper)
 
 Vue.use(ElementUI);
 Vue.use(MintUI);
