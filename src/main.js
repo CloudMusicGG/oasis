@@ -1,8 +1,8 @@
 /*
  * @Author: rosalee
  * @Date: 2019-11-26 10:25:50
- * @LastEditors: Eternal
- * @LastEditTime: 2019-12-04 18:47:09
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-05 16:23:09
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-04 11:54:36
  * @Description: 
@@ -28,7 +28,8 @@ Vue.use(VueAwesomeSwiper)
 Vue.use(ElementUI);
 Vue.use(MintUI);
 
-Axios.defaults.baseURL = '/api/'; //把axios的请求基本路径改为api，以后就不需要在每个axios请求里写api
+// Axios.defaults.baseURL = '/api/'; //把axios的请求基本路径改为api，以后就不需要在每个axios请求里写api
+Axios.defaults.baseURL = 'http://localhost:3000'; //把axios的请求基本路径改为api，以后就不需要在每个axios请求里写api
 
 
 Vue.config.productionTip = false

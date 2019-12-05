@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
  * @LastEditors: roselee
- * @LastEditTime: 2019-12-02 14:49:07
+ * @LastEditTime: 2019-12-05 17:43:02
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 17:08:38
  * @LastEditors: roselee
@@ -10,13 +10,13 @@
  * @Description: 这是推荐页面的tab导航栏
  -->
 <template>
-  <el-tabs v-model="activeName" @tab-click="handleClick" class="navlixi" >
+  <el-tabs v-model="activeName" @tab-click="handleClick" id="navlixi" >
     <el-tab-pane
       class="nav_top"
       v-for="(tab,index) in tabs"
       :label="tab.label"
       :name="tab.name"
-      :tabindex="{index}"
+      :tabIndex="tab.name"
       :key="index"
     >
       <RecommendContent :type="tab.label" id="scrollContent"></RecommendContent>
@@ -77,12 +77,10 @@ export default {
   },
   methods: {
     handleClick(tab, event) {
-      // console.log(tab, event);
-      // console.log(event.target);
-      this.currType = event.target.tabindex;
       let eventdom = event.target;
+      console.log(event.target);
       eventdom.scrollIntoView({
-        behavior: "auto",
+        behavior: "smooth",
         block: "center",
         inline: "center"
       });
@@ -98,7 +96,7 @@ export default {
   height: 100%;
   overflow-y: scroll;
 }
-.navlixi{
+#navlixi{
 
 .el-tab-pane {
   padding-left: 0.05rem;
@@ -151,16 +149,16 @@ export default {
   font-weight: bolder;
 }
 .el-tabs__header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: white;
-  padding-left: 10px;
-  z-index: 10;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // background: white;
+  // padding-left: 10px;
+  // z-index: 10;
   &:after {
     content: "";
     width: 0.3rem;
-    height: 0.6rem;
+    height: 0.5rem;
     display: inline-block;
     position: absolute;
     right: 0px;
@@ -172,10 +170,22 @@ export default {
       rgba(255, 255, 255, 0)
     );
   }
+  &:before {
+    content: "";
+    width: 100%;
+    height: 0.6rem;
+    display: inline-block;
+    position: fixed;
+    right: 0px;
+    top: -10px;
+    z-index: 2;
+    background: white;
+  }
 }
 .is-top:last-child {
   margin-right: 20px;
   margin-bottom: 1px;
+  z-index: 5;
 }
 .el-tabs__nav-scroll {
   overflow-x: auto;

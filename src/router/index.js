@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 11:44:11
  * @LastEditors: roselee
- * @LastEditTime: 2019-12-05 09:31:19
+ * @LastEditTime: 2019-12-05 16:02:05
  * @Author: roselee
  * @Date: 2019-12-02 17:21:46
  * @LastEditors: roselee
@@ -18,6 +18,7 @@ import Search from '@/pages/Search-page'
 import Hedopage from '@/pages/Hedo-page'
 import Recommend from '@/pages/Recommend'
 import Article from '@/pages/Article'
+import post from '@/pages/post'
 import loginPage from '@/components/loginPage/loginPage'
 import regAndLogin from '@/components/goLoginPage/regAndLogin'
 
@@ -47,16 +48,21 @@ const router = new Router({
       component: regAndLogin
     },
     {
+      path: '/post',
+      name: 'post',
+      component: post
+    },
+    {
       path: '/loginPage',
       name: 'loginPage',
       component: loginPage,
-      beforeEnter(to,from,next){
-        if(localStorage.getItem("userinfo")){
-          next("/");
-        }else{
-          next("/regAndLogin");
-        }
-      }
+      // beforeEnter(to,from,next){
+      //   if(localStorage.getItem("userinfo")){
+      //     next("/");
+      //   }else{
+      //     next();
+      //   }
+      // }
     },
     {
       path: '/message',
@@ -67,9 +73,9 @@ const router = new Router({
       path: '/mine',
       name: 'mine',
       component: mine,
-      meta: {
-        requireLogin: true
-      }
+      // meta: {
+      //   requireLogin: true
+      // }
     },
     {
       path: '/upDateInfo',

@@ -11,7 +11,7 @@
       <li v-show="$store.state.FootShow[1]"><i class="iconfont checkI">&#xe60d;</i></li>
     </router-link>
     <!-- 新建 -->
-    <router-link to="/upDateInfo">
+    <router-link to="/post">
       <li class=""><i class="iconfont CreatPost">&#xe752;</i></li>
     </router-link>
     <!-- 消息 -->
