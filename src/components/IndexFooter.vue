@@ -1,7 +1,15 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-04 21:39:47
+ * @LastEditTime: 2019-12-05 10:37:10
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \eshopappe:\三阶段\第三阶段\workspace\oasis\src\components\IndexFooter.vue
+ -->
 <template>
   <div class="Foot">
     <!-- 首页 -->
-    <router-link to="/index">
+    <router-link to="/homepage">
       <li v-show="!$store.state.FootShow[0]"><i class="iconfont unCheckI">&#xe8b9;</i></li>
       <li v-show="$store.state.FootShow[0]"><i class="iconfont checkI">&#xe8c6;</i></li>
     </router-link>
@@ -45,7 +53,7 @@ export default {
   justify-content: space-around;
   line-height: .47rem;
   background: white;
-
+  z-index: 2;
   i{
     font-size: .23rem;
   }

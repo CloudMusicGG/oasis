@@ -1,18 +1,3 @@
-<!--
- * @Author: roselee
- * @Date: 2019-11-26 17:46:19
- * @LastEditors: Eternal
- * @LastEditTime: 2019-12-04 18:45:15
- * @LastEditors: roselee
- * @LastEditTime: 2019-12-04 18:37:57
- * @LastEditors: roselee
- * @LastEditTime: 2019-12-02 20:49:19
- * @LastEditors: roselee
- * @LastEditTime: 2019-11-30 20:45:40
- * @LastEditors: roselee
- * @LastEditTime: 2019-11-29 20:22:45
- * @Description:
- -->
 <template>
   <div class="ContentBox">
     <mt-loadmore :bottom-method="loadBottom" :top-method="loadTop" :bottom-all-loaded="isLoadAll" ref="loadmore">
@@ -94,13 +79,14 @@ export default {
       likePidAndNum: [],
       list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       isLoadAll: false,
-      searchParam: ""
+      searchParam: "推荐"
     };
   },
   created() {
     this.searchParam = this.type;
     if(this.v!=undefined && this.v != ""){
       this.searchParam = this.v;
+      console.log("使用传入的v");
     }
     Axios.get("/userInfo/"+"10001").then(Response => {
       this.nowPid = Response.data.likePostIds.split(",");
@@ -111,6 +97,7 @@ export default {
         this.alldata = Response.data;
         this.data = this.alldata.slice(0, 5);
         this.classify(this.data);
+        // console.log(this.alldata);
       }
     );
   },

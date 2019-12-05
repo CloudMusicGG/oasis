@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 14:32:25
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 20:53:07
+ * @LastEditTime: 2019-12-04 21:20:43
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 19:54:40
  * @Description: 搜素框组件
@@ -17,7 +17,7 @@
                <label for="">
                     <i class="icon iconfont">&#xe739;</i>
                </label>
-               <input type="text" placeholder="搜素用户和动态" v-model="text" @keyup.enter="searcher">
+               <input type="text" placeholder="搜素用户和动态" v-model="text" @input="beforeSearcher">
            </div>
            <span @click="back">取消</span>
        </div> 
@@ -36,7 +36,8 @@ export default {
             text:"",
             fun:this.searcher,
             methe:[],
-            opop:""
+            opop:"",
+            myTimer:null
         }
     },
     created() {
@@ -46,6 +47,15 @@ export default {
     methods:{
         back(){
             this.$router.go(-1);
+        },
+        beforeSearcher(){
+            if(this.myTimer != null){
+                clearTimeout(this.myTimer); 
+                this.myTimer = null;
+            }  
+            this.myTimer = setTimeout(()=>{
+                this.searcher();
+            },1000);	
         },
         searcher(opop){
             // var mp = this.d
@@ -68,14 +78,13 @@ export default {
                     // if(this.yonghu =="用户") {
                         this.methe = res.data;
                     // }
-                }) 
-                var flag = true
+                })
                 let fun = this.fun
                 Axios.get("/RelatedUsers",{params: {id:t}})
                 .then(res=>{
                     // if(this.yonghu =="用户") {
-                        let Result = res.data.splice(0,3);
-                        this.$emit("update", Result, t,this.fun,this.methe,flag)
+                        let Result = res.data;
+                        this.$emit("update", Result, t,this.fun,this.methe,)
                     // }
                 })
                

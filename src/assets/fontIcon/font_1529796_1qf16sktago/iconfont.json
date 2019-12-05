@@ -13,6 +13,20 @@
       "unicode_decimal": 58892
     },
     {
+      "icon_id": "1188467",
+      "name": "消息",
+      "font_class": "xiaoxi1",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "4867071",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
       "icon_id": "5732294",
       "name": "我的-full",
       "font_class": "my-full",
@@ -81,6 +95,20 @@
       "font_class": "shouye2",
       "unicode": "e8c6",
       "unicode_decimal": 59590
+    },
+    {
+      "icon_id": "11391522",
+      "name": "分享",
+      "font_class": "fenxiang1",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "11391539",
+      "name": "消息-43",
+      "font_class": "xiaoxi-",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
     },
     {
       "icon_id": "11519413",
