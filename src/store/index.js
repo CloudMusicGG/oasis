@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-26 10:57:24
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-12-04 22:10:15
+ * @LastEditTime: 2019-12-05 19:20:34
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 20:56:20
  * @Description:
@@ -17,13 +17,13 @@ Vue.use(VueX)
 
 let store =  new VueX.Store({
     state: {//存储数据
+        Records:[],
         nowPid: [],//该用户已经点赞的文章的id数组
         likePidAndNum: [],//文章的id和点赞数，组成的对象数组，在pages的Recommend中获取的
         Tel: "123",
         isLogin: false,
         userInfo: {
         },//用户详细信息
-        nowPid: [],
         likePidAndNum: [],
         FootShow:[
              false,
@@ -32,7 +32,7 @@ let store =  new VueX.Store({
              false
         ],
         imgs:[],
-        nowPidpy:[],
+        nowFocus:[],//存储当前这个用户关注的人
         zanedinfo:[],//存储每篇文章赞的信息
         currheaderimg:'',
         currid:'',//当前用户id
@@ -47,6 +47,9 @@ let store =  new VueX.Store({
         conusername:""
     },
     mutations: {//跟踪状态
+        SearchRecord(state,Records){
+            state.Records = Records
+        },
         changelikePidAndNum(state, likePidAndNum) {
             state.likePidAndNum = likePidAndNum;
         },
@@ -60,29 +63,34 @@ let store =  new VueX.Store({
         changUserInfo(state, data) {
             state.userInfo = data;
         },
-        // searcher(){
-        //     if(this.text == "") {
+        // searchers(opop){
+        //     // var mp = this.d
+        //     let typeOpop =  typeof opop;
+        //     if(typeOpop == "string"){
+        //         this.text = opop;
+        //     }
+        //     var t = this.text;
+        //     if(t == "") {
         //          Toast({
         //             message: '搜素内容不能为空',
-        //              position: 'bottom',
+        //             position: 'bottom',
         //             duration: 1000
         //         });
         //     }else {
         //          //主题
-        //          var t = this.text
+        //         //  var t = this.d
         //          Axios.get("/methe",{params: {id:t}})
         //         .then(res=>{
         //             // if(this.yonghu =="用户") {
         //                 this.methe = res.data;
         //             // }
-        //         }) 
-                
+        //         })
         //         let fun = this.fun
         //         Axios.get("/RelatedUsers",{params: {id:t}})
         //         .then(res=>{
         //             // if(this.yonghu =="用户") {
         //                 let Result = res.data.splice(0,3);
-        //                 this.$emit("update", Result, t,fun,this.methe)
+        //                 this.$emit("update", Result, t,this.fun,this.methe,)
         //             // }
         //         })
                
@@ -206,7 +214,7 @@ let store =  new VueX.Store({
 
                 function sendusername(data,currid){
                     return axios.patch(
-                        'username/'+currid,
+                        'userInfo',
                         data,
                         {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
                     );
@@ -218,28 +226,13 @@ let store =  new VueX.Store({
                 
                 //向后端发请求
                 for(let i=0;i<state.zanedinfo.length;i++){
-                    console.log(state.zanedinfo)
+                    // console.log(state.zanedinfo)
                     if(id==state.zanedinfo[i].id){
                         // 获取本地头像，将头像放到state.zanedinfo里
-                        // let currheaderimg = localStorage.getItem('userImg');
-                        // let currid = localStorage.getItem('userId');
                         state.zanedinfo[i].headerimg.splice(0,0,state.currheaderimg);
 
-
                         let data = "zaned="+state.zanedinfo[i].headerimg;
-                        let data1 = "zan="+state.nowPid;
-
-                        // axios.patch(
-                        //     'imgs/'+id,
-                        //     data,
-                        //     {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
-                        // )
-                        // .then(res=>{
-                        //     console.log(res.data.zaned);
-                        // });
-                        
-                console.log("哈哈哈");
-                console.log(state.nowPid);
+                        let data1 = "likePostIds="+state.nowPid;
 
                         axios.all([sendzaned(data),sendusername(data1,state.currid)])
                         .then(axios.spread(function (reszaned,resusername) {
@@ -257,21 +250,9 @@ let store =  new VueX.Store({
                     console.log(state.zanedinfo)
                     if(id==state.zanedinfo[i].id){
                         state.zanedinfo[i].headerimg.splice(index,1);
-                        console.log("头像");
-
-                        console.log(state.zanedinfo[i]);
-                        // let currid = localStorage.getItem('userId');
+                       
                         let data = "zaned="+state.zanedinfo[i].headerimg;
-                        let data1 = "zan="+state.nowPid;
-                        console.log(data);
-                        // axios.patch(
-                        //     'imgs/'+id,
-                        //     data,
-                        //     {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
-                        // )
-                        // .then(res=>{
-                        //     console.log(res.data);
-                        // });
+                        let data1 = "likePostIds="+state.nowPid;
 
                         axios.all([sendzaned(data),sendusername(data1,state.currid)])
                         .then(axios.spread(function (reszaned,resusername) {
@@ -283,11 +264,41 @@ let store =  new VueX.Store({
                     }
                 }
             }
-            console.log(state.nowPid)
+        },
+        changefocus(state,{id,index}){
+            if(index<0){
+                //如果没有这个下标，就把他放进去
+                state.nowFocus.splice(0,0,id);
+                console.log(state.nowFocus)
+                let data = "foucsId="+state.nowFocus;
+                axios.patch(
+                    'userInfo',
+                    data,
+                    {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
+                )
+                .then(res=>{
+                    console.log(res.data);
+                })
+            }else{
+                //如果有，就将他删掉
+                state.nowFocus.splice(index,1);
+                console.log(state.nowFocus)
+                let data = "foucsId="+state.nowFocus;
+                axios.patch(
+                    'userInfo',
+                    data,
+                    {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
+                )
+                .then(res=>{
+                    console.log(res.data);
+                })
+            }
         },
         getnowid(state,data){
-            let arr2 = data.zan.split(",");
+            let arr2 = data.likePostIds.split(",");
+            let arr3 = data.foucsId.split(",");
             state.nowPid = arr2;
+            state.nowFocus = arr3;
         },
         getcomment(state,id){
             state.currwenid = id;
@@ -345,6 +356,7 @@ let store =  new VueX.Store({
                             state.infos[i][j].speak.splice(0,0,obj);
                             state.conid = "";
                             this.commit('senddata');
+                            return;
                        }
                    }
 
@@ -403,8 +415,8 @@ let store =  new VueX.Store({
     },
     actions: {//有异步请求，异步请求完成后，提交mutations
         getnowid(context){
-            let currid = localStorage.getItem('userId');
-            axios.get('username/'+currid)
+            // let currid = localStorage.getItem('userId');
+            axios.get('userInfo')
             .then(res=>{
                 context.commit('getnowid',res.data);
             })

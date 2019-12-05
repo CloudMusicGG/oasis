@@ -2,9 +2,9 @@
  * @Author: rosalee
  * @Date: 2019-11-26 10:25:50
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-12-05 09:17:31
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-12-03 21:46:13
+ * @LastEditTime: 2019-12-05 10:09:52
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-04 11:54:36
  * @Description: 
  */
 // The Vue build version to load with the `import` command
@@ -22,7 +22,7 @@ import './assets/iconfont/iconfont.css';
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // require styles
-import 'swiper/dist/css/swiper.css'
+import 'swiper/css/swiper.css'
 
 Vue.use(VueAwesomeSwiper)
 

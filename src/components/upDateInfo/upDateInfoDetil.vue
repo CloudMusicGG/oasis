@@ -218,6 +218,12 @@ export default {
           border-bottom: #D0A874 solid 3px;
     }
 }
+.el-picker-panel__content{
+   margin: 0 auto;
+}
+.el-picker-panel{
+  width: 100%
+}
 </style>
 <style scoped lang="scss">
 .backGround{

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-26 14:30:45
- * @LastEditTime: 2019-12-04 11:07:30
+ * @LastEditTime: 2019-12-05 10:59:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \day23e:\三阶段\第三阶段\workspace\oasis\src\pages\homepage.vue
@@ -32,6 +32,9 @@ export default {
         getfocu2(){
             this.$store.commit("getxian",true);
         }
+    },
+    created(){
+        this.$store.commit('changeCheck', 0);
     }
 }
 </script>
@@ -51,6 +54,6 @@ export default {
         left: 0;
         bottom: 0;
         background: white;
-        z-index:1;
+        z-index:3;
     }
 </style>

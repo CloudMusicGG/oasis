@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-12-01 15:33:58
- * @LastEditTime: 2019-12-04 17:58:01
+ * @LastEditTime: 2019-12-05 14:08:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \eshopappe:\三阶段\第三阶段\workspace\oasis\src\components\commain.vue
@@ -14,14 +14,14 @@
                     <img :src="comment.headerimg" alt="">
                     <div @click="getcomper(comment.id,comment.username)">
                         <p class="pa">{{comment.username}}</p>
-                        <p class="pa" v-html="comment.neirong.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)">{{comment.neirong}}<span>{{changeTime(comment.time)}}</span></p>
+                        <p class="pa"><span v-html="comment.neirong.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)">{{comment.neirong}}</span><span>{{changeTime(comment.time)}}</span></p>
                     </div>
                 </div>
                 <div class="conmain conno" v-for="(speaka,index1) in comment.speak" :key="index1">
                     <img :src="speaka.headerimg" alt="">
                     <div @click="getcomper(comment.id,speaka.username)">
                         <p class="pa">{{speaka.username}}</p>
-                        <p class="pa" v-html="speaka.neirong.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)"><span v-if="speaka.aita!=''" class="huifu">回复<span>{{speaka.aita}}</span></span>{{speaka.neirong}}<span>{{changeTime(speaka.time)}}</span></p>
+                        <p class="pa"><span v-if="speaka.aita!=''" class="huifu">回复<span>{{speaka.aita}}</span></span><span v-html="speaka.neirong.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)">{{speaka.neirong}}</span><span>{{changeTime(speaka.time)}}</span></p>
                     </div>
                 </div>
             </li>
@@ -135,6 +135,9 @@ export default {
                         font-size: .13rem;
                         color: #9b9b9b;
                         margin-left: 10px;
+                    }
+                    :first-child{
+                        margin-left: 0;
                     }
                     .huifu{
                         color: black;

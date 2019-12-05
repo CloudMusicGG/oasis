@@ -1,19 +1,19 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-26 15:02:43
- * @LastEditTime: 2019-12-05 09:22:10
+ * @LastEditTime: 2019-12-05 19:17:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \day23e:\三阶段\第三阶段\workspace\oasis\src\components\home.vue
  -->
 <template>
     <div class="downla">
-        <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom"  ref="loadmore">
-            <div
+        <!-- <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom"  ref="loadmore"> -->
+            <!-- <div
                 v-infinite-scroll
                 infinite-scroll-disabled="busy"
-                infinite-scroll-distance="10"
-            >
+                infinite-scroll-distance="20"
+            > -->
                 <div v-for="(img,index) in $store.state.imgs" :key="index">
                     <!-- {{头像及发布时间等}} -->
                     <div class="header_top" @click="getfocu1()">
@@ -23,7 +23,10 @@
                             <span class="time">{{changeTime(img.time)}}</span>
                             <span class="place">{{img.place}}</span>
                         </div>
-                        <span class="iconfont icon-gengduo"></span>
+
+                        <span class="iconfont icon-gengduo" @click="popup(img.userid)"></span>
+
+                        <span v-show="isshowfocus" class="guan"  @click="focusIt(img.userid)" :class='{"guanzhu":isfocus(img.userid),"guanhou":!isfocus(img.userid)}'><span class="iconfont icon-jiahao" :class='{"show":isfocus(img.userid),"show1":!isfocus(img.userid)}'></span><span :class='{"show":!isfocus(img.userid),"show1":isfocus(img.userid)}'>已</span>关注</span>
                     </div>
                     <!-- {{发表的照片}} -->
                     <div class="swiper-container" @click="getfocu1()">
@@ -45,10 +48,10 @@
                                 <img v-for="(headerimg1,index5) in zaneda.headerimg" :key="index5" :src="headerimg1" alt="" v-if="index5<3">
                                 <b>等<span>{{zaneda.headerimg.length}}</span>次赞</b>
                             </div>
-                            <span class="iconfont icon-fenxiang"></span>
-                            <span class="iconfont icon-xiaoxi" @click="getcomment(img.id)"></span>
-                            <span class="iconfont icon-xin1" :class='{"show1":!isShowLike(img.id),"show":isShowLike(img.id)}'  @click="likeIt(img.id)"></span>
-                            <span class="iconfont icon-xin" :class='{"show":!isShowLike(img.id),"show1":isShowLike(img.id)}'  @click="likeIt(img.id)"></span>
+                            <span class="iconfont icon-fenxiang1"></span>
+                            <span class="iconfont icon-xiaoxi1" @click="getcomment(img.id)"></span>
+                            <span class="iconfont icon-aixin" :class='{"show1":!isShowLike(img.id),"show":isShowLike(img.id)}'  @click="likeIt(img.id)"></span>
+                            <span class="iconfont icon-aixin1" :class='{"show":!isShowLike(img.id),"show1":isShowLike(img.id)}'  @click="likeIt(img.id)"></span>
                         </div>
                         
                         <div class="hb_middle" @click="getfocu1()">
@@ -88,22 +91,32 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </mt-loadmore>
+
+                <mt-popup
+                    v-model="popupVisible"
+                    position="bottom" class="popup_out">
+                    <ul>
+                        <li  @click="focusIt(userid)"><span :class='{"show":isfocus(userid),"show1":!isfocus(userid)}'>关注</span><span :class='{"show":!isfocus(userid),"show1":isfocus(userid)}'>取消关注</span></li>
+                        <li>投诉</li>
+                        <li @click="popup()">取消</li>
+                    </ul>
+                </mt-popup>
+            <!-- </div> -->
+        <!-- </mt-loadmore> -->
     </div>
 </template>
 <script>
 import Swiper from 'swiper';
 import axios from "axios";
 import Vue from "vue";
-import { Loadmore } from 'mint-ui';
-import { InfiniteScroll } from 'mint-ui';
-
+import { Loadmore,InfiniteScroll,Popup } from 'mint-ui';
+Vue.component(Popup.name, Popup);
 Vue.use(InfiniteScroll);
 Vue.component(Loadmore.name, Loadmore);
 
 export default {
     name:'home',
+    props:["p"],
     data(){
         return {
             allinfos:[],
@@ -114,7 +127,14 @@ export default {
             show1:'show1',//显示
             // nowPid:[],
             showTotal:true,//是否显示所有文本内容
-            showExchangeButton:[]//是否显示展开按钮
+            showExchangeButton:[],//是否显示展开按钮
+            popupVisible:false,
+            userid:""
+        }
+    },
+    computed:{
+        isshowfocus(){
+            return this.p?true:false;//判断关注按钮是否显示
         }
     },
     created(){ 
@@ -133,7 +153,7 @@ export default {
                 let arr=[];//获取描述盒子的高度
                 for(let i in this.$refs.desc1){
                     let comheigh= this.$refs.desc1[i].offsetHeight;
-                    if(comheigh>42){
+                    if(comheigh>46){
                         arr.push(true);
                     }else{
                         arr.push(false);
@@ -144,7 +164,7 @@ export default {
         })     
         .catch(err=>{
             console.log(err);
-        })
+        });
         //获取用户的信息
         this.$store.dispatch('getnowid');
     },
@@ -159,14 +179,22 @@ export default {
         loadTop() {
         // load more data
             this.allinfo = this.allinfos.slice(3,6);
-            this.$store.commit('getimgs',this.allinfo);
+            // this.$store.state.imgs.concat(this.allinfo);
+            for(let i in this.allinfo){
+                this.$store.state.imgs.unshift(this.allinfo[i]);
+            }
+            // this.$store.commit('getimgs',this.allinfo);
             this.$refs.loadmore.onTopLoaded();
         },
         loadBottom() {
         // load more data
         //this.allLoaded = true;// if all data are loaded
             this.allinfo = this.allinfos.slice(3,6);
-            this.$store.commit('getimgs',this.allinfo);
+
+            for(let i in this.allinfo){
+                this.$store.state.imgs.push(this.allinfo[i]);
+            }
+
             this.$refs.loadmore.onBottomLoaded();
         },
         changeTime(time){
@@ -199,10 +227,25 @@ export default {
             let index = this.$store.state.nowPid.indexOf(id);
             this.$store.commit("changexin",{id:id,index:index});
         },
+        focusIt(id){
+            console.log(id)
+            let index = this.$store.state.nowFocus.indexOf(id);
+            this.$store.commit("changefocus",{id:id,index:index});
+            this.popupVisible = false;
+        },
         isShowLike(id) {
             if (this.$store.state.nowPid.indexOf(id) >= 0) {
                 return true;
             } else {
+                return false;
+            }
+        },
+        isfocus(id){
+            if (this.$store.state.nowFocus.indexOf(id) >= 0) {
+                // console.log(true)
+                return true;
+            }else {
+                // console.log(false)
                 return false;
             }
         },
@@ -228,6 +271,15 @@ export default {
             .catch(err=>{
                 console.log(err);
             })
+        },
+        popup(id){
+            this.popupVisible = !this.popupVisible;
+            if(this.popupVisible==true){
+                this.userid = id;
+            }else{
+                this.userid = "";
+            }
+            console.log(this.userid)
         }
     }
 }
@@ -253,6 +305,34 @@ export default {
      margin-right: .03rem;
      margin-top: .1rem;
  }
+ .guan{
+     float: right;
+     width: .74rem;
+     height: .32rem;
+     border-radius: .15rem;
+     text-align: center;
+     line-height: .32rem;
+     font-size: .15rem;
+     margin-right: .15rem;
+     .icon-jiahao{
+         font-size: .17rem;
+     }
+    .show{
+        display: none;
+    }
+    .show1{
+        display: inline-block;
+    }
+ }
+ .guanzhu{
+     background: white;
+     color: #a6a6a6;
+     border: 1px solid #a6a6a6;
+ }
+ .guanhou{
+     background: #cea972;
+     color: white;
+ }
 }
 .ht_middle{
     float: left;
@@ -269,11 +349,18 @@ export default {
 }
 .swiper-container{
     width: 100%;
-    height: 3.75rem;
+    height: 2.75rem;
     img{
         width: 100%;
         height: 100%;
     }
+}
+.swiper-slide{
+    overflow:hidden;
+    width:100%;
+    height: 2.75rem;
+    // height:0;
+    // padding-bottom: 73%;
 }
 .doudou1{
     width: .53rem;
@@ -312,21 +399,18 @@ export default {
         float: left;
     }
     .iconfont{
-        font-size: .23rem;
+        font-size: .25rem;
         color: #434544;
         float: right;
     }
-    .icon-xiaoxi{
-        font-size: .25rem;
+    .icon-xiaoxi1{
         margin-right:.22rem;
     }
-    .icon-xin1{
-        font-size: .27rem;
+    .icon-aixin{
         margin-right:.22rem;
         display: block;
     }
-    .icon-xin{
-        font-size: .27rem;
+    .icon-aixin1{
         margin-right:.22rem;
         color: #c99f60;
         display: none;
@@ -413,7 +497,7 @@ export default {
         margin-bottom: 10px;
     }
     .count_bottom{
-        max-height: .5rem;
+        max-height: .6rem;
         overflow: hidden;
     }
     .comments{
@@ -421,11 +505,11 @@ export default {
         color: black;
         font-weight: bold;
         p{
-             display: -webkit-box;
+            display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 1;
             overflow: hidden;
-            line-height: .25rem;
+            line-height: .3rem;
             span{
                 font-weight: normal;
                 margin-left: 4px;
@@ -473,10 +557,39 @@ export default {
                 font-size: .22rem;
                 float: left;
             }
+            i{
+                float: left;
+                text-indent: 0;
+            }
         }
     }
 }
 .mint-loadmore-content {
     overflow-y: scroll;
+}
+.popup_out{
+    width: 100%;
+    ul{
+        background: #eeeeee;
+        li{
+            width: 100%;
+            height: .52rem;
+            text-align: center;
+            line-height: .52rem;
+            font-size: .17rem;
+            color:black;
+            background: white;
+        }
+        :nth-child(2){
+            border-top: 1px solid #e1e1e1;
+            margin-bottom:.1rem;
+        }
+        .show1{
+            display: block;
+        }
+        .show{
+            display: none;
+        }
+    }
 }
 </style>

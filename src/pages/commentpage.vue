@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-12-01 13:31:45
- * @LastEditTime: 2019-12-03 11:57:36
+ * @LastEditTime: 2019-12-05 10:59:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \eshopappe:\三阶段\第三阶段\workspace\oasis\src\pages\commentpage.vue
@@ -48,5 +48,6 @@ export default {
     left: 0;
     bottom: 0;
     background: white;
+    z-index:3;
 }
 </style>

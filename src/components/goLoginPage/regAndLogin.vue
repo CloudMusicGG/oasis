@@ -1,8 +1,8 @@
 <!--
  * @Author: roselee
  * @Date: 2019-12-04 10:36:51
- * @LastEditors: roselee
- * @LastEditTime: 2019-12-04 16:33:50
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-12-05 10:09:33
  * @Description: 
  -->
 <template>
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import "swiper/dist/css/swiper.css";
+import "swiper/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
   name: "regAndLogin",
