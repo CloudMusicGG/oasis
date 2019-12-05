@@ -1,8 +1,15 @@
 /*
  * @Author: Eternal
  * @Date: 2019-11-26 11:44:11
+<<<<<<< HEAD
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-12-05 10:30:55
+ * @LastEditTime: 2019-12-05 19:29:52
+=======
+ * @LastEditors: Eternal
+ * @LastEditTime: 2019-12-05 15:09:11
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-05 09:31:19
+>>>>>>> 2b821e24b85afa3fe76e77163aa4d7803426b777
  * @Author: roselee
  * @Date: 2019-12-02 17:21:46
  * @LastEditors: roselee
@@ -56,7 +63,7 @@ const router = new Router({
         if(localStorage.getItem("userinfo")){
           next("/");
         }else{
-          next("/regAndLogin");
+          next();
         }
       }
     },
