@@ -2,8 +2,8 @@
  * @Author: Eternal
  * @Date: 2019-11-26 16:08:40
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-04 18:07:41
- * @Description: 
+ * @LastEditTime: 2019-12-05 14:39:37
+ * @Description: 更多组件
  -->
 <template>
     <div class="recommend">
@@ -15,9 +15,7 @@
            
             <div class="center">
                 <ul class="center_ul">
-                    <!-- <router-link :to='/Search-page/'> -->
                     <li v-for="(Hedolist,index) in Hedolists" :key="index"  @click="btn_user($event)">{{Hedolist}}</li>
-                    <!-- </router-link> -->
                 </ul>
             </div>
         </div>
@@ -41,6 +39,7 @@ export default {
             this.$router.push({name:'SearchData',query:{a:list}}) 
         }
     }
+    
 }
 </script>
 
@@ -97,5 +96,4 @@ export default {
     font-size: .2rem;
     margin-right: .1rem;
     }
-   
 </style>

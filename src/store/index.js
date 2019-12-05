@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-26 10:57:24
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-04 16:57:28
+ * @LastEditTime: 2019-12-05 09:36:25
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 20:56:20
  * @Description:
@@ -23,7 +23,7 @@ export default new VueX.Store({
         isLogin: false,
         userInfo: {
         },//用户详细信息
-        nowPid: [],
+        // nowPid: [],
         likePidAndNum: [],
         FootShow:[
              false,
@@ -49,39 +49,6 @@ export default new VueX.Store({
         changUserInfo(state, data) {
             state.userInfo = data;
         },
-        // searchers(opop){
-        //     // var mp = this.d
-        //     let typeOpop =  typeof opop;
-        //     if(typeOpop == "string"){
-        //         this.text = opop;
-        //     }
-        //     var t = this.text;
-        //     if(t == "") {
-        //          Toast({
-        //             message: '搜素内容不能为空',
-        //             position: 'bottom',
-        //             duration: 1000
-        //         });
-        //     }else {
-        //          //主题
-        //         //  var t = this.d
-        //          Axios.get("/methe",{params: {id:t}})
-        //         .then(res=>{
-        //             // if(this.yonghu =="用户") {
-        //                 this.methe = res.data;
-        //             // }
-        //         })
-        //         let fun = this.fun
-        //         Axios.get("/RelatedUsers",{params: {id:t}})
-        //         .then(res=>{
-        //             // if(this.yonghu =="用户") {
-        //                 let Result = res.data.splice(0,3);
-        //                 this.$emit("update", Result, t,this.fun,this.methe,)
-        //             // }
-        //         })
-               
-        //     } 
-        // },
         changePidAndLike(state, { id, index }) {
             // 如果下标不存在
             if (index < 0) {
@@ -94,7 +61,6 @@ export default new VueX.Store({
                         let likenum = state.likePidAndNum[i].like;
                         let data = "like=" + likenum;
                         let userdata = "likePostIds=" + state.nowPid;
-
                         // 此处向后端发一下数据增加点赞数
                         Axios.patch(
                             "/postInfo/" + id,

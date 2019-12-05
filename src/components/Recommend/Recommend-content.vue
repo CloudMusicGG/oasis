@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-04 18:45:15
+ * @LastEditTime: 2019-12-05 09:41:53
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-04 18:37:57
  * @LastEditors: roselee
@@ -42,7 +42,7 @@
         </div>
 
       <!-- 这是第一列 -->
-      <div
+      <!-- <div
         class="longBox"
         v-infinite-scroll
         infinite-scroll-disabled="busy"
@@ -64,7 +64,7 @@
           ></span>
           <RecommendInfo :uid="item.uid"></RecommendInfo>
         </div>
-      </div>
+      </div> -->
 
       <!-- 这是第二列content -->
       <div

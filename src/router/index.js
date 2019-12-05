@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 11:44:11
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-04 21:27:48
+ * @LastEditTime: 2019-12-05 14:27:09
  * @Author: roselee
  * @Date: 2019-12-02 17:21:46
  * @LastEditors: roselee
@@ -54,7 +54,7 @@ const router = new Router({
         if(localStorage.getItem("userinfo")){
           next("/");
         }else{
-          next("/regAndLogin");
+          next();
         }
       }
     },
