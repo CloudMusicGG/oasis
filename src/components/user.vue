@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 17:01:29
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 20:56:02
+ * @LastEditTime: 2019-12-04 20:23:19
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 17:35:12
  * @Description: 相关用户组件
@@ -12,9 +12,6 @@
      <div class="CheckIn_w">
          <div class="header">
              <p>{{title}}</p>
-             <p class="More" @click="Mores()">更多></p>
-             <!-- <p>{{tile}}</p> -->
-             <p class="More">更多</p>
          </div>
         <ul class="information">
             <li class="details" v-for="(vs,index) in v" :key="index" >
@@ -58,10 +55,6 @@ export default {
     //     console.log("updated",this.v)
     // },
     methods:{
-         Mores(){
-            // this.na()
-            console.log('123')
-        },
         favor(name) {
             // console.log()
             let index = (this.subscribed).indexOf(name);

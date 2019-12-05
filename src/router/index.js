@@ -1,4 +1,8 @@
 /*
+ * @Author: Eternal
+ * @Date: 2019-11-26 11:44:11
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-05 09:31:19
  * @Author: roselee
  * @Date: 2019-12-02 17:21:46
  * @LastEditors: roselee
@@ -22,20 +26,20 @@ Vue.use(Router)
 
 const router = new Router({
   routes: [
-    {
-      path: '/',
-      redirect:"/Recommend",
-      meta: {
-        requireLogin: true
-      }
-    },
+    // {
+    //   path: '/',
+    //   redirect:"/Recommend",
+    //   meta: {
+    //     requireLogin: true
+    //   }
+    // },
     {
       path: '/Recommend',
       name: 'Recommend',
       component: Recommend,
-      meta: {
-        requireLogin: true
-      }
+      // meta: {
+      //   requireLogin: true
+      // }
     },
     {
       path: '/regAndLogin',
@@ -45,14 +49,14 @@ const router = new Router({
     {
       path: '/loginPage',
       name: 'loginPage',
-      component: loginPage
-      // beforeEnter(to,from,next){
-      //   if(localStorage.getItem("userinfo")){
-      //     next("/");
-      //   }else{
-      //     next("/regAndLogin");
-      //   }
-      // }
+      component: loginPage,
+      beforeEnter(to,from,next){
+        if(localStorage.getItem("userinfo")){
+          next("/");
+        }else{
+          next("/regAndLogin");
+        }
+      }
     },
     {
       path: '/message',
@@ -75,7 +79,14 @@ const router = new Router({
     {
       path: '/Search-page',
       name: 'Search',
-      component: Search
+      component: Search,
+      props:true
+    },
+    {
+      path: '/Search-page/:a',
+      name: 'SearchData',
+      component: Search,
+      props:true
     },
     {
       path: '/Hedo-page',

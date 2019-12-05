@@ -1,8 +1,8 @@
 /*
  * @Author: rosalee
  * @Date: 2019-11-26 10:57:24
- * @LastEditors: roselee
- * @LastEditTime: 2019-12-02 17:57:07
+ * @LastEditors: Eternal
+ * @LastEditTime: 2019-12-04 16:57:28
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 20:56:20
  * @Description:
@@ -16,6 +16,7 @@ Vue.use(VueX)
 
 export default new VueX.Store({
     state: {//存储数据
+        Records:[],
         nowPid: [],//该用户已经点赞的文章的id数组
         likePidAndNum: [],//文章的id和点赞数，组成的对象数组，在pages的Recommend中获取的
         Tel: "123",
@@ -32,6 +33,9 @@ export default new VueX.Store({
         ]
     },
     mutations: {//跟踪状态
+        SearchRecord(state,Records){
+            state.Records = Records
+        },
         changelikePidAndNum(state, likePidAndNum) {
             state.likePidAndNum = likePidAndNum;
         },
@@ -45,29 +49,34 @@ export default new VueX.Store({
         changUserInfo(state, data) {
             state.userInfo = data;
         },
-        // searcher(){
-        //     if(this.text == "") {
+        // searchers(opop){
+        //     // var mp = this.d
+        //     let typeOpop =  typeof opop;
+        //     if(typeOpop == "string"){
+        //         this.text = opop;
+        //     }
+        //     var t = this.text;
+        //     if(t == "") {
         //          Toast({
         //             message: '搜素内容不能为空',
-        //              position: 'bottom',
+        //             position: 'bottom',
         //             duration: 1000
         //         });
         //     }else {
         //          //主题
-        //          var t = this.text
+        //         //  var t = this.d
         //          Axios.get("/methe",{params: {id:t}})
         //         .then(res=>{
         //             // if(this.yonghu =="用户") {
         //                 this.methe = res.data;
         //             // }
-        //         }) 
-                
+        //         })
         //         let fun = this.fun
         //         Axios.get("/RelatedUsers",{params: {id:t}})
         //         .then(res=>{
         //             // if(this.yonghu =="用户") {
         //                 let Result = res.data.splice(0,3);
-        //                 this.$emit("update", Result, t,fun,this.methe)
+        //                 this.$emit("update", Result, t,this.fun,this.methe,)
         //             // }
         //         })
                

@@ -2,6 +2,8 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: roselee
+ * @LastEditTime: 2019-12-05 09:42:10
+ * @LastEditors: roselee
  * @LastEditTime: 2019-12-04 19:31:00
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 20:49:19
@@ -13,7 +15,7 @@
  -->
 <template>
   <div class="ContentBox">
-    <mt-loadmore :bottom-method="loadBottom" :top-method="loadTop"  ref="loadmore">
+    <mt-loadmore :bottom-method="loadBottom" :top-method="loadTop" :bottom-all-loaded="isLoadAll" ref="loadmore">
     <!-- 这是第一列 -->
         <div
           class="longBox"
@@ -40,7 +42,7 @@
         </div>
 
       <!-- 这是第一列 -->
-      <div
+      <!-- <div
         class="longBox"
         v-infinite-scroll
         infinite-scroll-disabled="busy"
@@ -62,7 +64,7 @@
           ></span>
           <RecommendInfo :uid="item.uid"></RecommendInfo>
         </div>
-      </div>
+      </div> -->
 
       <!-- 这是第二列content -->
       <div
@@ -103,7 +105,6 @@ Vue.component("mt-Loadmore", Loadmore);
 export default {
   name: "RecommendContent",
   props: ["type","v"],
-  props: ["type", "v","changeSearch"],
   data() {
     return {
       count: 0,
@@ -116,16 +117,18 @@ export default {
       likePidAndNum: [],
       list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       isLoadAll: false,
-      searchParam: ""
+      searchParam: "推荐"
     };
   },
   created() {
     this.searchParam = this.type;
     if(this.v!=undefined && this.v != ""){
       this.searchParam = this.v;
+      console.log("使用传入的v");
     }
     Axios.get("/userInfo").then(Response => {
-      this.nowPid = Response.data[0].likePostIds.split(",");
+      // console.log(Response.data);
+      this.nowPid = Response.data.likePostIds.split(",");
       this.$store.commit("changeNowPid", this.nowPid);
     });
     Axios.get("/postInfo", { params: { type_like: this.searchParam } }).then(
@@ -133,6 +136,7 @@ export default {
         this.alldata = Response.data;
         this.data = this.alldata.slice(0, 5);
         this.classify(this.data);
+        // console.log(this.alldata);
       }
     );
   },

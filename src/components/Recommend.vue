@@ -2,7 +2,7 @@
  * @Author: Eternal
  * @Date: 2019-11-26 16:08:40
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-02 20:53:16
+ * @LastEditTime: 2019-12-04 19:01:08
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 20:13:10
  * @Description: 最近搜素和搜素推荐组件
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="header">
-                <span class="tuijian" @click="ff" ref="num">"搜索推荐"</span>
+                <span class="tuijian" ref="num">"搜索推荐"</span>
                 <router-link class="More" to="/Hedo-page">更多></router-link>
                 <!-- <span @click="jumpMore()">更多</span> -->
             </div>
@@ -45,7 +45,7 @@ export default {
         return {
             lists:['插画','手绘','杨紫','摄影','早餐','美甲'],
             Recommends:[],
-            isShow:true,
+            isShow:false,
             Records:[],
         }
     },
@@ -54,7 +54,6 @@ export default {
          Axios.get("/Recommend")
         .then(res=>{
              this.Recommends = res.data;
-            //  console.log(this.Recommends)
         })
     },
     methods:{
@@ -63,19 +62,14 @@ export default {
            this. Records=[]
         },
        btn_user (e) {
-        //    console.log(this.fu);
+            let jj = this.$store.commit("SearchRecord",this.Records)
            var d = e.target.innerHTML
-           console.log(this.fu);
-           var d = e.target.innerHTML;
            let index = (this.Records).indexOf(e.target.innerHTML);
            if(index<0){
                this.isShow = true;
                (this.Records).push(e.target.innerHTML);  
            }
            this.fu(d)
-        },
-        ff(){
-            console.log(this.$refs);
         }
     }
 }
