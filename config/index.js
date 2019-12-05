@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-26 10:25:50
  * @LastEditors: roselee
- * @LastEditTime: 2019-12-05 16:13:13
+ * @LastEditTime: 2019-12-05 18:35:32
  * @Description: 
  */
 'use strict'
@@ -19,7 +19,7 @@ module.exports = {
     assetsPublicPath: '/',
     // proxyTable: {
     //   '/api': {
-    //     target: 'http://192.168.43.174:3000',
+    //     target: 'http://localhost:3000',
     //     changeOrigin: true,
     //     pathRewrite: {
     //      	 '^/api': ''

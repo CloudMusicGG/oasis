@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-12-02 17:21:46
  * @LastEditors: roselee
- * @LastEditTime: 2019-12-04 18:31:20
+ * @LastEditTime: 2019-12-05 18:08:00
  * @Description: 
  -->
 <template>
@@ -35,10 +35,10 @@ export default {
       .get("/userInfo")
       .then(response => {
         let data = response.data;
+        // console.log(data);
         this.$store.commit("changUserInfo", data);
       })
       .catch(err => {
-        console.log(err);
       });
   },
   components: {
