@@ -1,8 +1,8 @@
 /*
  * @Author: rosalee
  * @Date: 2019-11-26 10:25:50
- * @LastEditors: rosalee
- * @LastEditTime: 2019-11-26 10:40:52
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-12-05 09:42:30
  * @Description:
  */
 'use strict'
@@ -75,7 +75,7 @@ module.exports = {
       {
         test: /\.scss$/,
         loaders: ["style", "css", "sass"]
-        }
+      }
     ]
   },
   node: {

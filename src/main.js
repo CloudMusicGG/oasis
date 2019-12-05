@@ -1,13 +1,10 @@
 /*
  * @Author: rosalee
  * @Date: 2019-11-26 10:25:50
-<<<<<<< HEAD
- * @LastEditors: roselee
- * @LastEditTime: 2019-12-04 11:54:36
-=======
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-12-05 09:17:31
  * @LastEditors: Please set LastEditors
  * @LastEditTime: 2019-12-03 21:46:13
->>>>>>> liberty
  * @Description: 
  */
 // The Vue build version to load with the `import` command
