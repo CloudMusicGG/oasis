@@ -16,7 +16,6 @@
       v-for="(tab,index) in tabs"
       :label="tab.label"
       :name="tab.name"
-      :tabindex="{index}"
       :key="index"
     >
       <RecommendContent :type="tab.label" id="scrollContent"></RecommendContent>
@@ -100,87 +99,87 @@ export default {
 }
 .navlixi{
 
-.el-tab-pane {
-  padding-left: 0.05rem;
-  padding-right: 0.05rem;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 1rem;
-}
-.el-tabs__nav-scroll {
-  padding-left: 0.2rem;
-  padding-right: 0.2rem;
-}
-.el-tabs__item {
-  &[tabindex="0"] {
+  .el-tab-pane {
+    padding-left: 0.05rem;
+    padding-right: 0.05rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 1rem;
+  }
+  .el-tabs__nav-scroll {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
+  .el-tabs__item {
+    &[tabindex="0"] {
+      font-weight: bolder;
+      font-size: 0.18rem;
+      color: black;
+    }
+  }
+  .el-tabs__item:hover,
+  .el-tabs__item .is-active {
     font-weight: bolder;
     font-size: 0.18rem;
     color: black;
   }
-}
-.el-tabs__item:hover,
-.el-tabs__item .is-active {
-  font-weight: bolder;
-  font-size: 0.18rem;
-  color: black;
-}
-.el-tabs__nav-wrap::after {
-  //去除滚动条，设置滚动条的背景颜色为透明
-  background-color: transparent;
-}
-.el-tabs__nav-prev,
-.el-tabs__nav-next {
-  display: none;
-}
-.el-tabs__nav-wrap.is-scrollable {
-  padding-left: 15px;
-  padding-right: 0px;
-  position: fixed;
-  top: 0;
-}
-.el-tabs__nav-wrap {
-  width: 100%;
-}
-.el-tabs__active-bar {
-  height: 5px;
-  border-radius: 5px;
-}
-.el-tab-pane .el-tabs__item.is-active,
-.el-tabs__item:hover {
-  color: black;
-  font-weight: bolder;
-}
-.el-tabs__header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: white;
-  padding-left: 10px;
-  z-index: 10;
-  &:after {
-    content: "";
-    width: 0.3rem;
-    height: 0.6rem;
-    display: inline-block;
-    position: absolute;
-    right: 0px;
-    top: -10px;
-    z-index: 2;
-    background: linear-gradient(
-      right,
-      rgb(255, 255, 255),
-      rgba(255, 255, 255, 0)
-    );
+  .el-tabs__nav-wrap::after {
+    //去除滚动条，设置滚动条的背景颜色为透明
+    background-color: transparent;
   }
-}
-.is-top:last-child {
-  margin-right: 20px;
-  margin-bottom: 1px;
-}
-.el-tabs__nav-scroll {
-  overflow-x: auto;
-  padding: 0;
-}
-  
+  .el-tabs__nav-prev,
+  .el-tabs__nav-next {
+    display: none;
+  }
+  .el-tabs__nav-wrap.is-scrollable {
+    padding-left: 15px;
+    padding-right: 0px;
+    // position: fixed;
+    // top: 0;
+  }
+  .el-tabs__nav-wrap {
+    width: 100%;
+  }
+  .el-tabs__active-bar {
+    height: 5px;
+    border-radius: 5px;
+  }
+  .el-tab-pane .el-tabs__item.is-active,
+  .el-tabs__item:hover {
+    color: black;
+    font-weight: bolder;
+  }
+  .el-tabs__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    padding-left: 10px;
+    z-index: 10;
+    &:after {
+      content: "";
+      width: 0.3rem;
+      height: 0.6rem;
+      display: inline-block;
+      position: absolute;
+      right: 0px;
+      top: -10px;
+      z-index: 2;
+      background: linear-gradient(
+        right,
+        rgb(255, 255, 255),
+        rgba(255, 255, 255, 0)
+      );
+    }
+  }
+  .is-top:last-child {
+    margin-right: 20px;
+    margin-bottom: 1px;
+  }
+  .el-tabs__nav-scroll {
+    overflow-x: auto;
+    padding: 0;
+  }
+
 }
 </style>

@@ -22,7 +22,6 @@ export default new VueX.Store({
         isLogin: false,
         userInfo: {
         },//用户详细信息
-        nowPid: [],
         likePidAndNum: [],
         FootShow:[
              false,
@@ -60,8 +59,8 @@ export default new VueX.Store({
         //             // if(this.yonghu =="用户") {
         //                 this.methe = res.data;
         //             // }
-        //         }) 
-                
+        //         })
+
         //         let fun = this.fun
         //         Axios.get("/RelatedUsers",{params: {id:t}})
         //         .then(res=>{
@@ -70,8 +69,8 @@ export default new VueX.Store({
         //                 this.$emit("update", Result, t,fun,this.methe)
         //             // }
         //         })
-               
-        //     } 
+
+        //     }
         // },
         changePidAndLike(state, { id, index }) {
             // 如果下标不存在
@@ -148,16 +147,16 @@ export default new VueX.Store({
         updateUserInfo(state,value){
           for(let key in value){
             state.userInfo[key] = value[key];
+            // 此处向后端发请求
+            let data = key+"=" + value[key];
+            Axios.patch(
+                "/userInfo/" + "10001",
+                data,
+                { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
+                .then(response => {
+                  
+                });
           }
-          
-          // 此处向后端发请求
-          // Axios.patch(
-          //     "/userInfo/" + state.userInfo[0].id,
-          //     userdata,
-          //     { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
-          //     .then(response => {
-          //         console.log(response.data);
-          //     });
         }
     },
     actions: {//有异步请求，异步请求完成后，提交mutations

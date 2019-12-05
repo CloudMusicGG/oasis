@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import message from '@/pages/message'
 import mine from '@/pages/mine'
 import upDateInfo from '@/pages/upDateInfo'
+import newFocus from '@/pages/newFocus'
+import newPraises from '@/pages/newPraises'
 import Search from '@/pages/Search-page'
 import Hedopage from '@/pages/Hedo-page'
 import Recommend from '@/pages/Recommend'
@@ -32,6 +34,16 @@ export default new Router({
       path: '/upDateInfo',
       name: 'upDateInfo',
       component: upDateInfo
+    },
+    {
+      path: '/newFocus',
+      name: 'newFocus',
+      component: newFocus
+    },
+    {
+      path: '/newPraises',
+      name: 'newPraises',
+      component: newPraises
     },
     {
       path: '/Search-page',

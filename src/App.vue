@@ -11,8 +11,9 @@ import IndexFooter from "@/components/IndexFooter.vue";
 export default {
   name: 'App',
   created(){
+    let userId = "10001";
     axios
-      .get('/userInfo')
+      .get("/userInfo/"+userId)
       .then((response) => {
         let data = response.data;
         this.$store.commit('changUserInfo', data);

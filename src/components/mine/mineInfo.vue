@@ -21,7 +21,7 @@
     </div>
     <div class="otherBox">
       <p>
-        <span class="num">{{$store.state.userInfo.postNum}}</span>
+        <span class="num">{{postNum}}</span>
         <span class="numType">动态</span>
       </p>
       <p>
@@ -49,6 +49,12 @@ export default {
     }
   },
   computed:{
+    postNum(){
+      if(this.$store.state.userInfo.posts){
+        let postsArr = this.$store.state.userInfo.posts.split(",");
+        return postsArr.length;
+      }
+    },
     ageYear(){
       if(this.$store.state.userInfo.userBir){
         let useryear = this.$store.state.userInfo.userBir.split("-")[0];
