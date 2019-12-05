@@ -1,19 +1,11 @@
-/*
- * @Author: Eternal
- * @Date: 2019-11-26 11:44:11
- * @LastEditors: roselee
- * @LastEditTime: 2019-12-05 16:02:05
- * @Author: roselee
- * @Date: 2019-12-02 17:21:46
- * @LastEditors: roselee
- * @LastEditTime: 2019-12-05 09:25:45
- * @Description: 
- */
+
 import Vue from 'vue'
 import Router from 'vue-router'
 import message from '@/pages/message'
 import mine from '@/pages/mine'
 import upDateInfo from '@/pages/upDateInfo'
+import newFocus from '@/pages/newFocus'
+import newPraises from '@/pages/newPraises'
 import Search from '@/pages/Search-page'
 import Hedopage from '@/pages/Hedo-page'
 import Recommend from '@/pages/Recommend'
@@ -21,19 +13,21 @@ import Article from '@/pages/Article'
 import post from '@/pages/post'
 import loginPage from '@/components/loginPage/loginPage'
 import regAndLogin from '@/components/goLoginPage/regAndLogin'
+import homepage from '@/pages/homepage'
+import commentpage from '@/pages/commentpage'
 
 Vue.use(Router)
 
 
 const router = new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   redirect:"/Recommend",
-    //   meta: {
-    //     requireLogin: true
-    //   }
-    // },
+    {
+      path: '/',
+      redirect:"/homepage",
+      // meta: {
+      //   requireLogin: true
+      // }
+    },
     {
       path: '/Recommend',
       name: 'Recommend',
@@ -83,6 +77,16 @@ const router = new Router({
       component: upDateInfo
     },
     {
+      path: '/newFocus',
+      name: 'newFocus',
+      component: newFocus
+    },
+    {
+      path: '/newPraises',
+      name: 'newPraises',
+      component: newPraises
+    },
+    {
       path: '/Search-page',
       name: 'Search',
       component: Search,
@@ -107,7 +111,19 @@ const router = new Router({
     {
       path: '/Article/:pid',
       name: 'Article',
-      component: Article
+      component: Article,
+      name: 'homepage',
+      component: homepage
+    },
+    {
+      path: '/commentpage',
+      name: 'commentpage',
+      component: commentpage
+    },
+    {
+      path: '/homepage',
+      name: 'homepage',
+      component: homepage
     }
   ]
 })

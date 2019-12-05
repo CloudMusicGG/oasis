@@ -1,18 +1,4 @@
-<!--
- * @Author: roselee
- * @Date: 2019-11-26 17:46:19
- * @LastEditors: roselee
- * @LastEditTime: 2019-12-05 16:20:57
- * @LastEditors: roselee
- * @LastEditTime: 2019-12-04 19:31:00
- * @LastEditors: roselee
- * @LastEditTime: 2019-12-02 20:49:19
- * @LastEditors: roselee
- * @LastEditTime: 2019-11-30 20:45:40
- * @LastEditors: roselee
- * @LastEditTime: 2019-11-29 20:22:45
- * @Description: 
- -->
+
 <template>
   <div class="ContentBox">
     <mt-loadmore :bottom-method="loadBottom" :top-method="loadTop" :bottom-all-loaded="isLoadAll" ref="loadmore">
@@ -41,30 +27,6 @@
           </div>
         </div>
 
-      <!-- 这是第一列 -->
-      <!-- <div
-        class="longBox"
-        v-infinite-scroll
-        infinite-scroll-disabled="busy"
-        infinite-scroll-distance="10"
-        ref="element1"
-      >
-        <div class="itemBox" v-for="item in dataOne" :key="item.index">
-          <router-link :to="'/Article/'+item.id">
-            <div class="imgBox">
-              <img :src="item.pic" alt />
-            </div>
-            <p class="itemTitle">{{item.title}}</p>
-          </router-link>
-          <span class="likeNum">{{likeNum(item.id)}}</span>
-          <span
-            class="icon iconfont"
-            :class='{"icon-xihuan":!isShowLike(item.id),"icon-aixin1":isShowLike(item.id)}'
-            @click="likeIt(item.id)"
-          ></span>
-          <RecommendInfo :uid="item.uid"></RecommendInfo>
-        </div>
-      </div> -->
 
       <!-- 这是第二列content -->
       <div
@@ -104,7 +66,8 @@ import { Loadmore } from "mint-ui";
 Vue.component("mt-Loadmore", Loadmore);
 export default {
   name: "RecommendContent",
-  props: ["type","v"],
+  // props: ["type","v",],
+  props: ["type", "v","changeSearch"],
   data() {
     return {
       count: 0,
@@ -112,7 +75,7 @@ export default {
       alldata: [],
       dataOne: [],
       dataTwo: [],
-      busy: false,
+      // busy: false,
       nowPid: [],
       likePidAndNum: [],
       list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -126,8 +89,7 @@ export default {
       this.searchParam = this.v;
       console.log("使用传入的v");
     }
-    Axios.get("/userInfo").then(Response => {
-      // console.log(Response.data);
+    Axios.get("/userInfo/"+"10001").then(Response => {
       this.nowPid = Response.data.likePostIds.split(",");
       this.$store.commit("changeNowPid", this.nowPid);
     });
@@ -146,7 +108,7 @@ export default {
     this.likePidAndNum = this.$store.state.likePidAndNum;
   },
   watch:{
-    v:function(a,b){  
+    v:function(a,b){
       Axios.get("/postInfo", { params: { type_like: a } }).then(
         Response => {
           this.alldata = Response.data;
@@ -154,7 +116,7 @@ export default {
           this.classify(this.data);
         }
       );
-    } 
+    }
   },
   methods: {
     // loadMore: function() {

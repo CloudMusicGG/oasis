@@ -1,8 +1,8 @@
 /*
- * @Author: rosalee
- * @Date: 2019-11-26 10:25:50
+ * @Author: roselee
+ * @Date: 2019-12-05 20:27:24
  * @LastEditors: roselee
- * @LastEditTime: 2019-12-05 18:35:32
+ * @LastEditTime: 2019-12-05 20:45:46
  * @Description: 
  */
 'use strict'
@@ -28,8 +28,8 @@ module.exports = {
     // },
 
     // Various Dev Server settings
-    host: '192.168.43.174', // can be overwritten by process.env.HOST
-    // host: 'localhost', // can be overwritten by process.env.HOST
+    // host: '192.168.43.174', // can be overwritten by process.env.HOST
+    host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

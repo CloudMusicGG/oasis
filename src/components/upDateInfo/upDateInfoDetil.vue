@@ -160,17 +160,15 @@ export default {
       this.drawerBir = false;
     },
     changeCity(){
-      if(this.myCity != this.$store.state.userInfo.usercity){
+      if(this.myCity&&this.myCity != this.$store.state.userInfo.usercity){
         let a = {usercity:this.myCity}
         this.$store.commit('updateUserInfo', a);
       }
       this.drawerCity = false;
     },
+    //！！！！！！！！！！！选择城市后执行的函数
     onSelected(a){
-      console.log(a.province.value);
-      console.log(a.city.value);
       this.myCity = a.province.value+" "+a.city.value;
-      a = {}
     }
   }
 

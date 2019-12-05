@@ -1,17 +1,21 @@
 <template>
   <div class="nav">
 
-    <div class="navBox">
-      <i class="iconfont icon1">&#xe76a;</i>
-      <span>新关注</span>
-      <i class="iconfont icon2">&#xe77c;</i>
-    </div>
+    <router-link to="/newFocus" class="navBox">
+      <div>
+        <i class="iconfont icon1">&#xe76a;</i>
+        <span>新关注</span>
+        <i class="iconfont icon2">&#xe77c;</i>
+      </div>
+    </router-link>
 
-    <div class="navBox">
-      <i class="iconfont icon1">&#xe777;</i>
-      <span>你被赞了</span>
-      <i class="iconfont icon2">&#xe77c;</i>
-    </div>
+    <router-link to="/newPraises" class="navBox">
+      <div>
+        <i class="iconfont icon1">&#xe777;</i>
+        <span>你被赞了</span>
+        <i class="iconfont icon2">&#xe77c;</i>
+      </div>
+    </router-link>
 
   </div>
 </template>

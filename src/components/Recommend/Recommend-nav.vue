@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-14 19:40:10
  * @LastEditors: roselee
- * @LastEditTime: 2019-12-05 17:43:02
+ * @LastEditTime: 2019-12-05 20:48:55
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 17:08:38
  * @LastEditors: roselee
@@ -10,7 +10,7 @@
  * @Description: 这是推荐页面的tab导航栏
  -->
 <template>
-  <el-tabs v-model="activeName" @tab-click="handleClick" id="navlixi" >
+  <el-tabs v-model="activeName" @tab-click="handleClick" id="navlixi">
     <el-tab-pane
       class="nav_top"
       v-for="(tab,index) in tabs"
@@ -96,21 +96,27 @@ export default {
   height: 100%;
   overflow-y: scroll;
 }
-#navlixi{
-
-.el-tab-pane {
-  padding-left: 0.05rem;
-  padding-right: 0.05rem;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 1rem;
-}
-.el-tabs__nav-scroll {
-  padding-left: 0.2rem;
-  padding-right: 0.2rem;
-}
-.el-tabs__item {
-  &[tabindex="0"] {
+#navlixi {
+  .el-tab-pane {
+    padding-left: 0.05rem;
+    padding-right: 0.05rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 1rem;
+  }
+  .el-tabs__nav-scroll {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
+  .el-tabs__item {
+    &[tabindex="0"] {
+      font-weight: bolder;
+      font-size: 0.18rem;
+      color: black;
+    }
+  }
+  .el-tabs__item:hover,
+  .el-tabs__item .is-active {
     font-weight: bolder;
     font-size: 0.18rem;
     color: black;
@@ -191,6 +197,5 @@ export default {
   overflow-x: auto;
   padding: 0;
 }
-  
-}
+
 </style>

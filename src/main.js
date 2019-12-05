@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-26 10:25:50
  * @LastEditors: roselee
- * @LastEditTime: 2019-12-05 18:45:19
+ * @LastEditTime: 2019-12-05 20:46:13
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-04 11:54:36
  * @Description: 
@@ -18,10 +18,11 @@ import MintUI from 'mint-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'mint-ui/lib/style.css'
 import store from './store'
+import './assets/iconfont/iconfont.css';
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // require styles
-import 'swiper/dist/css/swiper.css'
+import 'swiper/css/swiper.css'
 
 Vue.use(VueAwesomeSwiper)
 
@@ -29,7 +30,8 @@ Vue.use(ElementUI);
 Vue.use(MintUI);
 
 // Axios.defaults.baseURL = '/api/'; //把axios的请求基本路径改为api，以后就不需要在每个axios请求里写api
-Axios.defaults.baseURL = 'http://192.168.43.174:3000'; //把axios的请求基本路径改为api，以后就不需要在每个axios请求里写api
+Axios.defaults.baseURL = 'http://localhost:3000'; //把axios的请求基本路径改为api，以后就不需要在每个axios请求里写api
+// Axios.defaults.baseURL = 'http://192.168.43.174:3000'; //把axios的请求基本路径改为api，以后就不需要在每个axios请求里写api
 
 
 Vue.config.productionTip = false

@@ -29,7 +29,7 @@
       "title": "hahahahahahahahahahahhah,啦啦啦啦啦啦啦啦",
       "details": "这是一些细节信息",
       "author": "Jenny",
-      "like": "23",
+      "like": "22",
       "type": [
         "推荐",
         "明星",
@@ -47,7 +47,7 @@
       "title": "hahaha",
       "details": "这是一些细节信息",
       "author": "Jenny",
-      "like": "22",
+      "like": "29",
       "type": [
         "推荐",
         "二次元",
@@ -437,19 +437,22 @@
       "City": "70后 台湾"
     }
   ],
-  "userInfo":{
-	  "username":"SaoDaWangGG",
-	  "id":"5063555554",
-	  "headUrl":"static/img/lili.jpg",
-	  "usersig":"Hahahaha!",
-	  "usersex":"男",
-	  "userBir":"1997-3-22",
-	  "usercity":"陕西省 西安市",
-	  "postNum":1,
-	  "fansNum":5000,
-	  "likeNum":36,
-    "likePostIds":"00001,00002"
-  },
+  "userInfo": [
+    {
+      "username": "SaoDaWangGG",
+      "id": "10001",
+      "headUrl": "static/img/lili.jpg",
+      "usersig": "Hahahaha!",
+      "usersex": "男",
+      "userBir": "2019-12-2",
+      "usercity": "陕西省 西安市",
+      "posts": "00001,00005,00006,00007,00078,00082,00068,00012,00002",
+      "fansNum": 5000,
+      "likeNum": 36,
+      "likePostIds": "00001,00002",
+      "foucsId":"10002"
+    }
+  ],
   "RelatedUsers": [
     {
       "id": "插画",
@@ -704,6 +707,668 @@
       "img": "static/img/pic(methe).jpg",
       "name": "绘画",
       "dynamic": "7183"
+    }
+  ],
+  "imgs": [
+    {
+      "id": "00024",
+      "userid": "10001",
+      "headerimg": "static/img/headerimg1.jpg",
+      "name": "呆萌美食日记",
+      "time": "2019-12-3  10:00",
+      "place": "北京（中国红街店）",
+      "imgs1": [
+        "static/img/meishi1.jpg",
+        "static/img/meishi2.jpg",
+        "static/img/meishi3.jpg"
+      ],
+      "biaoti": "美食|健康减脂晚餐，酸奶燕麦碗",
+      "desc": "肉肉固然好吃，但不能每天吃呀~~今天晚餐就健健康康吃个酸奶燕麦，美美哒",
+      "theme": "晚餐打卡",
+      "commentsnum": 16,
+      "comments": [
+        {
+          "id": "001",
+          "username": "花花",
+          "headerimg": "static/img/headerimg4.jpg",
+          "neirong": "你好呀",
+          "time": "2019-12-04  14:25:46",
+          "speak": []
+        },
+        {
+          "id": "004",
+          "username": "大花",
+          "headerimg": "static/img/headerimg1.jpg",
+          "neirong": "看看你的图就满足了",
+          "time": "2019-12-3  12:00",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "你也是",
+              "time": "2019-12-4  13:30",
+              "aita": "狼人"
+            },
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "真棒",
+              "time": "2019-12-4  08:10",
+              "aita": "大白"
+            },
+            {
+              "from": "002",
+              "username": "大白",
+              "headerimg": "static/img/headerimg2.jpg",
+              "neirong": "看看你的图就满足了",
+              "time": "2019-12-3  22:10",
+              "aita": ""
+            }
+          ]
+        },
+        {
+          "id": "002",
+          "username": "DJ浪漫舞曲",
+          "headerimg": "static/img/headerimg2.jpg",
+          "neirong": "真的很好看",
+          "time": "2019-12-3  19:10",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg1.jpg",
+              "neirong": "谢谢",
+              "time": "2019-12-3  20:10",
+              "aita": ""
+            }
+          ]
+        },
+        {
+          "id": "003",
+          "username": "狼人",
+          "headerimg": "static/img/headerimg3.jpg",
+          "neirong": "好喜欢你呀",
+          "time": "2019-12-4  03:10",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "哈哈哈",
+              "time": "2019-12-4  12:10",
+              "aita": ""
+            }
+          ]
+        }
+      ],
+      "zaned": "static/img/headerimg4.jpg,static/img/headerimg5.jpg,static/img/headerimg4.jpg"
+    },
+    {
+      "id": "00025",
+      "userid": "10001",
+      "headerimg": "static/img/headerimg2.jpg",
+      "name": "呆萌美食日记",
+      "time": "2019-12-3  09:00",
+      "place": "北京（中国红街店）",
+      "imgs1": [
+        "static/img/fengjingimg1.jpg",
+        "static/img/fengjingimg2.jpg",
+        "static/img/fengjingimg3.jpg"
+      ],
+      "biaoti": "美食|健康减脂晚餐，酸奶燕麦碗",
+      "desc": "肉肉固然好吃，但不能每天吃呀~~今天晚餐就健健康康吃个酸奶燕麦，美美哒肉肉固然好吃，但不能每天吃呀~~今天晚餐就健健康康吃个酸奶燕麦，美美哒",
+      "theme": "晚餐打卡",
+      "commentsnum": 8,
+      "comments": [
+        {
+          "id": "004",
+          "username": "大花",
+          "headerimg": "static/img/headerimg1.jpg",
+          "neirong": "看看你的图就满足了",
+          "time": "2019-12-3  12:00",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "你也是",
+              "time": "2019-12-4  13:30",
+              "aita": "狼人"
+            },
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "真棒",
+              "time": "2019-12-4  08:10",
+              "aita": "大白"
+            },
+            {
+              "from": "002",
+              "username": "大白",
+              "headerimg": "static/img/headerimg2.jpg",
+              "neirong": "看看你的图就满足了",
+              "time": "2019-12-3  22:10",
+              "aita": ""
+            },
+            {
+              "from": "003",
+              "username": "狼人",
+              "headerimg": "static/img/headerimg3.jpg",
+              "neirong": "好棒",
+              "time": "2019-12-3  18:10",
+              "aita": "大白"
+            }
+          ]
+        },
+        {
+          "id": "002",
+          "username": "DJ浪漫舞曲",
+          "headerimg": "static/img/headerimg2.jpg",
+          "neirong": "真的很好看",
+          "time": "2019-12-3  19:10",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg1.jpg",
+              "neirong": "谢谢",
+              "time": "2019-12-3  20:10",
+              "aita": ""
+            }
+          ]
+        },
+        {
+          "id": "003",
+          "username": "狼人",
+          "headerimg": "static/img/headerimg3.jpg",
+          "neirong": "好喜欢你呀",
+          "time": "2019-12-4  03:10",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "哈哈哈",
+              "time": "2019-12-4  12:10",
+              "aita": ""
+            }
+          ]
+        }
+      ],
+      "zaned": "static/img/headerimg4.jpg,static/img/headerimg4.jpg"
+    },
+    {
+      "id": "00026",
+      "userid": "10002",
+      "headerimg": "static/img/headerimg3.jpg",
+      "name": "呆萌美",
+      "time": "2019-12-3  09:00",
+      "place": "北京（中国红街店）",
+      "imgs1": [
+        "static/img/meishi1.jpg",
+        "static/img/meishi2.jpg",
+        "static/img/meishi3.jpg"
+      ],
+      "biaoti": "美食|健康减脂晚餐，酸奶燕麦碗",
+      "desc": "肉肉固然好吃",
+      "theme": "晚餐打卡",
+      "commentsnum": "6",
+      "comments": [
+        {
+          "id": "004",
+          "username": "大花",
+          "headerimg": "static/img/headerimg1.jpg",
+          "neirong": "看看你的图就满足了",
+          "time": "2019-12-3  12:00",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "你也是",
+              "time": "2019-12-4  13:30",
+              "aita": "狼人"
+            },
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "真棒",
+              "time": "2019-12-4  08:10",
+              "aita": "大白"
+            },
+            {
+              "from": "002",
+              "username": "大白",
+              "headerimg": "static/img/headerimg2.jpg",
+              "neirong": "看看你的图就满足了",
+              "time": "2019-12-3  22:10",
+              "aita": ""
+            },
+            {
+              "from": "003",
+              "username": "狼人",
+              "headerimg": "static/img/headerimg3.jpg",
+              "neirong": "好棒",
+              "time": "2019-12-3  18:10",
+              "aita": "大白"
+            }
+          ]
+        },
+        {
+          "id": "002",
+          "username": "DJ浪漫舞曲",
+          "headerimg": "static/img/headerimg2.jpg",
+          "neirong": "真的很好看",
+          "time": "2019-12-3  19:10",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg1.jpg",
+              "neirong": "谢谢",
+              "time": "2019-12-3  20:10",
+              "aita": ""
+            }
+          ]
+        },
+        {
+          "id": "003",
+          "username": "狼人",
+          "headerimg": "static/img/headerimg3.jpg",
+          "neirong": "好喜欢你呀",
+          "time": "2019-12-4  03:10",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "哈哈哈",
+              "time": "2019-12-4  12:10",
+              "aita": ""
+            }
+          ]
+        }
+      ],
+      "zaned": "static/img/headerimg4.jpg,static/img/headerimg4.jpg"
+    },
+    {
+      "id": "00027",
+      "userid": "10003",
+      "headerimg": "static/img/headerimg3.jpg",
+      "name": "呆萌",
+      "time": "2019-12-3  10:00",
+      "place": "北京（中国红街店）",
+      "imgs1": [
+        "static/img/meishi1.jpg",
+        "static/img/meishi2.jpg",
+        "static/img/meishi3.jpg"
+      ],
+      "biaoti": "美食|健康减脂晚餐，酸奶燕麦碗",
+      "desc": "肉肉固然好吃，但不能每天吃呀~~今天晚餐就健健康康吃个酸奶燕麦，美美哒",
+      "theme": "晚餐打卡",
+      "commentsnum": 11,
+      "comments": [
+        {
+          "id": "001",
+          "username": "花花",
+          "headerimg": "static/img/headerimg4.jpg",
+          "neirong": "#撇嘴;#撇嘴;难受",
+          "time": "2019-12-04  16:25:47",
+          "speak": []
+        },
+        {
+          "id": "001",
+          "username": "花花",
+          "headerimg": "static/img/headerimg4.jpg",
+          "neirong": "#流泪;#流泪;",
+          "time": "2019-12-04  16:22:39",
+          "speak": []
+        },
+        {
+          "id": "001",
+          "username": "花花",
+          "headerimg": "static/img/headerimg4.jpg",
+          "neirong": "#色;",
+          "time": "2019-12-04  16:20:57",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "#流泪;#流泪;",
+              "time": "2019-12-04  16:22:39",
+              "aita": ""
+            }
+          ]
+        },
+        {
+          "id": "001",
+          "username": "花花",
+          "headerimg": "static/img/headerimg4.jpg",
+          "neirong": "哈哈哈",
+          "time": "2019-12-04  15:03:40",
+          "speak": []
+        },
+        {
+          "id": "001",
+          "username": "花花",
+          "headerimg": "static/img/headerimg4.jpg",
+          "neirong": "真好",
+          "time": "2019-12-04  15:02:08",
+          "speak": []
+        },
+        {
+          "id": "001",
+          "username": "花花",
+          "headerimg": "static/img/headerimg4.jpg",
+          "neirong": "你好呀",
+          "time": "2019-12-04  15:01:51",
+          "speak": []
+        },
+        {
+          "id": "001",
+          "username": "花花",
+          "headerimg": "static/img/headerimg4.jpg",
+          "neirong": "你好呀",
+          "time": "2019-12-04  14:25:46",
+          "speak": []
+        },
+        {
+          "id": "004",
+          "username": "大花",
+          "headerimg": "static/img/headerimg1.jpg",
+          "neirong": "看看你的图就满足了",
+          "time": "2019-12-3  12:00",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "真好",
+              "time": "2019-12-04  15:02:08",
+              "aita": "大白"
+            },
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "你也是",
+              "time": "2019-12-4  13:30",
+              "aita": "狼人"
+            },
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "真棒",
+              "time": "2019-12-4  08:10",
+              "aita": "大白"
+            },
+            {
+              "from": "002",
+              "username": "大白",
+              "headerimg": "static/img/headerimg2.jpg",
+              "neirong": "看看你的图就满足了",
+              "time": "2019-12-3  22:10",
+              "aita": ""
+            },
+            {
+              "from": "003",
+              "username": "狼人",
+              "headerimg": "static/img/headerimg3.jpg",
+              "neirong": "好棒",
+              "time": "2019-12-3  18:10",
+              "aita": "大白"
+            }
+          ]
+        },
+        {
+          "id": "002",
+          "username": "DJ浪漫舞曲",
+          "headerimg": "static/img/headerimg2.jpg",
+          "neirong": "真的很好看",
+          "time": "2019-12-3  19:10",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg1.jpg",
+              "neirong": "谢谢",
+              "time": "2019-12-3  20:10",
+              "aita": ""
+            }
+          ]
+        },
+        {
+          "id": "003",
+          "username": "狼人",
+          "headerimg": "static/img/headerimg3.jpg",
+          "neirong": "好喜欢你呀",
+          "time": "2019-12-4  03:10",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "哈哈哈",
+              "time": "2019-12-4  12:10",
+              "aita": ""
+            }
+          ]
+        }
+      ],
+      "zaned": "static/img/headerimg5.jpg,static/img/headerimg4.jpg,static/img/headerimg4.jpg"
+    },
+    {
+      "id": "00028",
+      "userid": "10004",
+      "headerimg": "static/img/headerimg2.jpg",
+      "name": "美食",
+      "time": "2019-12-3  09:00",
+      "place": "北京（中国红街店）",
+      "imgs1": [
+        "static/img/fengjingimg1.jpg",
+        "static/img/fengjingimg2.jpg",
+        "static/img/fengjingimg3.jpg"
+      ],
+      "biaoti": "美食|健康减脂晚餐，酸奶燕麦碗",
+      "desc": "肉肉固然好吃，但不能每天吃呀~~今天晚餐就健健康康吃个酸奶燕麦，美美哒肉肉固然好吃，但不能每天吃呀~~今天晚餐就健健康康吃个酸奶燕麦，美美哒",
+      "theme": "晚餐打卡",
+      "commentsnum": 8,
+      "comments": [
+        {
+          "id": "004",
+          "username": "大花",
+          "headerimg": "static/img/headerimg1.jpg",
+          "neirong": "看看你的图就满足了",
+          "time": "2019-12-3  12:00",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "你也是",
+              "time": "2019-12-4  13:30",
+              "aita": "狼人"
+            },
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "真棒",
+              "time": "2019-12-4  08:10",
+              "aita": "大白"
+            },
+            {
+              "from": "002",
+              "username": "大白",
+              "headerimg": "static/img/headerimg2.jpg",
+              "neirong": "看看你的图就满足了",
+              "time": "2019-12-3  22:10",
+              "aita": ""
+            },
+            {
+              "from": "003",
+              "username": "狼人",
+              "headerimg": "static/img/headerimg3.jpg",
+              "neirong": "好棒",
+              "time": "2019-12-3  18:10",
+              "aita": "大白"
+            }
+          ]
+        },
+        {
+          "id": "002",
+          "username": "DJ浪漫舞曲",
+          "headerimg": "static/img/headerimg2.jpg",
+          "neirong": "真的很好看",
+          "time": "2019-12-3  19:10",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg1.jpg",
+              "neirong": "谢谢",
+              "time": "2019-12-3  20:10",
+              "aita": ""
+            }
+          ]
+        },
+        {
+          "id": "003",
+          "username": "狼人",
+          "headerimg": "static/img/headerimg3.jpg",
+          "neirong": "好喜欢你呀",
+          "time": "2019-12-4  03:10",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "哈哈哈",
+              "time": "2019-12-4  12:10",
+              "aita": ""
+            }
+          ]
+        }
+      ],
+      "zaned": "static/img/headerimg4.jpg,static/img/headerimg4.jpg"
+    },
+    {
+      "id": "00029",
+      "userid": "10002",
+      "headerimg": "static/img/headerimg3.jpg",
+      "name": "呆萌美",
+      "time": "2019-12-3  09:00",
+      "place": "北京（中国红街店）",
+      "imgs1": [
+        "static/img/meishi1.jpg",
+        "static/img/meishi2.jpg",
+        "static/img/meishi3.jpg"
+      ],
+      "biaoti": "美食|健康减脂晚餐，酸奶燕麦碗",
+      "desc": "肉肉固然好吃",
+      "theme": "晚餐打卡",
+      "commentsnum": "6",
+      "comments": [
+        {
+          "id": "004",
+          "username": "大花",
+          "headerimg": "static/img/headerimg1.jpg",
+          "neirong": "看看你的图就满足了",
+          "time": "2019-12-3  12:00",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "你也是",
+              "time": "2019-12-4  13:30",
+              "aita": "狼人"
+            },
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "真棒",
+              "time": "2019-12-4  08:10",
+              "aita": "大白"
+            },
+            {
+              "from": "002",
+              "username": "大白",
+              "headerimg": "static/img/headerimg2.jpg",
+              "neirong": "看看你的图就满足了",
+              "time": "2019-12-3  22:10",
+              "aita": ""
+            },
+            {
+              "from": "003",
+              "username": "狼人",
+              "headerimg": "static/img/headerimg3.jpg",
+              "neirong": "好棒",
+              "time": "2019-12-3  18:10",
+              "aita": "大白"
+            }
+          ]
+        },
+        {
+          "id": "002",
+          "username": "DJ浪漫舞曲",
+          "headerimg": "static/img/headerimg2.jpg",
+          "neirong": "真的很好看",
+          "time": "2019-12-3  19:10",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg1.jpg",
+              "neirong": "谢谢",
+              "time": "2019-12-3  20:10",
+              "aita": ""
+            }
+          ]
+        },
+        {
+          "id": "003",
+          "username": "狼人",
+          "headerimg": "static/img/headerimg3.jpg",
+          "neirong": "好喜欢你呀",
+          "time": "2019-12-4  03:10",
+          "speak": [
+            {
+              "from": "001",
+              "username": "花花",
+              "headerimg": "static/img/headerimg4.jpg",
+              "neirong": "哈哈哈",
+              "time": "2019-12-4  12:10",
+              "aita": ""
+            }
+          ]
+        }
+      ],
+      "zaned": "static/img/headerimg4.jpg,static/img/headerimg4.jpg"
+    }
+  ],
+  "username": [
+    {
+      "id": "001",
+      "name": "花花",
+      "zan": ""
+    },
+    {
+      "id": "002",
+      "name": "大白",
+      "zan": ""
+    },
+    {
+      "id": "003",
+      "name": "小黑",
+      "zan": ""
     }
   ]
 }
