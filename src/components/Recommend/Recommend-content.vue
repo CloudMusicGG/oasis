@@ -1,41 +1,38 @@
 
 <template>
+<div>
   <div class="ContentBox">
-    <mt-loadmore :bottom-method="loadBottom" :top-method="loadTop" :bottom-all-loaded="isLoadAll" ref="loadmore">
-    <!-- 这是第一列 -->
-        <div
-          class="longBox"
-          v-infinite-scroll
-          infinite-scroll-disabled="busy"
-          infinite-scroll-distance="10"
-          ref="element1"
-        >
-          <div class="itemBox" v-for="item in dataOne" :key="item.index">
-            <router-link :to="'/Article/'+item.id">
-              <div class="imgBox">
-                <img :src="item.pic" alt />
-              </div>
-              <p class="itemTitle">{{item.title}}</p>
-            </router-link>
-            <span class="likeNum">{{likeNum(item.id)}}</span>
-            <span
-              class="icon iconfont"
-              :class='{"icon-xihuan":!isShowLike(item.id),"icon-aixin1":isShowLike(item.id)}'
-              @click="likeIt(item.id)"
-            ></span>
-            <RecommendInfo :uid="item.uid"></RecommendInfo>
-          </div>
+    <mt-loadmore
+      :bottom-method="loadBottom"
+      :scrollMode="scrollMode"
+      :topDistance="distance"
+      :bottomDistance="distance"
+      :autoFill="isFill"
+      :top-method="loadTop"
+      :bottom-all-loaded="isLoadAll"
+      ref="loadmore"
+    >
+      <!-- 这是第一列 -->
+      <div class="longBox" ref="element1">
+        <div class="itemBox" v-for="item in dataOne" :key="item.index">
+          <router-link :to="'/Article/'+item.id">
+            <div class="imgBox">
+              <img :src="item.pic" alt />
+            </div>
+            <p class="itemTitle">{{item.title}}</p>
+          </router-link>
+          <span class="likeNum">{{likeNum(item.id)}}</span>
+          <span
+            class="icon iconfont"
+            :class='{"icon-xihuan":!isShowLike(item.id),"icon-aixin1":isShowLike(item.id)}'
+            @click="likeIt(item.id)"
+          ></span>
+          <RecommendInfo :uid="item.uid"></RecommendInfo>
         </div>
-
+      </div>
 
       <!-- 这是第二列content -->
-      <div
-        class="longBox longBox_right"
-        v-infinite-scroll
-        infinite-scroll-disabled="busy"
-        infinite-scroll-distance="10"
-        ref="element2"
-      >
+      <div class="longBox longBox_right" ref="element2">
         <div class="itemBox" v-for="item in dataTwo" :key="item.index">
           <router-link :to="'/Article/'+item.id">
             <div class="imgBox">
@@ -54,10 +51,11 @@
       </div>
     </mt-loadmore>
   </div>
+</div>
 </template>
 
 <script>
-import { InfiniteScroll } from "element-ui";
+// import { InfiniteScroll } from "element-ui";
 import Axios from "axios";
 import RecommendInfo from "@/components/Recommend/Recommend-info";
 import Vue from "vue";
@@ -67,7 +65,7 @@ Vue.component("mt-Loadmore", Loadmore);
 export default {
   name: "RecommendContent",
   // props: ["type","v",],
-  props: ["type", "v","changeSearch"],
+  props: ["type", "v", "changeSearch"],
   data() {
     return {
       count: 0,
@@ -80,16 +78,20 @@ export default {
       likePidAndNum: [],
       list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       isLoadAll: false,
-      searchParam: "推荐"
+      searchParam: "推荐",
+      isFill: true,
+      distance: 70,
+      scrollMode: "touch"
+      // busy:false
     };
   },
   created() {
     this.searchParam = this.type;
-    if(this.v!=undefined && this.v != ""){
+    if (this.v != undefined && this.v != "") {
       this.searchParam = this.v;
       console.log("使用传入的v");
     }
-    Axios.get("/userInfo/"+"10001").then(Response => {
+    Axios.get("/userInfo/" + "10001").then(Response => {
       this.nowPid = Response.data.likePostIds.split(",");
       this.$store.commit("changeNowPid", this.nowPid);
     });
@@ -107,15 +109,13 @@ export default {
     this.nowPid = this.$store.state.nowPid;
     this.likePidAndNum = this.$store.state.likePidAndNum;
   },
-  watch:{
-    v:function(a,b){
-      Axios.get("/postInfo", { params: { type_like: a } }).then(
-        Response => {
-          this.alldata = Response.data;
-          this.data = this.alldata.slice(0, 5);
-          this.classify(this.data);
-        }
-      );
+  watch: {
+    v: function(a, b) {
+      Axios.get("/postInfo", { params: { type_like: a } }).then(Response => {
+        this.alldata = Response.data;
+        this.data = this.alldata.slice(0, 5);
+        this.classify(this.data);
+      });
     }
   },
   methods: {
@@ -139,9 +139,13 @@ export default {
      */
 
     loadTop() {
-      this.data = this.alldata.slice(4, 10);
-      this.$refs.loadmore.onTopLoaded();
-      this.classify(this.data);
+      setTimeout(() => {
+        this.data = this.alldata.slice(4, 10);
+        this.$refs.loadmore.onTopLoaded();
+        this.scrollTop = this.scrollTop-100
+        // console.log(this.scrollTop)
+        this.classify(this.data);
+      }, 1000)
     },
 
     /**
@@ -154,9 +158,15 @@ export default {
       //   this.isLoadAll = true;
       // }
       // if (!this.isLoadAll) {
+    setTimeout(() => {
       this.data = this.alldata.slice(4, 10);
-      this.$refs.loadmore.onBottomLoaded();
       this.classify(this.data);
+      // this.scrollTop += 200
+      // console.log(this.scrollTop)
+      this.$refs.loadmore.onBottomLoaded()
+    }, 1000)
+      
+      // this.$refs.loadmore.onBottomLoaded();
       // this.$refs.loadmore.onTopLoaded();
       // }else{
       //   console.log("已加载全部");
@@ -227,78 +237,83 @@ export default {
     RecommendInfo
   },
   computed: {},
-  beforeUpdate() {
-
-  }
+  beforeUpdate() {}
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import url(../../assets/font/iconfont.css);
 .ContentBox {
-  // overflow: hidden;
+  // overflow: hidden;z
   overflow-y: scroll;
-}
-.itemBox {
-  position: relative;
-  width: 100%;
-  .imgBox {
-    width: 98%;
-    // height: 2rem;
-    text-align: center;
-    border-radius: 10px;
-    margin: 0.1rem auto;
-    margin-bottom: 0;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  .mint-loadmore-content {
+    height: 100%;
+    overflow-y: scroll;
   }
-}
 
-.longBox,
-.longBox_right {
-  width: 50%;
-  float: left;
-  text-align: center;
-  box-sizing: border-box;
-}
-.longBox_right {
-  float: right;
-}
-img {
-  width: 100%;
-  border-radius: 10px;
-  display: block;
-}
-.itemTitle {
-  text-align: left;
-  max-height: 0.5rem;
-  line-height: 0.25rem;
-  overflow: hidden;
-  overflow-wrap: break-word;
-  -webkit-line-clamp: 2;
-  text-overflow: -o-ellipsis-lastline;
-  /* text-overflow: ellipsis; */
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-  padding-left: 8px;
-  font-weight: bolder;
-  font-size: 0.13rem;
-  letter-spacing: 1px;
-}
-.icon-xihuan,
-.icon-aixin1,
-.likeNum {
-  position: absolute;
-  bottom: 0;
-  right: 10px;
-  color: gray;
-}
-.icon-aixin1 {
-  color: red;
-}
-.likeNum {
-  right: 30px;
-  bottom: 2px;
-  font-size: 0.12rem;
-  color: gray;
+  .itemBox {
+    position: relative;
+    width: 100%;
+    .imgBox {
+      width: 98%;
+      // height: 2rem;
+      text-align: center;
+      border-radius: 10px;
+      margin: 0.1rem auto;
+      margin-bottom: 0;
+    }
+  }
+
+  .longBox,
+  .longBox_right {
+    width: 50%;
+    float: left;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .longBox_right {
+    float: right;
+  }
+  img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+  }
+  .itemTitle {
+    text-align: left;
+    max-height: 0.5rem;
+    line-height: 0.25rem;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    -webkit-line-clamp: 2;
+    text-overflow: -o-ellipsis-lastline;
+    /* text-overflow: ellipsis; */
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding-left: 8px;
+    font-weight: bolder;
+    font-size: 0.13rem;
+    letter-spacing: 1px;
+  }
+  .icon-xihuan,
+  .icon-aixin1,
+  .likeNum {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    color: gray;
+  }
+  .icon-aixin1 {
+    color: red;
+  }
+  .likeNum {
+    right: 30px;
+    bottom: 2px;
+    font-size: 0.12rem;
+    color: gray;
+  }
 }
 </style>
