@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: roselee
- * @LastEditTime: 2019-12-04 18:37:57
+ * @LastEditTime: 2019-12-04 19:31:00
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 20:49:19
  * @LastEditors: roselee
@@ -13,8 +13,7 @@
  -->
 <template>
   <div class="ContentBox">
-    {{flag}}
-    <mt-loadmore :bottom-method="loadBottom" :top-method="loadTop" :bottom-all-loaded="isLoadAll" ref="loadmore">
+    <mt-loadmore :bottom-method="loadBottom" :top-method="loadTop"  ref="loadmore">
     <!-- 这是第一列 -->
         <div
           class="longBox"
@@ -103,7 +102,7 @@ import { Loadmore } from "mint-ui";
 Vue.component("mt-Loadmore", Loadmore);
 export default {
   name: "RecommendContent",
-  props: ["type","v",'flag'],
+  props: ["type","v"],
   props: ["type", "v","changeSearch"],
   data() {
     return {
