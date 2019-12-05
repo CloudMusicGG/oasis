@@ -2,11 +2,13 @@
  * @Author: Eternal
  * @Date: 2019-11-26 11:44:11
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-05 14:27:09
+ * @LastEditTime: 2019-12-05 15:09:11
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-05 09:31:19
  * @Author: roselee
  * @Date: 2019-12-02 17:21:46
  * @LastEditors: roselee
- * @LastEditTime: 2019-12-04 17:06:35
+ * @LastEditTime: 2019-12-05 09:25:45
  * @Description: 
  */
 import Vue from 'vue'
@@ -29,17 +31,17 @@ const router = new Router({
     {
       path: '/',
       redirect:"/Recommend",
-      meta: {
-        requireLogin: true
-      }
+      // meta: {
+      //   requireLogin: true
+      // }
     },
     {
       path: '/Recommend',
       name: 'Recommend',
       component: Recommend,
-      meta: {
-        requireLogin: true
-      }
+      // meta: {
+      //   requireLogin: true
+      // }
     },
     {
       path: '/regAndLogin',

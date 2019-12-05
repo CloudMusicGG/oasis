@@ -2,9 +2,7 @@
  * @Author: roselee
  * @Date: 2019-11-26 17:46:19
  * @LastEditors: Eternal
- * @LastEditTime: 2019-12-05 09:41:53
- * @LastEditors: roselee
- * @LastEditTime: 2019-12-04 18:37:57
+ * @LastEditTime: 2019-12-05 15:10:31
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 20:49:19
  * @LastEditors: roselee
@@ -104,8 +102,7 @@ import { Loadmore } from "mint-ui";
 Vue.component("mt-Loadmore", Loadmore);
 export default {
   name: "RecommendContent",
-  // props: ["type","v",],
-  props: ["type", "v","changeSearch"],
+  props: ["type","v"],
   data() {
     return {
       count: 0,
@@ -118,15 +115,17 @@ export default {
       likePidAndNum: [],
       list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       isLoadAll: false,
-      searchParam: ""
+      searchParam: "推荐"
     };
   },
   created() {
     this.searchParam = this.type;
     if(this.v!=undefined && this.v != ""){
       this.searchParam = this.v;
+      console.log("使用传入的v");
     }
     Axios.get("/userInfo").then(Response => {
+      // console.log(Response.data);
       this.nowPid = Response.data.likePostIds.split(",");
       this.$store.commit("changeNowPid", this.nowPid);
     });
@@ -135,6 +134,7 @@ export default {
         this.alldata = Response.data;
         this.data = this.alldata.slice(0, 5);
         this.classify(this.data);
+        // console.log(this.alldata);
       }
     );
   },
