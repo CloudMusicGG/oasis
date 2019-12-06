@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-26 15:02:43
- * @LastEditTime: 2019-12-05 22:00:52
+ * @LastEditTime: 2019-12-06 21:55:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \day23e:\三阶段\第三阶段\workspace\oasis\src\components\home.vue
@@ -17,21 +17,21 @@
                 <div v-for="(img,index) in $store.state.imgs" :key="index">
                     <!-- {{头像及发布时间等}} -->
                     <div class="header_top" @click="getfocu1()">
-                        <img :src="img.headerimg" alt="">
+                        <img :src="img.headUrl" alt="">
                         <div class="ht_middle">
-                            <p>{{img.name}}</p>
+                            <p>{{img.username}}</p>
                             <span class="time">{{changeTime(img.time)}}</span>
                             <span class="place">{{img.place}}</span>
                         </div>
 
-                        <span class="iconfont icon-gengduo" @click="popup(img.userid)"></span>
+                        <span class="iconfont icon-gengduo" @click="popup(img.uid)"></span>
 
-                        <span v-show="isshowfocus" class="guan"  @click="focusIt(img.userid)" :class='{"guanzhu":isfocus(img.userid),"guanhou":!isfocus(img.userid)}'><span class="iconfont icon-jiahao" :class='{"show":isfocus(img.userid),"show1":!isfocus(img.userid)}'></span><span :class='{"show":!isfocus(img.userid),"show1":isfocus(img.userid)}'>已</span>关注</span>
+                        <span v-show="isshowfocus" class="guan"  @click="focusIt(img.uid)" :class='{"guanzhu":isfocus(img.uid),"guanhou":!isfocus(img.uid)}'><span class="iconfont icon-jiahao" :class='{"show":isfocus(img.uid),"show1":!isfocus(img.uid)}'></span><span :class='{"show":!isfocus(img.uid),"show1":isfocus(img.uid)}'>已</span>关注</span>
                     </div>
                     <!-- {{发表的照片}} -->
                     <div class="swiper-container" @click="getfocu1()">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" v-for="(img2,index1) in img.imgs1" :key="index1">
+                            <div class="swiper-slide" v-for="(img2,index1) in img.pic" :key="index1">
                                 <img :src="img2" alt="">
                             </div>
                         </div>
@@ -56,10 +56,10 @@
                         
                         <div class="hb_middle" @click="getfocu1()">
                     <!-- {{标题}} -->
-                            <div class="title">{{img.biaoti}}</div>
+                            <div class="title">{{img.title}}</div>
                     <!-- {{描述}} -->
                             <div class="desc"  ref="desc1">
-                                <p :class="{yincang:showExchangeButton[index]}">{{img.desc}}</p>&nbsp;&nbsp;&nbsp;
+                                <p :class="{yincang:showExchangeButton[index]}">{{img.details}}</p>&nbsp;&nbsp;&nbsp;
                                 <span @click="showall(index)">{{showExchangeButton[index]?'展开':''}}</span>
                             </div>
                     <!-- {{主题}} -->
@@ -282,7 +282,6 @@ export default {
             }else{
                 this.userid = "";
             }
-            console.log(this.userid)
         }
     },
     mounted() {

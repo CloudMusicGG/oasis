@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-12-02 09:41:16
- * @LastEditTime: 2019-12-04 10:38:48
+ * @LastEditTime: 2019-12-06 21:16:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \eshopappe:\三阶段\第三阶段\workspace\oasis\src\components\combottom.vue
@@ -45,7 +45,7 @@ export default {
         if(this.$store.state.conid!=""){
             setTimeout(()=>{
                 this.$refs.commain.focus();
-                 this.$refs.commain.placeholder = this.$store.state.conusername;
+                this.$refs.commain.placeholder = this.$store.state.conusername;
             },200);
         }
     },

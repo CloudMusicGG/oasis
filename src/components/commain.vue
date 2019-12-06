@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-12-01 15:33:58
- * @LastEditTime: 2019-12-05 22:02:30
+ * @LastEditTime: 2019-12-06 20:46:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \eshopappe:\三阶段\第三阶段\workspace\oasis\src\components\commain.vue
@@ -11,14 +11,14 @@
         <ul>
             <li v-for="(comment,index) in $store.state.infos.comments" :key="index">
                 <div class="conmain">
-                    <img :src="comment.headerimg" alt="">
+                    <img :src="comment.headUrl" alt="">
                     <div @click="getcomper(comment.id,comment.username)">
                         <p class="pa">{{comment.username}}</p>
                         <p class="pa"><span v-html="comment.neirong.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)">{{comment.neirong}}</span><span>{{changeTime(comment.time)}}</span></p>
                     </div>
                 </div>
                 <div class="conmain conno" v-for="(speaka,index1) in comment.speak" :key="index1">
-                    <img :src="speaka.headerimg" alt="">
+                    <img :src="speaka.headUrl" alt="">
                     <div @click="getcomper(comment.id,speaka.username)">
                         <p class="pa">{{speaka.username}}</p>
                         <p class="pa"><span v-if="speaka.aita!=''" class="huifu">回复<span>{{speaka.aita}}</span></span><span v-html="speaka.neirong.replace(/\#[\u4E00-\u9FA5]{1,3}\;/gi, emotion)">{{speaka.neirong}}</span><span>{{changeTime(speaka.time)}}</span></p>

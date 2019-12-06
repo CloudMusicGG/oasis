@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-26 10:57:24
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-12-06 10:20:37
+ * @LastEditTime: 2019-12-06 21:52:42
  * @LastEditors: Eternal
  * @LastEditTime: 2019-12-05 09:36:25
  * @LastEditors: roselee
@@ -173,6 +173,7 @@ let store =  new VueX.Store({
             state.imgs = imgs;
             //循环请求过来的数据，将点赞文章的id，次数，和头像放到数组里
             let arr = [];
+            let nowid = state.userInfo.likePostIds.split(",");
             for(let i=0;i<imgs.length;i++){
                 let arr1 = imgs[i].zaned.split(",");
                 arr.push({
@@ -181,9 +182,7 @@ let store =  new VueX.Store({
                 });
             }
             state.zanedinfo = arr;
-            
-            state.currheaderimg = localStorage.getItem('userImg');
-            state.currid = localStorage.getItem('userId');
+            state.nowPid = nowid;
         },
         changexin(state,{id,index}){
 
@@ -212,7 +211,7 @@ let store =  new VueX.Store({
                     // console.log(state.zanedinfo)
                     if(id==state.zanedinfo[i].id){
                         // 获取本地头像，将头像放到state.zanedinfo里
-                        state.zanedinfo[i].headerimg.splice(0,0,state.currheaderimg);
+                        state.zanedinfo[i].headerimg.splice(0,0,state.userInfo.headUrl);
 
                         let data = "zaned="+state.zanedinfo[i].headerimg;
                         let data1 = "likePostIds="+state.nowPid;
@@ -285,14 +284,10 @@ let store =  new VueX.Store({
             state.conusername = "回复"+cont.username;
         },
         send(state,context){
-            
-            state.currheaderimg = localStorage.getItem('userImg');
-            state.currid = localStorage.getItem('userId');
-            state.currusername = localStorage.getItem('username');
-            
             //调用当前mutation下的函数
             this.commit('getDate');
             state.infos.commentsnum++;
+            console.log(state.userInfo.headUrl)
 
             for(let i in state.infos){
                 if(i=="comments"){
@@ -302,8 +297,8 @@ let store =  new VueX.Store({
                             if(state.infos[i][j].username==state.conusername){
                                obj = {
                                     "from": state.currid,
-                                    "username":state.currusername,
-                                    "headerimg":state.currheaderimg,
+                                    "username":state.userInfo.username,
+                                    "headUrl":state.userInfo.headUrl,
                                     "neirong":context,
                                     "time":state.currTime,
                                     "aita":""
@@ -311,8 +306,8 @@ let store =  new VueX.Store({
                             }else{
                                 obj = {
                                     "from": state.currid,
-                                    "username":state.currusername,
-                                    "headerimg":state.currheaderimg,
+                                    "username":state.userInfo.username,
+                                    "headUrl":state.userInfo.headUrl,
                                     "neirong":context,
                                     "time":state.currTime,
                                     "aita":state.conusername
@@ -328,8 +323,8 @@ let store =  new VueX.Store({
 
                    let obj = {
                         "id": state.currid,
-                        "username":state.currusername,
-                        "headerimg":state.currheaderimg,
+                        "username":state.userInfo.username,
+                        "headUrl":state.userInfo.headUrl,
                         "neirong":context,
                         "time":state.currTime,
                         "speak":[]
