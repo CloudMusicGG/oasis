@@ -1,8 +1,8 @@
 /*
- * @Author: rosalee
- * @Date: 2019-11-26 10:25:50
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-12-02 09:01:27
+ * @Author: roselee
+ * @Date: 2019-12-05 20:27:24
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-05 20:45:46
  * @Description: 
  */
 'use strict'
@@ -17,18 +17,19 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/api': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-        pathRewrite: {
-         	 '^/api': ''
-        }
-      }
-    },
+    // proxyTable: {
+    //   '/api': {
+    //     target: 'http://localhost:3000',
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //      	 '^/api': ''
+    //     }
+    //   }
+    // },
 
     // Various Dev Server settings
-    host: '10.35.161.5', // can be overwritten by process.env.HOST
+    // host: '192.168.43.174', // can be overwritten by process.env.HOST
+    host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
@@ -58,7 +59,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

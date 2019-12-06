@@ -170,7 +170,7 @@ export default {
             console.log(err);
         });
         //获取用户的信息
-        this.$store.dispatch('getnowid');
+        // this.$store.dispatch('getnowid');
     },
     methods:{ 
         // 将匹配结果替换表情图片

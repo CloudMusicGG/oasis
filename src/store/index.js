@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-26 10:57:24
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-12-05 22:04:26
+ * @LastEditTime: 2019-12-06 10:20:37
  * @LastEditors: Eternal
  * @LastEditTime: 2019-12-05 09:36:25
  * @LastEditors: roselee
@@ -47,6 +47,14 @@ let store =  new VueX.Store({
         infos:{},
         conid:"",
         conusername:""
+    },
+    getters:{
+        nowPid(){
+            return state.userInfo.likePostIds.split(",");
+        },
+        nowFocus(){
+            return state.userInfo.foucsId.split(",");
+        }
     },
     mutations: {//跟踪状态
         SearchRecord(state,Records){
@@ -139,6 +147,15 @@ let store =  new VueX.Store({
         updateUserInfo(state,value){
           for(let key in value){
             state.userInfo[key] = value[key];
+            // 此处向后端发请求
+            let data = key+"=" + value[key];
+            Axios.patch(
+                "/userInfo/" + "10001",
+                data,
+                { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
+                .then(response => {
+                  
+                });
           }
           
           // 此处向后端发请求
@@ -180,7 +197,7 @@ let store =  new VueX.Store({
 
                 function sendusername(data,currid){
                     return axios.patch(
-                        'userInfo',
+                        'userInfo/'+"10001",
                         data,
                         {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
                     );
@@ -211,7 +228,6 @@ let store =  new VueX.Store({
                 //如果有，就将他删掉
                 state.nowPid.splice(index,1);
                 for(let i=0;i<state.zanedinfo.length;i++){
-                    console.log(state.zanedinfo)
                     if(id==state.zanedinfo[i].id){
                         state.zanedinfo[i].headerimg.splice(index,1);
                        
@@ -251,12 +267,6 @@ let store =  new VueX.Store({
                 .then(res=>{
                 })
             }
-        },
-        getnowid(state,data){
-            let arr2 = data.likePostIds.split(",");
-            let arr3 = data.foucsId.split(",");
-            state.nowPid = arr2;
-            state.nowFocus = arr3;
         },
         getcomment(state,id){
             state.currwenid = id;
@@ -365,15 +375,6 @@ let store =  new VueX.Store({
         getxian(state,xian){
             state.isxian = xian;
             state.isshow = !xian;
-        }
-    },
-    actions: {//有异步请求，异步请求完成后，提交mutations
-        getnowid(context){
-            // let currid = localStorage.getItem('userId');
-            axios.get('userInfo')
-            .then(res=>{
-                context.commit('getnowid',res.data);
-            })
         }
     }
 })

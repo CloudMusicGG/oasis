@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-12-02 17:21:46
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-12-05 22:08:40
+ * @LastEditTime: 2019-12-06 09:23:04
  * @Description: 
  -->
 <template>
@@ -18,7 +18,7 @@ import axios from "axios";
 import IndexFooter from "@/components/IndexFooter.vue";
 import regAndLogin from "@/components/goLoginPage/regAndLogin";
 export default {
-  name: "App",
+  name: 'App',
   data() {
     return {
       isLogin: true
@@ -27,18 +27,18 @@ export default {
   created() {
     if (this.$store.state.isLogin==false) {
       this.isLogin = true;
-      console.log(this.$store.state.isLogin);
     } else {
       this.isLogin = false;
     }
+    let userId = "10001";
     axios
-      .get("/userInfo")
-      .then(response => {
+      .get("/userInfo/"+userId)
+      .then((response) => {
         let data = response.data;
+        // console.log(data);
         this.$store.commit("changUserInfo", data);
       })
       .catch(err => {
-        console.log(err);
       });
   },
   components: {

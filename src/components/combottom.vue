@@ -52,7 +52,6 @@ export default {
     methods:{
         //让输入框显示
         getfocu(){
-            console.log(this.$store.state.currwenid)
             this.$store.state.conusername = "";
             this.$store.commit("getfocu",false);
             setTimeout(()=>{
@@ -77,7 +76,6 @@ export default {
         },
         send(){
             let sendnei = this.$refs.commain.value;
-            console.log(sendnei)
             if(sendnei!=""){
                 this.$store.commit("send",sendnei);
                 this.$refs.commain.value = "";
