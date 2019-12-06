@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-12-02 17:21:46
  * @LastEditors: roselee
- * @LastEditTime: 2019-12-05 20:28:47
+ * @LastEditTime: 2019-12-06 11:57:00
  * @Description: 
  -->
 <template>
@@ -32,7 +32,7 @@ export default {
     }
     let userId = "10001";
     axios
-      .get("/userInfo/"+userId)
+      .get("api/userInfo/"+userId)
       .then((response) => {
         let data = response.data;
         // console.log(data);

@@ -1,8 +1,8 @@
 <!--
  * @Author: roselee
  * @Date: 2019-11-26 14:32:26
- * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 19:50:54
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-06 12:20:53
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 17:09:13
  * @LastEditors: roselee
@@ -36,7 +36,7 @@ export default {
       // 改变底部导航
       this.$store.commit('changeCheck', 1);
       
-      Axios.get("/postInfo").then(
+      Axios.get("api/postInfo").then(
       Response => {
         this.data = Response.data;
         //去到了所有的文章信息

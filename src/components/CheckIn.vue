@@ -1,8 +1,8 @@
 <!--
  * @Author: Eternal
  * @Date: 2019-11-26 17:01:29
- * @LastEditors: Eternal
- * @LastEditTime: 2019-11-29 17:28:37
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-06 11:51:54
  * @Description: 最新入住组件
  -->
 <template>
@@ -65,7 +65,7 @@ export default {
     },
     
     created(){
-        Axios.get("/CheckIn")
+        Axios.get("api/CheckIn")
         .then(res=>{
             this.CheckIns = res.data;
         })

@@ -1,8 +1,8 @@
 <!--
  * @Author: Eternal
  * @Date: 2019-11-26 16:08:40
- * @LastEditors: Eternal
- * @LastEditTime: 2019-12-04 19:01:08
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-06 11:52:40
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 20:13:10
  * @Description: 最近搜素和搜素推荐组件
@@ -51,7 +51,7 @@ export default {
     },
      created(){
          this.Eliminate();
-         Axios.get("/Recommend")
+         Axios.get("api/Recommend")
         .then(res=>{
              this.Recommends = res.data;
         })

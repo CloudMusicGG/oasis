@@ -1,8 +1,8 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-26 15:02:43
- * @LastEditTime: 2019-12-05 19:17:43
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-12-06 11:50:38
+ * @LastEditors: roselee
  * @Description: In User Settings Edit
  * @FilePath: \day23e:\三阶段\第三阶段\workspace\oasis\src\components\home.vue
  -->
@@ -138,7 +138,7 @@ export default {
         }
     },
     created(){ 
-        axios.get("imgs")
+        axios.get("api/imgs")
         .then(res=>{
             this.allinfos = res.data;
             let allinfo = this.allinfos.slice(0,3);
@@ -262,7 +262,7 @@ export default {
             this.$store.commit("getface",false);
             this.$store.commit("getxian",true);
             this.$store.commit("getcomment",id);
-            axios.get("imgs/"+this.$store.state.currwenid)
+            axios.get("api/imgs/"+this.$store.state.currwenid)
             .then(res=>{
                 // this.infos = res.data;
                 this.$store.commit("getinfos",res.data);

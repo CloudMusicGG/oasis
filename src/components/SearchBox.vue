@@ -1,8 +1,8 @@
 <!--
  * @Author: Eternal
  * @Date: 2019-11-26 14:32:25
- * @LastEditors: Eternal
- * @LastEditTime: 2019-12-04 21:20:43
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-06 11:52:50
  * @LastEditors: roselee
  * @LastEditTime: 2019-12-02 19:54:40
  * @Description: 搜素框组件
@@ -73,14 +73,14 @@ export default {
             }else {
                  //主题
                 //  var t = this.d
-                 Axios.get("/methe",{params: {id:t}})
+                 Axios.get("api/methe",{params: {id:t}})
                 .then(res=>{
                     // if(this.yonghu =="用户") {
                         this.methe = res.data;
                     // }
                 })
                 let fun = this.fun
-                Axios.get("/RelatedUsers",{params: {id:t}})
+                Axios.get("api/RelatedUsers",{params: {id:t}})
                 .then(res=>{
                     // if(this.yonghu =="用户") {
                         let Result = res.data;
