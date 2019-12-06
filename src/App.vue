@@ -2,7 +2,7 @@
  * @Author: roselee
  * @Date: 2019-12-02 17:21:46
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-12-04 22:03:58
+ * @LastEditTime: 2019-12-05 22:08:40
  * @Description: 
  -->
 <template>
@@ -94,5 +94,13 @@ img{
 }
 input{
   outline: none;
+}
+a:link,
+a:active,
+a:visited,
+a:hover {
+    background: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;  
 }
 </style>

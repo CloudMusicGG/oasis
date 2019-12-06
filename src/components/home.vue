@@ -1,19 +1,19 @@
 <!--
  * @Author: your name
  * @Date: 2019-11-26 15:02:43
- * @LastEditTime: 2019-12-05 19:17:43
+ * @LastEditTime: 2019-12-05 22:00:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \day23e:\三阶段\第三阶段\workspace\oasis\src\components\home.vue
  -->
 <template>
-    <div class="downla">
-        <!-- <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom"  ref="loadmore"> -->
-            <!-- <div
-                v-infinite-scroll
-                infinite-scroll-disabled="busy"
-                infinite-scroll-distance="20"
-            > -->
+    <div class="downla" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
+        <mt-loadmore :top-method="loadTop"  ref="loadmore">
+            <div
+                v-infinite-scroll="loadMore"
+                infinite-scroll-disabled="loading"
+                infinite-scroll-distance="10"
+            >
                 <div v-for="(img,index) in $store.state.imgs" :key="index">
                     <!-- {{头像及发布时间等}} -->
                     <div class="header_top" @click="getfocu1()">
@@ -101,8 +101,8 @@
                         <li @click="popup()">取消</li>
                     </ul>
                 </mt-popup>
-            <!-- </div> -->
-        <!-- </mt-loadmore> -->
+            </div>
+        </mt-loadmore>
     </div>
 </template>
 <script>
@@ -129,8 +129,12 @@ export default {
             showTotal:true,//是否显示所有文本内容
             showExchangeButton:[],//是否显示展开按钮
             popupVisible:false,
-            userid:""
+            userid:"",
+            loading:false,
+            wrapperHeight:""
         }
+    },
+    components:{
     },
     computed:{
         isshowfocus(){
@@ -179,23 +183,23 @@ export default {
         loadTop() {
         // load more data
             this.allinfo = this.allinfos.slice(3,6);
-            // this.$store.state.imgs.concat(this.allinfo);
             for(let i in this.allinfo){
                 this.$store.state.imgs.unshift(this.allinfo[i]);
             }
-            // this.$store.commit('getimgs',this.allinfo);
             this.$refs.loadmore.onTopLoaded();
         },
-        loadBottom() {
+        loadMore() {
         // load more data
         //this.allLoaded = true;// if all data are loaded
             this.allinfo = this.allinfos.slice(3,6);
-
-            for(let i in this.allinfo){
-                this.$store.state.imgs.push(this.allinfo[i]);
-            }
-
-            this.$refs.loadmore.onBottomLoaded();
+            this.loading = true;
+            setTimeout(()=>{
+                for(let i in this.allinfo){
+                    this.$store.state.imgs.push(this.allinfo[i]);
+                }
+                this.loading = false;
+            },100);
+            // this.$refs.loadmore.onBottomLoaded();
         },
         changeTime(time){
             let d = new Date();
@@ -228,7 +232,6 @@ export default {
             this.$store.commit("changexin",{id:id,index:index});
         },
         focusIt(id){
-            console.log(id)
             let index = this.$store.state.nowFocus.indexOf(id);
             this.$store.commit("changefocus",{id:id,index:index});
             this.popupVisible = false;
@@ -281,13 +284,16 @@ export default {
             }
             console.log(this.userid)
         }
+    },
+    mounted() {
+      this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
     }
 }
 </script>
 <style lang="scss" scoped="" type="text/css">
 @import url(https://unpkg.com/swiper/css/swiper.css);
 .downla{
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .header_top{
  padding: .09rem .11rem .09rem;

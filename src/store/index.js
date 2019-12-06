@@ -1,13 +1,10 @@
 /*
  * @Author: rosalee
  * @Date: 2019-11-26 10:57:24
-<<<<<<< HEAD
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-12-05 19:29:14
-=======
+ * @LastEditTime: 2019-12-05 22:04:26
  * @LastEditors: Eternal
  * @LastEditTime: 2019-12-05 09:36:25
->>>>>>> 2b821e24b85afa3fe76e77163aa4d7803426b777
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 20:56:20
  * @Description:
@@ -170,8 +167,6 @@ let store =  new VueX.Store({
             
             state.currheaderimg = localStorage.getItem('userImg');
             state.currid = localStorage.getItem('userId');
-            console.log("state.zanedinfo:");
-            console.log(state.zanedinfo)
         },
         changexin(state,{id,index}){
 
@@ -207,8 +202,6 @@ let store =  new VueX.Store({
 
                         axios.all([sendzaned(data),sendusername(data1,state.currid)])
                         .then(axios.spread(function (reszaned,resusername) {
-                            console.log(reszaned.data);
-                            console.log(resusername.data);
                             // 两个请求现在都执行完成
                         })
                         );
@@ -227,8 +220,6 @@ let store =  new VueX.Store({
 
                         axios.all([sendzaned(data),sendusername(data1,state.currid)])
                         .then(axios.spread(function (reszaned,resusername) {
-                            console.log(reszaned.data);
-                            console.log(resusername.data);
                             // 两个请求现在都执行完成
                         })
                         );
@@ -240,7 +231,6 @@ let store =  new VueX.Store({
             if(index<0){
                 //如果没有这个下标，就把他放进去
                 state.nowFocus.splice(0,0,id);
-                console.log(state.nowFocus)
                 let data = "foucsId="+state.nowFocus;
                 axios.patch(
                     'userInfo',
@@ -248,12 +238,10 @@ let store =  new VueX.Store({
                     {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
                 )
                 .then(res=>{
-                    console.log(res.data);
                 })
             }else{
                 //如果有，就将他删掉
                 state.nowFocus.splice(index,1);
-                console.log(state.nowFocus)
                 let data = "foucsId="+state.nowFocus;
                 axios.patch(
                     'userInfo',
@@ -261,7 +249,6 @@ let store =  new VueX.Store({
                     {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
                 )
                 .then(res=>{
-                    console.log(res.data);
                 })
             }
         },
@@ -273,7 +260,6 @@ let store =  new VueX.Store({
         },
         getcomment(state,id){
             state.currwenid = id;
-            console.log(state.currwenid);
         },
         getinfos(state,context){
             state.infos = context;
@@ -302,7 +288,6 @@ let store =  new VueX.Store({
                 if(i=="comments"){
                    for(let j in state.infos[i]){
                        if(state.infos[i][j].id==state.conid){
-                            console.log(state.infos[i][j])
                             let obj;
                             if(state.infos[i][j].username==state.conusername){
                                obj = {
@@ -375,8 +360,6 @@ let store =  new VueX.Store({
             {headers: { "Content-Type": "application/json" }}
             )
             .then(res=>{
-                console.log("回应了")
-                console.log(res.data);
             });
         },
         getxian(state,xian){

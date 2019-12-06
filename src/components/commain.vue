@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-12-01 15:33:58
- * @LastEditTime: 2019-12-05 14:08:54
+ * @LastEditTime: 2019-12-05 22:02:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \eshopappe:\三阶段\第三阶段\workspace\oasis\src\components\commain.vue
@@ -45,7 +45,6 @@ export default {
             
         })
         .catch(err=>{
-            console.log(err);
         })
     },
     beforeUpdate(){
