@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-26 10:57:24
  * @LastEditors: roselee
- * @LastEditTime: 2019-12-06 11:56:22
+ * @LastEditTime: 2019-12-06 15:56:08
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-30 20:56:20
  * @Description:
@@ -47,7 +47,6 @@ let store =  new VueX.Store({
         conusername:""
     },
     getters:{
-        
         nowPid(){
             return state.userInfo.likePostIds.split(",");
         },
@@ -246,7 +245,6 @@ let store =  new VueX.Store({
             if(index<0){
                 //如果没有这个下标，就把他放进去
                 state.nowFocus.splice(0,0,id);
-                console.log(state.nowFocus)
                 let data = "foucsId="+state.nowFocus;
                 axios.patch(
                     'api/userInfo',
@@ -254,12 +252,10 @@ let store =  new VueX.Store({
                     {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
                 )
                 .then(res=>{
-                    console.log(res.data);
                 })
             }else{
                 //如果有，就将他删掉
                 state.nowFocus.splice(index,1);
-                console.log(state.nowFocus)
                 let data = "foucsId="+state.nowFocus;
                 axios.patch(
                     'api/userInfo',
@@ -267,7 +263,6 @@ let store =  new VueX.Store({
                     {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
                 )
                 .then(res=>{
-                    console.log(res.data);
                 })
             }
         },
@@ -301,7 +296,6 @@ let store =  new VueX.Store({
                 if(i=="comments"){
                    for(let j in state.infos[i]){
                        if(state.infos[i][j].id==state.conid){
-                            console.log(state.infos[i][j])
                             let obj;
                             if(state.infos[i][j].username==state.conusername){
                                obj = {
