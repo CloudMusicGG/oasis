@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-12-01 15:33:58
- * @LastEditTime: 2019-12-06 20:46:57
+ * @LastEditTime: 2019-12-06 22:14:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \eshopappe:\三阶段\第三阶段\workspace\oasis\src\components\commain.vue
@@ -38,7 +38,7 @@ export default {
         }
     },
     created(){
-        axios.get("imgs/"+this.$store.state.currwenid)
+        axios.get("api/imgs/"+this.$store.state.currwenid)
         .then(res=>{
             // this.infos = res.data;
             this.$store.commit("getinfos",res.data);

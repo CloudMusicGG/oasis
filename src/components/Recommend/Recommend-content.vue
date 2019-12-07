@@ -91,11 +91,11 @@ export default {
       this.searchParam = this.v;
       console.log("使用传入的v");
     }
-    Axios.get("/userInfo/" + "10001").then(Response => {
+    Axios.get("api/userInfo/" + "10001").then(Response => {
       this.nowPid = Response.data.likePostIds.split(",");
       this.$store.commit("changeNowPid", this.nowPid);
     });
-    Axios.get("/postInfo", { params: { type_like: this.searchParam } }).then(
+    Axios.get("api/postInfo", { params: { type_like: this.searchParam } }).then(
       Response => {
         this.alldata = Response.data;
         this.data = this.alldata.slice(0, 5);
@@ -111,7 +111,7 @@ export default {
   },
   watch: {
     v: function(a, b) {
-      Axios.get("/postInfo", { params: { type_like: a } }).then(Response => {
+      Axios.get("api/postInfo", { params: { type_like: a } }).then(Response => {
         this.alldata = Response.data;
         this.data = this.alldata.slice(0, 5);
         this.classify(this.data);

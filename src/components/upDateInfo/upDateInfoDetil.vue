@@ -31,7 +31,7 @@
       {{$store.state.userInfo.usercity}}
       <i class="iconfont">&#xe77c;</i>
     </div>
-    <h6>注销账户</h6>
+    <h6 @click="removeUserTele">注销账户</h6>
    <el-drawer
       class="whd"
       title="选择性别"
@@ -39,7 +39,7 @@
       :direction="direction"
       :show-close = "false">
       <div style="text-align: center;line-height: .5rem;height: .5rem;border-bottom: 1px solid #72767b3b;width: 3.22rem;margin: 0 auto;" @click="changeSex('男')">男</div>
-      <div style="text-align: center;line-height: .5rem;height: .5rem;width: 3.22rem;margin: 0 auto;"@click="changeSex('女')">女</div>
+      <div style="text-align: center;line-height: .5rem;height: .5rem;width: 3.22rem;margin: 0 auto;" @click="changeSex('女')">女</div>
     </el-drawer>
     <el-drawer
       class="whd"
@@ -93,8 +93,6 @@ export default {
                 }
               },
       myCity:""
-
-
     }
   },
   computed:{
@@ -169,6 +167,11 @@ export default {
     //！！！！！！！！！！！选择城市后执行的函数
     onSelected(a){
       this.myCity = a.province.value+" "+a.city.value;
+    },
+    removeUserTele(){
+      localStorage.removeItem("userTele");
+      this.$router.push("/");
+      this.$router.go(1);
     }
   }
 

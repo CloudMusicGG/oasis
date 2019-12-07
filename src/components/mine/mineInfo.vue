@@ -165,6 +165,7 @@ export default {
       width:.72rem;
       height:.72rem;
       position: absolute;
+      z-index: 7;
       top: -.36rem;
       left: .28rem;
       border-radius: 50%;

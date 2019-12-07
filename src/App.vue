@@ -1,8 +1,8 @@
 <!--
  * @Author: roselee
  * @Date: 2019-12-02 17:21:46
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-12-06 09:23:04
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-06 15:56:15
  * @Description: 
  -->
 <template>
@@ -32,7 +32,7 @@ export default {
     }
     let userId = "10001";
     axios
-      .get("/userInfo/"+userId)
+      .get("api/userInfo/"+userId)
       .then((response) => {
         let data = response.data;
         // console.log(data);

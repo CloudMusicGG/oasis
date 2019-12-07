@@ -24,9 +24,9 @@ const router = new Router({
     {
       path: '/',
       redirect:"/homepage",
-      // meta: {
-      //   requireLogin: true
-      // }
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/Recommend',
@@ -36,108 +36,141 @@ const router = new Router({
       //   requireLogin: true
       // }
     },
-    {
-      path: '/regAndLogin',
-      name: 'regAndLogin',
-      component: regAndLogin
-    },
+    // {
+    //   path: '/regAndLogin',
+    //   name: 'regAndLogin',
+    //   component: regAndLogin,
+    //   beforeEnter(to,from,next){
+    //     if(localStorage.getItem("userTele")){
+    //       next("/");
+    //     }else{
+    //       next();
+    //     }
+    //   }
+    // },
     {
       path: '/post',
       name: 'post',
-      component: post
+      component: post,
+      meta: {
+        requireLogin: true
+      }
     },
-    {
-      path: '/loginPage',
-      name: 'loginPage',
-      component: loginPage,
-      // beforeEnter(to,from,next){
-      //   if(localStorage.getItem("userinfo")){
-      //     next("/");
-      //   }else{
-      //     next();
-      //   }
-      // }
-    },
+    // {
+    //   path: '/loginPage',
+    //   name: 'loginPage',
+    //   component: loginPage,
+    //   beforeEnter(to,from,next){
+    //     if(localStorage.getItem("userTele")){
+    //       next("/");
+    //     }else{
+    //       next();
+    //     }
+    //   }
+    // },
     {
       path: '/message',
       name: 'message',
-      component: message
+      component: message,
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/mine',
       name: 'mine',
       component: mine,
-      // meta: {
-      //   requireLogin: true
-      // }
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/upDateInfo',
       name: 'upDateInfo',
-      component: upDateInfo
+      component: upDateInfo,
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/newFocus',
       name: 'newFocus',
-      component: newFocus
+      component: newFocus,
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/newPraises',
       name: 'newPraises',
-      component: newPraises
+      component: newPraises,
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/Search-page',
       name: 'Search',
       component: Search,
-      props:true
+      props:true,
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/Search-page/:a',
       name: 'SearchData',
       component: Search,
-      props:true
+      props:true,
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/Hedo-page',
       name: 'Hedopage',
-      component: Hedopage
-    },
-    {
-      path: '/Recommend',
-      name: 'Recommend',
-      component: Recommend
+      component: Hedopage,
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/Article/:pid',
       name: 'Article',
       component: Article,
-      name: 'homepage',
-      component: homepage
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/commentpage',
       name: 'commentpage',
-      component: commentpage
+      component: commentpage,
+      meta: {
+        requireLogin: true
+      }
     },
     {
       path: '/homepage',
       name: 'homepage',
-      component: homepage
+      component: homepage,
+      meta: {
+        requireLogin: true
+      }
     }
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  if (to.meta.requireLogin) {
-    if (!localStorage.getItem('userinfo')) {
-      next('/regAndLogin');
-    }else{
-      next();
-    }
-  } else {
-    next();
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   if (to.meta.requireLogin) {
+//     if (!localStorage.getItem('userTele')) {
+//       next('/regAndLogin');
+//     }else{
+//       next();
+//     }
+//   } else {
+//     next();
+//   }
+// })
 
 export default router;

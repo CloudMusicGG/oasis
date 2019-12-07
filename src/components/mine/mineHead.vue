@@ -1,3 +1,10 @@
+<!--
+ * @Author: roselee
+ * @Date: 2019-12-02 17:21:46
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-05 21:57:36
+ * @Description: 
+ -->
 <template>
   <div class="head">
     <div class="headBox">
@@ -27,6 +34,7 @@ export default {
   background: url(../../assets/img/overlay.png),url(../../assets/img/mineBg.jpg);
   background-position: 50% 5%;
   position: relative;
+  z-index: 6;
 
   .headBox{
     width: 3.22rem;

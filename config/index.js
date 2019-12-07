@@ -1,8 +1,13 @@
 /*
  * @Author: roselee
  * @Date: 2019-12-05 20:27:24
+<<<<<<< HEAD
  * @LastEditors: Please set LastEditors
  * @LastEditTime: 2019-12-06 17:17:12
+=======
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-06 12:07:31
+>>>>>>> df3b8df1c46c0bdb5baf11f9b862a2b12944846c
  * @Description: 
  */
 'use strict'
@@ -17,15 +22,22 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    // proxyTable: {
-    //   '/api': {
-    //     target: 'http://localhost:3000',
-    //     changeOrigin: true,
-    //     pathRewrite: {
-    //      	 '^/api': ''
-    //     }
-    //   }
-    // },
+    proxyTable: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        pathRewrite: {
+         	 '^/api': ''
+        }
+      },
+      '/tele': {
+        target: 'http://106.ihuyi.com/webservice',
+        changeOrigin: true,
+        pathRewrite: {
+         	 '^/tele': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
     // host: '192.168.43.174', // can be overwritten by process.env.HOST

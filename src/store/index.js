@@ -2,7 +2,7 @@
  * @Author: rosalee
  * @Date: 2019-11-26 10:57:24
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-12-06 21:52:42
+ * @LastEditTime: 2019-12-06 22:14:46
  * @LastEditors: Eternal
  * @LastEditTime: 2019-12-05 09:36:25
  * @LastEditors: roselee
@@ -87,7 +87,7 @@ let store =  new VueX.Store({
                         let userdata = "likePostIds=" + state.nowPid;
                         // 此处向后端发一下数据增加点赞数
                         Axios.patch(
-                            "/postInfo/" + id,
+                            "api/postInfo/" + id,
                             data,
                             { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
                             .then(response => {
@@ -95,7 +95,7 @@ let store =  new VueX.Store({
                             });
                         // 此处向后端发请求
                         Axios.patch(
-                            "/userInfo/" + state.userInfo[0].id,
+                            "api/userInfo/" + state.userInfo[0].id,
                             userdata,
                             { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
                             .then(response => {
@@ -116,7 +116,7 @@ let store =  new VueX.Store({
                         let userdata = "likePostIds=" + state.nowPid;
 
                         Axios.patch(
-                            "/postInfo/" + id,
+                            "api/postInfo/" + id,
                             data,
                             { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
                             .then(response => {
@@ -124,7 +124,7 @@ let store =  new VueX.Store({
                             });
                         // 此处向后端发请求
                         Axios.patch(
-                            "/userInfo/" + state.userInfo[0].id,
+                            "api/userInfo/" + state.userInfo[0].id,
                             userdata,
                             { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
                             .then(response => {
@@ -150,7 +150,7 @@ let store =  new VueX.Store({
             // 此处向后端发请求
             let data = key+"=" + value[key];
             Axios.patch(
-                "/userInfo/" + "10001",
+                "api/userInfo/" + "10001",
                 data,
                 { headers: { "Content-Type": "application/x-www-form-urlencoded" } })
                 .then(response => {
@@ -188,7 +188,7 @@ let store =  new VueX.Store({
 
                 function sendzaned(data){
                     return axios.patch(
-                        'imgs/'+id,
+                        'api/imgs/'+id,
                         data,
                         {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
                     );
@@ -196,7 +196,7 @@ let store =  new VueX.Store({
 
                 function sendusername(data,currid){
                     return axios.patch(
-                        'userInfo/'+"10001",
+                        'api/userInfo/'+"10001",
                         data,
                         {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
                     );
@@ -248,7 +248,7 @@ let store =  new VueX.Store({
                 state.nowFocus.splice(0,0,id);
                 let data = "foucsId="+state.nowFocus;
                 axios.patch(
-                    'userInfo',
+                    'api/userInfo',
                     data,
                     {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
                 )
@@ -259,7 +259,7 @@ let store =  new VueX.Store({
                 state.nowFocus.splice(index,1);
                 let data = "foucsId="+state.nowFocus;
                 axios.patch(
-                    'userInfo',
+                    'api/userInfo',
                     data,
                     {headers: { "Content-Type": "application/x-www-form-urlencoded" }}
                 )
@@ -360,7 +360,7 @@ let store =  new VueX.Store({
         },
         senddata(state){
             axios.patch(
-            "imgs/"+state.currwenid,
+            "api/imgs/"+state.currwenid,
             state.infos,
             {headers: { "Content-Type": "application/json" }}
             )

@@ -1,8 +1,8 @@
 <!--
  * @Author: roselee
  * @Date: 2019-11-26 21:09:28
- * @LastEditors: Eternal
- * @LastEditTime: 2019-11-30 14:24:17
+ * @LastEditors: roselee
+ * @LastEditTime: 2019-12-06 11:53:27
  * @LastEditors: roselee
  * @LastEditTime: 2019-11-27 19:54:08
  * @Description: 
@@ -31,7 +31,7 @@ export default {
   },
   created() {
     // console.log(this.uid);
-    Axios.get("/user", { params: { uid: this.uid } }).then(Response => {
+    Axios.get("api/user", { params: { uid: this.uid } }).then(Response => {
       this.data = Response.data[0];
       // console.log(this.data[0]);
     });
